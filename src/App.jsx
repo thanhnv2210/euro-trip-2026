@@ -1,11 +1,15 @@
+import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { TripProvider } from './context/TripContext'
 import BottomNav from './components/BottomNav'
+import BackupSheet from './components/BackupSheet'
 import ItineraryPage from './pages/ItineraryPage'
 import EventsPage from './pages/EventsPage'
 import JournalPage from './pages/JournalPage'
 
 export default function App() {
+  const [showBackup, setShowBackup] = useState(false)
+
   return (
     <TripProvider>
       <BrowserRouter>
@@ -17,7 +21,8 @@ export default function App() {
             <Route path="/journal" element={<JournalPage />} />
           </Routes>
         </div>
-        <BottomNav />
+        <BottomNav onBackup={() => setShowBackup(true)} />
+        {showBackup && <BackupSheet onClose={() => setShowBackup(false)} />}
       </BrowserRouter>
     </TripProvider>
   )
