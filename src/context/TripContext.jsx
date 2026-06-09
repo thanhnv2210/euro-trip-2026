@@ -4,22 +4,49 @@ import { loadState, saveState } from '../services/storageService'
 const TripContext = createContext(null)
 
 const SEED_ITINERARY = [
-  { id: 'day-01', date: '2026-07-04', city: 'Frankfurt', notes: 'Depart 12:35 PM SIN (SQ 326). Arrive FRA 19:40.', activities: [] },
-  { id: 'day-02', date: '2026-07-05', city: 'Frankfurt', notes: '1 day exploring Frankfurt.', activities: [] },
-  { id: 'day-03', date: '2026-07-06', city: 'Düsseldorf', notes: 'Travel from Frankfurt. Visit friend.', activities: [] },
-  { id: 'day-04', date: '2026-07-07', city: 'Plauen', notes: 'Travel Düsseldorf → Plauen (~5–6h).', activities: [] },
-  { id: 'day-05', date: '2026-07-08', city: 'Plauen', notes: 'Visit uncle at Pestalozzistraße 50, 08523 Plauen.', activities: [] },
-  { id: 'day-06', date: '2026-07-09', city: 'Prague', notes: 'Travel Plauen → Prague (~1.5h). Day 1.', activities: [] },
-  { id: 'day-07', date: '2026-07-10', city: 'Prague', notes: 'Day 2 in Prague.', activities: [] },
-  { id: 'day-08', date: '2026-07-11', city: 'Vienna', notes: 'Travel Prague → Vienna (~4h by train).', activities: [] },
-  { id: 'day-09', date: '2026-07-12', city: 'Vienna', notes: 'Day 2 in Vienna.', activities: [] },
-  { id: 'day-10', date: '2026-07-13', city: 'Rome', notes: 'Fly Vienna → Rome. (ticket pending)', activities: [] },
-  { id: 'day-11', date: '2026-07-14', city: 'Rome', notes: 'Day 2 in Rome.', activities: [] },
-  { id: 'day-12', date: '2026-07-15', city: 'Tuscany', notes: 'Travel Rome → Tuscany (~3h).', activities: [] },
-  { id: 'day-13', date: '2026-07-16', city: 'Tuscany', notes: 'Day 2 in Tuscany.', activities: [] },
-  { id: 'day-14', date: '2026-07-17', city: 'Würzburg', notes: 'Travel Tuscany → Würzburg (plan TBD). Long day.', activities: [] },
-  { id: 'day-15', date: '2026-07-18', city: 'Würzburg', notes: "Friend's wedding — evening event.", activities: [] },
-  { id: 'day-16', date: '2026-07-19', city: 'Frankfurt', notes: 'Travel Würzburg → Frankfurt (~1.5h). Depart 12:15 PM FRA (SQ 025).', activities: [] },
+  { id: 'day-01', date: '2026-07-04', city: 'Frankfurt', notes: 'Depart 12:35 PM SIN (SQ 326). Arrive FRA 19:40.', activities: [], travel: [] },
+  { id: 'day-02', date: '2026-07-05', city: 'Frankfurt', notes: '1 day exploring Frankfurt.', activities: [], travel: [] },
+  { id: 'day-03', date: '2026-07-06', city: 'Düsseldorf', notes: 'Travel from Frankfurt. Visit friend.', activities: [], travel: [
+    { mode: 'train', duration: '1h 30m', notes: 'ICE direct' },
+    { mode: 'car', duration: '2h 30m', notes: 'via A3' },
+  ]},
+  { id: 'day-04', date: '2026-07-07', city: 'Plauen', notes: 'Travel Düsseldorf → Plauen.', activities: [], travel: [
+    { mode: 'train', duration: '5h', notes: 'change at Frankfurt or Leipzig' },
+    { mode: 'car', duration: '4h 30m', notes: 'via A9' },
+  ]},
+  { id: 'day-05', date: '2026-07-08', city: 'Plauen', notes: 'Visit uncle at Pestalozzistraße 50, 08523 Plauen.', activities: [], travel: [] },
+  { id: 'day-06', date: '2026-07-09', city: 'Prague', notes: 'Travel Plauen → Prague. Day 1.', activities: [], travel: [
+    { mode: 'car', duration: '1h 30m', notes: 'fastest option' },
+    { mode: 'train', duration: '2h 30m', notes: 'change at Cheb' },
+    { mode: 'bus', duration: '2h', notes: 'FlixBus direct' },
+  ]},
+  { id: 'day-07', date: '2026-07-10', city: 'Prague', notes: 'Day 2 in Prague.', activities: [], travel: [] },
+  { id: 'day-08', date: '2026-07-11', city: 'Vienna', notes: 'Travel Prague → Vienna.', activities: [], travel: [
+    { mode: 'train', duration: '4h', notes: 'Railjet direct' },
+    { mode: 'car', duration: '4h', notes: 'via D1/A5' },
+    { mode: 'bus', duration: '4h 30m', notes: 'FlixBus direct' },
+  ]},
+  { id: 'day-09', date: '2026-07-12', city: 'Vienna', notes: 'Day 2 in Vienna.', activities: [], travel: [] },
+  { id: 'day-10', date: '2026-07-13', city: 'Rome', notes: 'Fly Vienna → Rome. (ticket pending)', activities: [], travel: [
+    { mode: 'flight', duration: '2h', notes: 'VIE → FCO/CIA — ticket pending!' },
+    { mode: 'train', duration: '12h+', notes: 'overnight, multiple changes' },
+  ]},
+  { id: 'day-11', date: '2026-07-14', city: 'Rome', notes: 'Day 2 in Rome.', activities: [], travel: [] },
+  { id: 'day-12', date: '2026-07-15', city: 'Tuscany', notes: 'Travel Rome → Tuscany.', activities: [], travel: [
+    { mode: 'train', duration: '2h', notes: 'Trenitalia to Florence/Pisa' },
+    { mode: 'car', duration: '3h', notes: 'via A1 — more flexible for Tuscany countryside' },
+  ]},
+  { id: 'day-13', date: '2026-07-16', city: 'Tuscany', notes: 'Day 2 in Tuscany.', activities: [], travel: [] },
+  { id: 'day-14', date: '2026-07-17', city: 'Würzburg', notes: 'Travel Tuscany → Würzburg. Long day.', activities: [], travel: [
+    { mode: 'flight', duration: '3h', notes: 'FLR/PSA → FRA/NUE + transfer (~6h total)' },
+    { mode: 'car', duration: '7h', notes: 'via Brenner Pass + A9' },
+    { mode: 'train', duration: '9h+', notes: 'multiple changes, overnight option available' },
+  ]},
+  { id: 'day-15', date: '2026-07-18', city: 'Würzburg', notes: "Friend's wedding — evening event.", activities: [], travel: [] },
+  { id: 'day-16', date: '2026-07-19', city: 'Frankfurt', notes: 'Travel Würzburg → Frankfurt. Depart 12:15 PM FRA (SQ 025).', activities: [], travel: [
+    { mode: 'train', duration: '1h', notes: 'ICE direct — recommended (arrive early for flight)' },
+    { mode: 'car', duration: '1h 30m', notes: 'via A3' },
+  ]},
 ]
 
 const SEED_EVENTS = [
