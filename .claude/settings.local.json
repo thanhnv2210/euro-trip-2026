@@ -21,7 +21,10 @@
       "Bash(euro-trip-stop)",
       "Bash(euro-trip-logs)",
       "Bash(euro-trip-status)",
-      "WebFetch(domain:*)"
+      "WebFetch(domain:*)",
+      "Bash(printf 'y\\\\n')",
+      "Bash(printf ' \\\\n')",
+      "Bash(node_modules/.bin/vite --version 2>&1)"
     ]
   }
 }
