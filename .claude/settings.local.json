@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(/opt/homebrew/bin/git:*)",
+      "Bash(pnpm:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(node:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(find:*)",
+      "Bash(curl:*)",
+      "Bash(open:*)",
+      "Bash(lsof:*)",
+      "Bash(kill:*)",
+      "Bash(pkill:*)",
+      "Bash(brew:*)",
+      "Bash(source ~/.zshrc)",
+      "Bash(euro-trip-start)",
+      "Bash(euro-trip-stop)",
+      "Bash(euro-trip-logs)",
+      "Bash(euro-trip-status)",
+      "WebFetch(domain:*)"
+    ]
+  }
+}
