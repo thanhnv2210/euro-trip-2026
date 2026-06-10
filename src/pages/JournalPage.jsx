@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTrip } from '../context/TripContext'
 
 const RISKS = [
   {
@@ -275,6 +276,104 @@ function PendingPlanSection() {
   )
 }
 
+const TAG_META = [
+  { tag: 'historical',   label: 'Historical',   icon: '🏛️', color: 'bg-amber-500',   track: 'bg-amber-950/60' },
+  { tag: 'culture',      label: 'Culture',      icon: '🎨', color: 'bg-purple-500',  track: 'bg-purple-950/60' },
+  { tag: 'scenic',       label: 'Scenic',       icon: '🌅', color: 'bg-sky-500',     track: 'bg-sky-950/60' },
+  { tag: 'photography',  label: 'Photography',  icon: '📷', color: 'bg-slate-400',   track: 'bg-slate-800/60' },
+  { tag: 'food',         label: 'Food',         icon: '🍽️', color: 'bg-orange-500',  track: 'bg-orange-950/60' },
+  { tag: 'outdoor',      label: 'Outdoor',      icon: '🥾', color: 'bg-lime-500',    track: 'bg-lime-950/60' },
+  { tag: 'local',        label: 'Local',        icon: '🧭', color: 'bg-yellow-500',  track: 'bg-yellow-950/60' },
+  { tag: 'romantic',     label: 'Romantic',     icon: '💑', color: 'bg-rose-500',    track: 'bg-rose-950/60' },
+  { tag: 'relaxation',   label: 'Relaxation',   icon: '😌', color: 'bg-teal-500',    track: 'bg-teal-950/60' },
+  { tag: 'nature',       label: 'Nature',       icon: '🌿', color: 'bg-emerald-500', track: 'bg-emerald-950/60' },
+  { tag: 'nightlife',    label: 'Nightlife',    icon: '🌙', color: 'bg-violet-500',  track: 'bg-violet-950/60' },
+  { tag: 'shopping',     label: 'Shopping',     icon: '🛍️', color: 'bg-fuchsia-500', track: 'bg-fuchsia-950/60' },
+  { tag: 'entertainment',label: 'Entertainment',icon: '🎭', color: 'bg-pink-500',    track: 'bg-pink-950/60' },
+  { tag: 'wellness',     label: 'Wellness',     icon: '🧘', color: 'bg-cyan-500',    track: 'bg-cyan-950/60' },
+]
+
+function AttributeBalanceSection() {
+  const { state } = useTrip()
+  const [open, setOpen] = useState(true)
+
+  // Count tag occurrences across all activities
+  const counts = {}
+  for (const day of state.itinerary) {
+    for (const act of day.activities ?? []) {
+      for (const tag of act.tags ?? []) {
+        counts[tag] = (counts[tag] || 0) + 1
+      }
+    }
+  }
+
+  const max = Math.max(...Object.values(counts), 1)
+  const total = Object.values(counts).reduce((s, v) => s + v, 0)
+
+  function levelLabel(count) {
+    if (count === 0)       return { text: 'None',      style: 'text-slate-600' }
+    if (count <= 3)        return { text: 'Low',       style: 'text-red-400' }
+    if (count <= 8)        return { text: 'Medium',    style: 'text-yellow-400' }
+    if (count <= 15)       return { text: 'Good',      style: 'text-emerald-400' }
+    return                        { text: 'High',      style: 'text-sky-400' }
+  }
+
+  const sorted = [...TAG_META].sort((a, b) => (counts[b.tag] || 0) - (counts[a.tag] || 0))
+
+  return (
+    <div className="rounded-xl border border-slate-700 bg-slate-900 overflow-hidden">
+      <button
+        className="w-full flex items-center justify-between px-4 py-3.5 text-left"
+        onClick={() => setOpen(o => !o)}
+      >
+        <div className="flex items-center gap-2.5">
+          <span className="text-base">📊</span>
+          <div>
+            <span className="text-sm font-semibold text-slate-100">Activity Balance</span>
+            <span className="ml-2 text-xs text-slate-500">{total} tag instances · {TAG_META.length} attributes</span>
+          </div>
+        </div>
+        <svg
+          className={`w-4 h-4 text-slate-500 transition-transform shrink-0 ${open ? 'rotate-180' : ''}`}
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="px-4 pb-4 border-t border-slate-800 pt-3 space-y-2.5">
+          <p className="text-xs text-slate-500 mb-3">Counted live from all planned activities. Add more activities to fill the gaps.</p>
+          {sorted.map(({ tag, label, icon, color, track }) => {
+            const count = counts[tag] || 0
+            const pct = Math.round((count / max) * 100)
+            const { text, style } = levelLabel(count)
+            return (
+              <div key={tag}>
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm w-5 text-center">{icon}</span>
+                    <span className="text-xs font-medium text-slate-300">{label}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className={`text-[10px] font-semibold ${style}`}>{text}</span>
+                    <span className="text-[10px] text-slate-600 font-mono w-5 text-right">{count}</span>
+                  </div>
+                </div>
+                <div className={`w-full h-1.5 rounded-full ${track}`}>
+                  <div
+                    className={`h-1.5 rounded-full transition-all ${color}`}
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function JournalPage() {
   return (
     <div className="flex flex-col flex-1">
@@ -290,6 +389,7 @@ export default function JournalPage() {
 
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
         <RiskSection />
+        <AttributeBalanceSection />
         <PendingPlanSection />
 
         <div className="flex flex-col items-center justify-center px-4 text-center py-12 text-slate-600">
