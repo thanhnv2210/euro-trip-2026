@@ -7,9 +7,10 @@ const RISKS = [
     label: 'Critical',
     dot: 'bg-red-500',
     items: [
-      { title: 'Vienna → Rome flight not purchased', detail: 'evt-02 is still pending — no booking ref or time. July peak prices rising daily. Book this week.' },
-      { title: 'No hotel bookings in any city', detail: 'Zero accommodation for all 8 cities. Prague, Vienna, Rome, Florence fill up in July. Book now, starting with Rome and Prague.' },
-      { title: 'SIN→FRA seats not selected (SQ 326)', detail: '12h+ flight with seats unassigned — risk of being separated. Select on singaporeair.com using ref ESHMZK.' },
+      { title: 'Vienna → Rome flight not purchased (10 Jul)', detail: 'evt-02 still pending — no booking ref, time, or airline. This is the gateway to all 7 Italy days. Book immediately — VIE→FCO/CIA in July is selling fast.' },
+      { title: 'Venice → Frankfurt flight not purchased (17 Jul)', detail: 'evt-06 still pending. Must be a morning departure to reach Würzburg by afternoon — the day before the wedding. Any delay = arriving late or exhausted for the event. Book alongside the Vienna→Rome flight.' },
+      { title: 'No hotel bookings in any city', detail: 'Zero accommodation confirmed across all 9 cities. Rome, Venice, and Florence are among Europe\'s most-booked July destinations. Priority order: Rome (3 nights) → Venice (2 nights) → Florence/Tuscany (2 nights) → Vienna (transit night, 9 Jul) → Prague.' },
+      { title: 'SIN→FRA seats not selected (SQ 326)', detail: '12h+ flight with seats unassigned — risk of being seated separately. Select on singaporeair.com using booking ref ESHMZK.' },
     ],
   },
   {
@@ -17,9 +18,10 @@ const RISKS = [
     label: 'High',
     dot: 'bg-orange-500',
     items: [
-      { title: 'Tuscany → Würzburg is a 7–9h travel day (17 Jul)', detail: 'Day before the wedding. Any delay means arriving stressed or late. Leave Tuscany early morning; consider booking Würzburg for night of 16 Jul as buffer.' },
-      { title: 'Würzburg → Frankfurt tight on departure day (19 Jul)', detail: '1h train, flight departs 12:15 — DB punctuality ~70%. Take earliest train; aim to be at FRA by 09:30.' },
-      { title: 'Rome itinerary overloaded for 2 days', detail: 'Colosseum, Vatican, Trevi, Piazza Navona, Borghese — normally a 4–5 day city. Vatican and Borghese require advance timed-entry booking. Pre-book now and cut 1–2 attractions.' },
+      { title: 'Venice → Frankfurt flight + train to Würzburg on same day (17 Jul)', detail: 'New critical travel day: VCE→FRA flight (morning) + ~1h train to Würzburg = arrive afternoon, day before wedding. If the flight is delayed, you risk missing the wedding morning. Book an early flight (before 10am); have a backup train route researched.' },
+      { title: 'Würzburg → Frankfurt tight on departure day (19 Jul)', detail: '1h ICE train, flight departs 12:15 — DB punctuality ~70%. Must be at FRA by 09:30 at the latest. Take the earliest possible train from Würzburg (~06:30). Do not rely on a single connection.' },
+      { title: 'Vatican Museums + Borghese Gallery require advance booking (11–12 Jul)', detail: 'Both are timed-entry only — no walk-ins. Vatican sells out weeks ahead in July. Borghese limits to 360 people per slot. Book online now at museivaticani.va and galleriaborghese.it.' },
+      { title: 'Uffizi Gallery tickets (14 Jul)', detail: 'July is peak season — walk-up queues of 2–3h are common. Book timed entry at uffizi.it well in advance.' },
     ],
   },
   {
@@ -27,10 +29,11 @@ const RISKS = [
     label: 'Medium',
     dot: 'bg-yellow-500',
     items: [
-      { title: 'Uffizi Gallery tickets (Florence, 15 Jul)', detail: 'One of the most-visited museums in the world. Walk-up tickets often sold out in July. Book online in advance.' },
-      { title: 'Prague Castle crowds (9 Jul)', detail: 'Arriving mid-day from Plauen and going straight to the Castle is ambitious in peak summer heat. Consider Charles Bridge at dusk and Castle on Day 7 morning instead.' },
-      { title: 'No travel insurance noted', detail: 'Two-person trip on a shared booking ref — if one can\'t travel, both tickets are affected. Purchase insurance covering trip cancellation and medical.' },
-      { title: 'Extreme July heat in Rome and Tuscany', detail: 'Rome averages 32–36°C in July. Schedule outdoor sites (Colosseum, Vatican) before 10am or after 5pm.' },
+      { title: 'Prague is now a single day (9 Jul) with evening travel to Vienna', detail: 'Only one day in Prague, and you need to reach Vienna by evening for an early morning flight on 10 Jul. Plan to leave Prague by 17:00 at the latest. Prioritise Charles Bridge at dawn + Old Town Square; skip the Castle for this trip.' },
+      { title: 'No travel insurance', detail: 'Two-person trip, two unbooked flights, and a shared booking ref (ESHMZK). If one person can\'t travel, full costs are at risk. Purchase insurance covering cancellation, medical, and missed connections — especially with the tight 17 Jul and 19 Jul travel days.' },
+      { title: 'Extreme July heat in Rome and Tuscany (10–14 Jul)', detail: 'Rome averages 32–36°C in July; Florence similar. Schedule Colosseum, Vatican, and outdoor sites before 10am or after 17:00. Carry water at all times. Avoid midday exertion.' },
+      { title: 'Germany leg still unconfirmed (6–9 Jul)', detail: 'Düsseldorf (friend) and Plauen (uncle) are both pending. Vienna transit hotel on 9 Jul cannot be booked until the Germany leg is finalised — it may need to be Prague or en-route depending on routing.' },
+      { title: 'Colosseum combined ticket — book in advance (11 Jul)', detail: 'Colosseum + Palatine Hill + Roman Forum combined ticket sells out in peak July. Book at coopculture.it or parkcolosseo.it. Timed entry required.' },
     ],
   },
   {
@@ -38,9 +41,10 @@ const RISKS = [
     label: 'Low',
     dot: 'bg-emerald-500',
     items: [
-      { title: 'Düsseldorf is only 1 day', detail: 'Visiting a friend is the main goal — tourism is secondary. Low risk.' },
-      { title: 'Plauen has limited tourist infrastructure', detail: 'Book hotel early as options are limited in a small city.' },
-      { title: 'Prague uses CZK, not Euro', detail: 'Easy to forget when the rest of the trip is Eurozone. Get some CZK at Frankfurt airport or a Prague ATM on arrival.' },
+      { title: 'Prague uses CZK, not Euro', detail: 'One day in Prague — get ~2,000 CZK (~€80) at a Prague ATM on arrival. Avoid airport exchange desks (poor rates). Card payments widely accepted in tourist areas.' },
+      { title: 'Venice is car-free — plan luggage carefully', detail: 'No taxis to the hotel door. If arriving by train, accommodation must be reachable on foot with luggage or by vaporetto. Check your hotel\'s location relative to Santa Lucia station before booking.' },
+      { title: 'Terme di Saturnia requires a car (~2h from Florence)', detail: 'If you plan this activity, you need a rental car for the Tuscany leg — confirm whether you want to drive in Italy before booking accommodation.' },
+      { title: 'World Cup match schedule not yet released', detail: 'Specific knockout match dates for Germany are not yet confirmed. Check the FIFA 2026 schedule at fifa.com in late June to identify which days to prioritise public viewings.' },
     ],
   },
 ]
@@ -126,7 +130,7 @@ function RiskSection() {
 
       {open && (
         <div className="px-4 pb-4 border-t border-slate-800 pt-3 space-y-2">
-          <p className="text-xs text-slate-500 mb-3">24 days to departure — items to resolve before 4 Jul 2026.</p>
+          <p className="text-xs text-slate-500 mb-3">{Math.ceil((new Date('2026-07-04') - new Date()) / 86400000)} days to departure — items to resolve before 4 Jul 2026.</p>
           {RISKS.map(group => (
             <RiskGroup key={group.level} group={group} />
           ))}
