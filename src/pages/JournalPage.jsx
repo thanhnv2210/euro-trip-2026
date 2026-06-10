@@ -300,26 +300,33 @@ const TAG_META = [
 function AttributeBalanceSection() {
   const { state } = useTrip()
   const [open, setOpen] = useState(true)
+  const [expandedTag, setExpandedTag] = useState(null)
 
-  // Count tag occurrences across all activities
-  const counts = {}
+  // Build index: tag -> [{day, act}]
+  const tagIndex = {}
   for (const day of state.itinerary) {
     for (const act of day.activities ?? []) {
       for (const tag of act.tags ?? []) {
-        counts[tag] = (counts[tag] || 0) + 1
+        if (!tagIndex[tag]) tagIndex[tag] = []
+        tagIndex[tag].push({ day, act })
       }
     }
   }
 
+  const counts = Object.fromEntries(Object.entries(tagIndex).map(([t, arr]) => [t, arr.length]))
   const max = Math.max(...Object.values(counts), 1)
   const total = Object.values(counts).reduce((s, v) => s + v, 0)
 
   function levelLabel(count) {
-    if (count === 0)       return { text: 'None',      style: 'text-slate-600' }
-    if (count <= 3)        return { text: 'Low',       style: 'text-red-400' }
-    if (count <= 8)        return { text: 'Medium',    style: 'text-yellow-400' }
-    if (count <= 15)       return { text: 'Good',      style: 'text-emerald-400' }
-    return                        { text: 'High',      style: 'text-sky-400' }
+    if (count === 0) return { text: 'None',   style: 'text-slate-600' }
+    if (count <= 3)  return { text: 'Low',    style: 'text-red-400' }
+    if (count <= 8)  return { text: 'Medium', style: 'text-yellow-400' }
+    if (count <= 15) return { text: 'Good',   style: 'text-emerald-400' }
+    return                  { text: 'High',   style: 'text-sky-400' }
+  }
+
+  function formatDate(dateStr) {
+    return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
   }
 
   const sorted = [...TAG_META].sort((a, b) => (counts[b.tag] || 0) - (counts[a.tag] || 0))
@@ -345,30 +352,63 @@ function AttributeBalanceSection() {
       </button>
 
       {open && (
-        <div className="px-4 pb-4 border-t border-slate-800 pt-3 space-y-2.5">
-          <p className="text-xs text-slate-500 mb-3">Counted live from all planned activities. Add more activities to fill the gaps.</p>
+        <div className="px-4 pb-4 border-t border-slate-800 pt-3 space-y-1">
+          <p className="text-xs text-slate-500 mb-3">Tap an attribute to see where it appears. Counted live from all planned activities.</p>
           {sorted.map(({ tag, label, icon, color, track }) => {
             const count = counts[tag] || 0
             const pct = Math.round((count / max) * 100)
             const { text, style } = levelLabel(count)
+            const isExpanded = expandedTag === tag
+            const entries = tagIndex[tag] ?? []
+
             return (
-              <div key={tag}>
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-sm w-5 text-center">{icon}</span>
-                    <span className="text-xs font-medium text-slate-300">{label}</span>
+              <div key={tag} className="rounded-lg overflow-hidden">
+                {/* Row — tappable */}
+                <button
+                  className="w-full text-left active:bg-slate-800/60 transition-colors px-2 py-2 rounded-lg"
+                  onClick={() => setExpandedTag(isExpanded ? null : tag)}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-sm w-5 text-center">{icon}</span>
+                      <span className="text-xs font-medium text-slate-300">{label}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className={`text-[10px] font-semibold ${style}`}>{text}</span>
+                      <span className="text-[10px] text-slate-600 font-mono w-4 text-right">{count}</span>
+                      <svg
+                        className={`w-3 h-3 text-slate-600 transition-transform shrink-0 ${isExpanded ? 'rotate-180' : ''}`}
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                        <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className={`text-[10px] font-semibold ${style}`}>{text}</span>
-                    <span className="text-[10px] text-slate-600 font-mono w-5 text-right">{count}</span>
+                  <div className={`w-full h-1.5 rounded-full ${track}`}>
+                    <div className={`h-1.5 rounded-full transition-all ${color}`} style={{ width: `${pct}%` }} />
                   </div>
-                </div>
-                <div className={`w-full h-1.5 rounded-full ${track}`}>
-                  <div
-                    className={`h-1.5 rounded-full transition-all ${color}`}
-                    style={{ width: `${pct}%` }}
-                  />
-                </div>
+                </button>
+
+                {/* Expanded activity list */}
+                {isExpanded && (
+                  <div className="mx-2 mb-2 rounded-lg border border-slate-700/60 bg-slate-800/40 divide-y divide-slate-700/40">
+                    {entries.length === 0 ? (
+                      <p className="text-xs text-slate-600 px-3 py-2">No activities yet.</p>
+                    ) : (
+                      entries.map(({ day, act }, i) => (
+                        <div key={i} className="flex items-start gap-3 px-3 py-2.5">
+                          <div className="shrink-0 text-right min-w-[52px]">
+                            <p className="text-[10px] font-mono text-slate-500">{formatDate(day.date)}</p>
+                            {act.time && <p className="text-[10px] font-mono text-slate-600">{act.time}</p>}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-medium text-slate-200 leading-snug">{act.title}</p>
+                            <p className="text-[10px] text-slate-500 mt-0.5">{day.city}</p>
+                          </div>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                )}
               </div>
             )
           })}
