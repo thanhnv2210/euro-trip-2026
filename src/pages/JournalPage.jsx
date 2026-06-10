@@ -302,10 +302,11 @@ function AttributeBalanceSection() {
   const [open, setOpen] = useState(true)
   const [expandedTag, setExpandedTag] = useState(null)
 
-  // Build index: tag -> [{day, act}]
+  // Build index: tag -> [{day, act}] — only selected activities count
   const tagIndex = {}
   for (const day of state.itinerary) {
     for (const act of day.activities ?? []) {
+      if (act.selected === false) continue
       for (const tag of act.tags ?? []) {
         if (!tagIndex[tag]) tagIndex[tag] = []
         tagIndex[tag].push({ day, act })
@@ -353,7 +354,7 @@ function AttributeBalanceSection() {
 
       {open && (
         <div className="px-4 pb-4 border-t border-slate-800 pt-3 space-y-1">
-          <p className="text-xs text-slate-500 mb-3">Tap an attribute to see where it appears. Counted live from all planned activities.</p>
+          <p className="text-xs text-slate-500 mb-3">Tap an attribute to see where it appears. Only selected activities are counted.</p>
           {sorted.map(({ tag, label, icon, color, track }) => {
             const count = counts[tag] || 0
             const pct = Math.round((count / max) * 100)

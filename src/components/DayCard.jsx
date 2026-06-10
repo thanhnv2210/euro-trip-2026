@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTrip } from '../context/TripContext'
 
 const TAG_COLORS = {
   historical:   'bg-amber-900/50 text-amber-400 border-amber-800/50',
@@ -39,9 +40,17 @@ function dayNumber(index) {
 }
 
 export default function DayCard({ day, index }) {
+  const { dispatch } = useTrip()
   const [open, setOpen] = useState(false)
   const flag = CITY_FLAGS[day.city] ?? '📍'
   const isTransit = day.notes?.includes('→')
+
+  const selectedCount = day.activities.filter(a => a.selected !== false).length
+
+  function toggle(e, actId) {
+    e.stopPropagation()
+    dispatch({ type: 'TOGGLE_ACTIVITY', dayId: day.id, actId })
+  }
 
   return (
     <div className="rounded-xl border border-slate-800 bg-slate-900 overflow-hidden">
@@ -58,6 +67,9 @@ export default function DayCard({ day, index }) {
         {isTransit && (
           <span className="text-xs bg-sky-900/60 text-sky-400 px-2 py-0.5 rounded-full shrink-0">transit</span>
         )}
+        {day.activities.length > 0 && (
+          <span className="text-xs text-slate-500 shrink-0">{selectedCount}/{day.activities.length}</span>
+        )}
         <svg
           className={`w-4 h-4 text-slate-500 transition-transform shrink-0 ${open ? 'rotate-180' : ''}`}
           viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
@@ -73,25 +85,53 @@ export default function DayCard({ day, index }) {
           {day.activities.length === 0 ? (
             <p className="text-xs text-slate-600 italic">No activities yet</p>
           ) : (
-            <ul className="space-y-2">
-              {day.activities.map(act => (
-                <li key={act.id} className="flex gap-3 text-sm">
-                  <span className="text-slate-500 font-mono text-xs w-10 shrink-0 pt-0.5">{act.time}</span>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-slate-200">{act.title}</div>
-                    {act.notes && <div className="text-xs text-slate-500 mt-0.5">{act.notes}</div>}
-                    {act.tags?.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mt-1.5">
-                        {act.tags.map(tag => (
-                          <span key={tag} className={`text-[10px] font-medium px-1.5 py-0.5 rounded border capitalize ${TAG_COLORS[tag] ?? 'bg-slate-800 text-slate-400 border-slate-700'}`}>
-                            {tag}
-                          </span>
-                        ))}
+            <ul className="space-y-1">
+              {day.activities.map(act => {
+                const selected = act.selected !== false
+                return (
+                  <li
+                    key={act.id}
+                    className={`flex gap-3 rounded-lg px-2 py-2 transition-colors ${selected ? '' : 'opacity-40'}`}
+                  >
+                    {/* Checkbox */}
+                    <button
+                      onClick={(e) => toggle(e, act.id)}
+                      className="shrink-0 mt-0.5 w-4 h-4 rounded border flex items-center justify-center transition-colors"
+                      style={{
+                        backgroundColor: selected ? '#0ea5e9' : 'transparent',
+                        borderColor: selected ? '#0ea5e9' : '#475569',
+                      }}
+                    >
+                      {selected && (
+                        <svg viewBox="0 0 12 12" fill="none" className="w-2.5 h-2.5" stroke="white" strokeWidth={2}>
+                          <path d="M2 6l3 3 5-5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </button>
+
+                    <div className="flex-1 min-w-0">
+                      <div className={`text-sm ${selected ? 'text-slate-200' : 'text-slate-500 line-through'}`}>
+                        {act.title}
                       </div>
-                    )}
-                  </div>
-                </li>
-              ))}
+                      {act.time && (
+                        <div className="text-xs text-slate-500 font-mono mt-0.5">{act.time}</div>
+                      )}
+                      {selected && act.notes && (
+                        <div className="text-xs text-slate-500 mt-0.5">{act.notes}</div>
+                      )}
+                      {selected && act.tags?.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mt-1.5">
+                          {act.tags.map(tag => (
+                            <span key={tag} className={`text-[10px] font-medium px-1.5 py-0.5 rounded border capitalize ${TAG_COLORS[tag] ?? 'bg-slate-800 text-slate-400 border-slate-700'}`}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                )
+              })}
             </ul>
           )}
         </div>

@@ -149,6 +149,18 @@ function reducer(state, action) {
     case 'SET_STATE': return action.payload
     case 'UPDATE_DAY':
       return { ...state, itinerary: state.itinerary.map(d => d.id === action.day.id ? action.day : d) }
+    case 'TOGGLE_ACTIVITY':
+      return {
+        ...state,
+        itinerary: state.itinerary.map(d =>
+          d.id !== action.dayId ? d : {
+            ...d,
+            activities: d.activities.map(a =>
+              a.id !== action.actId ? a : { ...a, selected: !(a.selected ?? true) }
+            )
+          }
+        )
+      }
     case 'ADD_EVENT':
       return { ...state, events: [...state.events, action.event] }
     case 'UPDATE_EVENT':
