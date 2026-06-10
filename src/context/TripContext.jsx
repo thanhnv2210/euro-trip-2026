@@ -12,6 +12,9 @@ const SEED_ITINERARY = [
     { id: 'fra-3', time: '', title: 'Main Tower Observation Deck', notes: 'Best panoramic views of the Frankfurt skyline — only public skyscraper viewpoint', tags: ['scenic', 'photography', 'outdoor'] },
     { id: 'fra-4', time: '', title: 'Sachsenhausen & Apple Wine Trail', notes: 'Old quarter with traditional cider taverns (Äppelwoi) along the riverbank', tags: ['food', 'local', 'nightlife'] },
     { id: 'fra-5', time: '', title: 'Palmengarten Botanical Garden', notes: 'Lush tropical greenhouses and gardens — great morning stroll', tags: ['nature', 'relaxation', 'outdoor'] },
+    { id: 'fra-6', time: '', title: 'Kleinmarkthalle — Indoor Market', notes: 'Frankfurt\'s beloved covered market — fresh produce, local cheeses, meats, flowers. Great for souvenir spices and edible gifts. Safe and family-friendly.', tags: ['shopping', 'food', 'local'] },
+    { id: 'fra-7', time: '', title: 'Evening River Cruise on the Main', notes: 'Hour-long boat tour past the skyline and Römerberg at sunset — relaxing intro to Frankfurt. Departs near Eiserner Steg bridge.', tags: ['entertainment', 'scenic', 'romantic', 'relaxation'] },
+    { id: 'fra-8', time: '', title: '⚽ FIFA World Cup — Germany Match (Public Viewing)', notes: 'World Cup 2026 runs Jun 11–Jul 19. Knockout rounds fall during your Germany leg (4–9 Jul). Frankfurt hosted 2006 WC games — expect massive Fanzone setups at Römerberg or Commerzbank Arena fan park if Germany is still in. Check schedule at fifa.com closer to departure. Watching with 10,000+ Germans is unforgettable. Safety: German football crowds are well-policed and family-friendly. Arrive early for a good spot.', tags: ['entertainment', 'local', 'nightlife', 'outdoor'] },
   ]},
   { id: 'day-03', date: '2026-07-06', city: 'Düsseldorf', notes: 'Travel from Frankfurt. Visit friend. (flexible — friends may join for Germany leg)', travel: [
     { mode: 'train', duration: '1h 30m', notes: 'ICE direct' },
@@ -22,6 +25,9 @@ const SEED_ITINERARY = [
     { id: 'dus-3', time: '', title: 'MedienHafen', notes: 'Converted harbour with striking Gehry buildings and great waterfront restaurants', tags: ['culture', 'food', 'photography', 'scenic'] },
     { id: 'dus-4', time: '', title: 'Kunstpalast Museum', notes: 'Fine arts museum spanning antiquity to contemporary, free on certain days', tags: ['culture'] },
     { id: 'dus-5', time: '', title: 'Carlsplatz Market', notes: 'Vibrant daily market for local produce, cheese, and street food', tags: ['food', 'local', 'shopping'] },
+    { id: 'dus-6', time: '', title: 'Rheinwiesen (Rhine Meadows)', notes: 'Wide grassy riverbank south of the Altstadt — locals picnic, jog and swim here in summer. Very safe, open and public.', tags: ['nature', 'outdoor', 'relaxation', 'local'] },
+    { id: 'dus-7', time: '', title: 'Altstadt Evening — Early Night Out with Friend', notes: 'Düsseldorf Altstadt is lively but manageable. Safety tip: great before midnight — stick to the main Bolkerstraße strip, avoid side alleys after midnight. Your local friend will know which bars are best.', tags: ['nightlife', 'food', 'local', 'entertainment'] },
+    { id: 'dus-8', time: '', title: '⚽ FIFA World Cup — Germany Match at Altstadt Bars', notes: 'If a Germany match falls on 6 Jul, watch it with your local friend in the Altstadt — every bar will be showing it. The Rhine promenade turns into a street party when Germany score. Your friend will know the best spot to be. Quarter-finals are ~13–14 Jul (you\'ll be in Rome), semis ~16–17 Jul (Venice), final 19 Jul (departure day — might catch it at FRA airport!)', tags: ['entertainment', 'local', 'nightlife', 'outdoor'] },
   ]},
   { id: 'day-04', date: '2026-07-07', city: 'Plauen', notes: 'Travel Düsseldorf → Plauen. (flexible)', travel: [
     { mode: 'train', duration: '5h', notes: 'change at Frankfurt or Leipzig' },
@@ -44,6 +50,9 @@ const SEED_ITINERARY = [
     { id: 'prg-3', time: '', title: 'Old Town Square & Astronomical Clock', notes: 'Medieval clock performs on the hour — watch from the square', tags: ['historical', 'culture', 'local'] },
     { id: 'prg-4', time: '', title: 'Josefov — Jewish Quarter', notes: 'Six historic synagogues and the Old Jewish Cemetery, UNESCO-listed', tags: ['historical', 'culture'] },
     { id: 'prg-5', time: '', title: 'Petřín Hill & Observation Tower', notes: 'Mini Eiffel Tower with sweeping views — take the funicular up', tags: ['nature', 'outdoor', 'scenic', 'romantic'] },
+    { id: 'prg-6', time: '', title: 'Czech Beer Spa (Beerland or Bernard Spa)', notes: 'Unique to Czech Republic — soak in warm beer bath with unlimited craft beer on tap. Completely private tub for two. Deeply relaxing. Book in advance.', tags: ['wellness', 'relaxation', 'romantic', 'local', 'entertainment'] },
+    { id: 'prg-7', time: '', title: 'Havelské Tržiště — Old Town Market', notes: 'Open-air market in the Old Town selling Czech crafts, garnet jewellery, wooden toys and souvenirs. Great prices compared to tourist shops.', tags: ['shopping', 'local'] },
+    { id: 'prg-8', time: '', title: 'Hemingway Bar or Jazz Dock — Evening Cocktails', notes: 'Two of Prague\'s best cocktail bars — elegant, well-lit, tourist-friendly. Safety tip: Old Town bars are very safe; avoid "hostess bar" signs and anyone inviting you off the main tourist streets. Pickpockets active in crowds — keep bags in front.', tags: ['nightlife', 'local', 'relaxation'] },
   ]},
 
   // — Italy leg —
@@ -57,7 +66,10 @@ const SEED_ITINERARY = [
     { id: 'rom-2-1', time: '', title: 'Colosseum + Palatine Hill + Roman Forum', notes: 'Book combined skip-the-line ticket in advance — allow a full morning', tags: ['historical', 'culture', 'outdoor', 'photography'] },
     { id: 'rom-2-2', time: '', title: 'Pantheon', notes: 'Best-preserved Roman temple — free entry, go early to avoid queues', tags: ['historical', 'culture', 'photography'] },
     { id: 'rom-2-3', time: '', title: 'Piazza Navona', notes: 'Baroque square with Bernini\'s Fountain of the Four Rivers — great for lunch nearby', tags: ['culture', 'food', 'local', 'scenic'] },
-    { id: 'rom-2-4', time: '', title: 'Aperitivo at Sunset', notes: 'Head to Prati or Trastevere for evening drinks with locals', tags: ['food', 'local', 'nightlife', 'romantic'] },
+    { id: 'rom-2-4', time: '', title: 'Aperitivo at Sunset — Trastevere', notes: 'Trastevere is Rome\'s safest and most atmospheric evening neighbourhood — cobbled lanes, lit by warm lamps, busy with families and tourists until midnight. Safety tip: fine to walk freely here; keep bags zipped and avoid phone-in-hand on quiet streets.', tags: ['food', 'local', 'nightlife', 'romantic'] },
+    { id: 'rom-2-5', time: '', title: 'Villa Borghese Gardens', notes: 'Rome\'s most beautiful park — rent a rowboat on the lake, stroll tree-lined paths. Perfect mid-day break from the heat between sights. Very safe and popular with locals.', tags: ['nature', 'outdoor', 'relaxation', 'romantic'] },
+    { id: 'rom-2-7', time: '', title: '⚽ FIFA World Cup — Quarter-Final Watch Party (Rome)', notes: 'Quarter-finals fall ~13–14 Jul — you\'ll be in Rome. Piazza del Popolo and Trastevere bars host massive public viewing parties. If Germany vs Italy happens, the atmosphere will be electric. Italy fans are passionate but festive — completely safe at public viewings.', tags: ['entertainment', 'local', 'nightlife', 'outdoor'] },
+    { id: 'rom-2-6', time: '', title: 'Via Condotti & Via del Corso — Shopping', notes: 'Via Condotti for luxury brands (Gucci, Valentino); Via del Corso for mid-range and high street. Both safe, wide pedestrian streets in central Rome.', tags: ['shopping', 'local'] },
   ]},
   { id: 'day-09', date: '2026-07-12', city: 'Rome', notes: 'Rome Day 3 — Vatican + leisure.', travel: [], activities: [
     { id: 'rom-3-1', time: '', title: 'Vatican Museums + Sistine Chapel', notes: 'Michelangelo\'s ceiling — book well in advance, allow 3–4h minimum', tags: ['historical', 'culture'] },
@@ -73,6 +85,7 @@ const SEED_ITINERARY = [
   ], activities: [
     { id: 'tus-arr-1', time: '', title: 'Florence — Ponte Vecchio', notes: 'Medieval bridge over the Arno — beautiful at dusk', tags: ['historical', 'scenic', 'photography', 'romantic'] },
     { id: 'tus-arr-2', time: '', title: 'Florence — Oltrarno neighbourhood', notes: 'Quiet side of the Arno — great trattorias and artisan shops', tags: ['food', 'local', 'shopping'] },
+    { id: 'tus-arr-3', time: '', title: 'San Lorenzo Leather Market + Mercato Centrale', notes: 'Florence\'s famous open-air leather market — bags, belts, wallets at good prices. Tip: bargain firmly, start at 50% of asking price. Mercato Centrale upstairs has excellent food stalls.', tags: ['shopping', 'food', 'local'] },
   ]},
   { id: 'day-11', date: '2026-07-14', city: 'Tuscany', notes: 'Tuscany full day.', travel: [], activities: [
     { id: 'tus-2-1', time: '', title: 'Florence — Uffizi Gallery', notes: 'Botticelli\'s Birth of Venus — book tickets weeks ahead, allow 3h', tags: ['culture', 'historical'] },
@@ -80,6 +93,8 @@ const SEED_ITINERARY = [
     { id: 'tus-2-3', time: '', title: 'Siena — Piazza del Campo', notes: 'One of Europe\'s greatest medieval squares, ~1.5h from Florence by train', tags: ['historical', 'culture', 'photography'] },
     { id: 'tus-2-4', time: '', title: 'Chianti Wine Region drive', notes: 'Rolling vineyard scenery between Florence and Siena — great if you have a car', tags: ['nature', 'food', 'scenic', 'romantic', 'outdoor'] },
     { id: 'tus-2-5', time: '', title: 'San Gimignano', notes: 'Medieval hilltop town with towers — best gelato in Tuscany (Gelateria Dondoli)', tags: ['historical', 'food', 'local', 'photography'] },
+    { id: 'tus-2-6', time: '', title: 'Tuscan Cooking Class', notes: 'Half-day class learning pasta, bruschetta and tiramisu — many options in Florence and the countryside. Fun, hands-on, and the best souvenir you can take home.', tags: ['entertainment', 'food', 'local', 'wellness'] },
+    { id: 'tus-2-7', time: '', title: 'Terme di Saturnia (Hot Springs)', notes: '~2h drive from Florence — natural thermal waterfalls flowing into cascading pools. Free and open 24h. Unique wellness experience unlike anything in Singapore.', tags: ['wellness', 'nature', 'outdoor', 'relaxation', 'romantic'] },
   ]},
 
   { id: 'day-12', date: '2026-07-15', city: 'Venice', notes: 'Train Tuscany → Venice morning. Arrive afternoon.', travel: [
@@ -95,6 +110,9 @@ const SEED_ITINERARY = [
     { id: 'ven-2-3', time: '', title: 'Murano Island — Glass Blowing', notes: 'Short vaporetto ride — watch artisan glass-blowing demonstrations', tags: ['culture', 'local', 'shopping', 'entertainment'] },
     { id: 'ven-2-4', time: '', title: 'Burano Island', notes: 'Colourful fishing village with lace-making tradition — photogenic and peaceful', tags: ['photography', 'scenic', 'local', 'relaxation', 'outdoor'] },
     { id: 'ven-2-5', time: '', title: 'Zattere Waterfront at Sunset', notes: 'Best sunset viewpoint in Venice — wide promenade facing the Giudecca Canal', tags: ['scenic', 'romantic', 'photography', 'relaxation'] },
+    { id: 'ven-2-6', time: '', title: 'Lido Beach — Venice\'s Own Beach', notes: '15-min vaporetto from St. Mark\'s — a full sandy beach on the Adriatic. Great for a morning swim before sightseeing. Very safe, very local.', tags: ['nature', 'outdoor', 'relaxation', 'wellness'] },
+    { id: 'ven-2-7', time: '', title: 'Cicchetti Bar Crawl — Cannaregio', notes: 'Venice\'s answer to tapas — small bites (cicchetti) with prosecco at €1–2 each. Cannaregio is the safest, most local neighbourhood. Safety tip: Venice is one of Europe\'s safest cities at night — no cars, well-lit canals, no rough areas in the tourist zone. Simply enjoy.', tags: ['nightlife', 'food', 'local', 'relaxation'] },
+    { id: 'ven-2-8', time: '', title: 'Venetian Glass & Lace Shopping', notes: 'Murano glass jewellery (get it on the island, not tourist shops in San Marco — much cheaper and authentic). Burano lace tablecloths make beautiful gifts.', tags: ['shopping', 'local'] },
   ]},
 
   // — Return Germany leg —
@@ -108,8 +126,10 @@ const SEED_ITINERARY = [
     { id: 'wue-3', time: '', title: 'Old Main Bridge (Alte Mainbrücke)', notes: 'Baroque statues + vineyard views — best spot for a glass of Franconian wine', tags: ['scenic', 'food', 'local', 'relaxation', 'romantic'] },
     { id: 'wue-4', time: '', title: 'Würzburg Cathedral (Kiliansdom)', notes: '11th-century Romanesque cathedral, one of the largest in Germany', tags: ['historical', 'culture'] },
     { id: 'wue-5', time: '', title: 'Hofgarten', notes: 'Baroque gardens behind the Residence — perfect morning walk before the wedding', tags: ['nature', 'relaxation', 'outdoor'] },
+    { id: 'wue-6', time: '', title: 'Franconian Wine Tasting at a Weingut', notes: 'Würzburg sits in one of Germany\'s best wine regions — visit a local Weingut (winery estate) for a guided tasting of Silvaner and Müller-Thurgau whites. Many are walkable from the old town.', tags: ['entertainment', 'food', 'local', 'wellness'] },
+    { id: 'wue-7', time: '', title: 'Wedding Evening — Night Out with Friends', notes: 'After the wedding reception, Würzburg has a small but safe bar scene around the old town and Main riverside. Very safe small German city — no concerns navigating after dark with wedding guests.', tags: ['nightlife', 'entertainment', 'local'] },
   ]},
-  { id: 'day-16', date: '2026-07-19', city: 'Frankfurt', notes: 'Train Würzburg → Frankfurt. Depart 12:15 PM FRA (SQ 025). Take earliest train.', travel: [
+  { id: 'day-16', date: '2026-07-19', city: 'Frankfurt', notes: 'Train Würzburg → Frankfurt. Depart 12:15 PM FRA (SQ 025). Take earliest train. ⚽ World Cup Final is today — FRA airport screens will be showing it!', travel: [
     { mode: 'train', duration: '1h', notes: 'ICE direct — take the earliest train, aim FRA by 09:30' },
     { mode: 'car', duration: '1h 30m', notes: 'via A3' },
   ], activities: [] },
