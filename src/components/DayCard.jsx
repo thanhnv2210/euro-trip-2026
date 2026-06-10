@@ -6,8 +6,15 @@ const TAG_COLORS = {
   food:         'bg-orange-900/50 text-orange-400 border-orange-800/50',
   relaxation:   'bg-teal-900/50 text-teal-400 border-teal-800/50',
   nature:       'bg-emerald-900/50 text-emerald-400 border-emerald-800/50',
+  outdoor:      'bg-lime-900/50 text-lime-400 border-lime-800/50',
   entertainment:'bg-pink-900/50 text-pink-400 border-pink-800/50',
   wellness:     'bg-cyan-900/50 text-cyan-400 border-cyan-800/50',
+  scenic:       'bg-sky-900/50 text-sky-400 border-sky-800/50',
+  romantic:     'bg-rose-900/50 text-rose-400 border-rose-800/50',
+  local:        'bg-yellow-900/50 text-yellow-400 border-yellow-800/50',
+  nightlife:    'bg-violet-900/50 text-violet-400 border-violet-800/50',
+  shopping:     'bg-fuchsia-900/50 text-fuchsia-400 border-fuchsia-800/50',
+  photography:  'bg-slate-700/50 text-slate-300 border-slate-600/50',
 }
 
 const CITY_FLAGS = {
