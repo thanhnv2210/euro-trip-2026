@@ -1,5 +1,15 @@
 import { useState } from 'react'
 
+const TAG_COLORS = {
+  historical:   'bg-amber-900/50 text-amber-400 border-amber-800/50',
+  culture:      'bg-purple-900/50 text-purple-400 border-purple-800/50',
+  food:         'bg-orange-900/50 text-orange-400 border-orange-800/50',
+  relaxation:   'bg-teal-900/50 text-teal-400 border-teal-800/50',
+  nature:       'bg-emerald-900/50 text-emerald-400 border-emerald-800/50',
+  entertainment:'bg-pink-900/50 text-pink-400 border-pink-800/50',
+  wellness:     'bg-cyan-900/50 text-cyan-400 border-cyan-800/50',
+}
+
 const CITY_FLAGS = {
   'Frankfurt': '🇩🇪',
   'Düsseldorf': '🇩🇪',
@@ -9,6 +19,7 @@ const CITY_FLAGS = {
   'Vienna': '🇦🇹',
   'Rome': '🇮🇹',
   'Tuscany': '🇮🇹',
+  'Venice': '🇮🇹',
 }
 
 function formatDate(dateStr) {
@@ -59,9 +70,18 @@ export default function DayCard({ day, index }) {
               {day.activities.map(act => (
                 <li key={act.id} className="flex gap-3 text-sm">
                   <span className="text-slate-500 font-mono text-xs w-10 shrink-0 pt-0.5">{act.time}</span>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <div className="text-slate-200">{act.title}</div>
                     {act.notes && <div className="text-xs text-slate-500 mt-0.5">{act.notes}</div>}
+                    {act.tags?.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-1.5">
+                        {act.tags.map(tag => (
+                          <span key={tag} className={`text-[10px] font-medium px-1.5 py-0.5 rounded border capitalize ${TAG_COLORS[tag] ?? 'bg-slate-800 text-slate-400 border-slate-700'}`}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </li>
               ))}

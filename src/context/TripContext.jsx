@@ -4,107 +4,122 @@ import { loadState, saveState } from '../services/storageService'
 const TripContext = createContext(null)
 
 const SEED_ITINERARY = [
+  // — Germany leg (5 Jul flexible: Düsseldorf, Plauen, Prague plan TBD) —
   { id: 'day-01', date: '2026-07-04', city: 'Frankfurt', notes: 'Depart 12:35 PM SIN (SQ 326). Arrive FRA 19:40.', travel: [], activities: [] },
   { id: 'day-02', date: '2026-07-05', city: 'Frankfurt', notes: '1 day exploring Frankfurt.', travel: [], activities: [
-    { id: 'fra-1', time: '', title: 'Römerberg & Old Town', notes: 'Medieval town square — the historic heart of Frankfurt' },
-    { id: 'fra-2', time: '', title: 'Städel Art Museum', notes: 'One of Germany\'s finest art museums, 700 years of European art' },
-    { id: 'fra-3', time: '', title: 'Main Tower Observation Deck', notes: 'Best panoramic views of the Frankfurt skyline — only public skyscraper viewpoint' },
-    { id: 'fra-4', time: '', title: 'Sachsenhausen & Apple Wine Trail', notes: 'Old quarter with traditional cider taverns (Äppelwoi) along the riverbank' },
-    { id: 'fra-5', time: '', title: 'Palmengarten Botanical Garden', notes: 'Lush tropical greenhouses and gardens — great morning stroll' },
+    { id: 'fra-1', time: '', title: 'Römerberg & Old Town', notes: 'Medieval town square — the historic heart of Frankfurt', tags: ['historical', 'culture'] },
+    { id: 'fra-2', time: '', title: 'Städel Art Museum', notes: 'One of Germany\'s finest art museums, 700 years of European art', tags: ['culture'] },
+    { id: 'fra-3', time: '', title: 'Main Tower Observation Deck', notes: 'Best panoramic views of the Frankfurt skyline — only public skyscraper viewpoint', tags: ['entertainment'] },
+    { id: 'fra-4', time: '', title: 'Sachsenhausen & Apple Wine Trail', notes: 'Old quarter with traditional cider taverns (Äppelwoi) along the riverbank', tags: ['food', 'culture'] },
+    { id: 'fra-5', time: '', title: 'Palmengarten Botanical Garden', notes: 'Lush tropical greenhouses and gardens — great morning stroll', tags: ['nature', 'relaxation'] },
   ]},
-  { id: 'day-03', date: '2026-07-06', city: 'Düsseldorf', notes: 'Travel from Frankfurt. Visit friend.', travel: [
+  { id: 'day-03', date: '2026-07-06', city: 'Düsseldorf', notes: 'Travel from Frankfurt. Visit friend. (flexible — friends may join for Germany leg)', travel: [
     { mode: 'train', duration: '1h 30m', notes: 'ICE direct' },
     { mode: 'car', duration: '2h 30m', notes: 'via A3' },
   ], activities: [
-    { id: 'dus-1', time: '', title: 'Altstadt & Rhine Promenade', notes: 'The "longest bar in the world" — packed with breweries and pubs along the Rhine' },
-    { id: 'dus-2', time: '', title: 'Königsallee (Kö)', notes: 'Elegant tree-lined boulevard with high-end shops and a canal running through it' },
-    { id: 'dus-3', time: '', title: 'MedienHafen', notes: 'Converted harbour with striking Gehry buildings and great waterfront restaurants' },
-    { id: 'dus-4', time: '', title: 'Kunstpalast Museum', notes: 'Fine arts museum spanning antiquity to contemporary, free on certain days' },
-    { id: 'dus-5', time: '', title: 'Carlsplatz Market', notes: 'Vibrant daily market for local produce, cheese, and street food' },
+    { id: 'dus-1', time: '', title: 'Altstadt & Rhine Promenade', notes: 'The "longest bar in the world" — packed with breweries and pubs along the Rhine', tags: ['food', 'entertainment'] },
+    { id: 'dus-2', time: '', title: 'Königsallee (Kö)', notes: 'Elegant tree-lined boulevard with high-end shops and a canal running through it', tags: ['relaxation', 'culture'] },
+    { id: 'dus-3', time: '', title: 'MedienHafen', notes: 'Converted harbour with striking Gehry buildings and great waterfront restaurants', tags: ['culture', 'food'] },
+    { id: 'dus-4', time: '', title: 'Kunstpalast Museum', notes: 'Fine arts museum spanning antiquity to contemporary, free on certain days', tags: ['culture'] },
+    { id: 'dus-5', time: '', title: 'Carlsplatz Market', notes: 'Vibrant daily market for local produce, cheese, and street food', tags: ['food'] },
   ]},
-  { id: 'day-04', date: '2026-07-07', city: 'Plauen', notes: 'Travel Düsseldorf → Plauen.', travel: [
+  { id: 'day-04', date: '2026-07-07', city: 'Plauen', notes: 'Travel Düsseldorf → Plauen. (flexible)', travel: [
     { mode: 'train', duration: '5h', notes: 'change at Frankfurt or Leipzig' },
     { mode: 'car', duration: '4h 30m', notes: 'via A9' },
   ], activities: [] },
-  { id: 'day-05', date: '2026-07-08', city: 'Plauen', notes: 'Visit uncle at Pestalozzistraße 50, 08523 Plauen.', travel: [], activities: [
-    { id: 'plau-1', time: '', title: 'Altmarkt & Rathaus', notes: 'Historic market square with the impressive Neo-Renaissance town hall' },
-    { id: 'plau-2', time: '', title: 'Syrabach Valley (Syrabachtal)', notes: 'Scenic nature walk through the valley just outside the city centre' },
-    { id: 'plau-3', time: '', title: 'Vogtland Museum', notes: 'Regional history and culture of the Vogtland area' },
-    { id: 'plau-4', time: '', title: 'St. Johanniskirche', notes: 'Gothic church dating to the 13th century, landmark of the city skyline' },
-    { id: 'plau-5', time: '', title: 'Friedensbrücke (Peace Bridge)', notes: 'Striking viaduct bridge — a symbol of the city, great photo spot' },
+  { id: 'day-05', date: '2026-07-08', city: 'Plauen', notes: 'Visit uncle at Pestalozzistraße 50, 08523 Plauen. (flexible)', travel: [], activities: [
+    { id: 'plau-1', time: '', title: 'Altmarkt & Rathaus', notes: 'Historic market square with the impressive Neo-Renaissance town hall', tags: ['historical', 'culture'] },
+    { id: 'plau-2', time: '', title: 'Syrabach Valley (Syrabachtal)', notes: 'Scenic nature walk through the valley just outside the city centre', tags: ['nature', 'relaxation'] },
+    { id: 'plau-3', time: '', title: 'Vogtland Museum', notes: 'Regional history and culture of the Vogtland area', tags: ['historical', 'culture'] },
+    { id: 'plau-4', time: '', title: 'St. Johanniskirche', notes: 'Gothic church dating to the 13th century, landmark of the city skyline', tags: ['historical'] },
+    { id: 'plau-5', time: '', title: 'Friedensbrücke (Peace Bridge)', notes: 'Striking viaduct bridge — a symbol of the city, great photo spot', tags: ['culture'] },
   ]},
-  { id: 'day-06', date: '2026-07-09', city: 'Prague', notes: 'Travel Plauen → Prague. Day 1.', travel: [
-    { mode: 'car', duration: '1h 30m', notes: 'fastest option' },
+  { id: 'day-06', date: '2026-07-09', city: 'Prague', notes: 'Travel from Plauen → Prague (flexible). Travel to Vienna in the evening for morning flight to Rome.', travel: [
+    { mode: 'car', duration: '1h 30m', notes: 'Plauen → Prague, fastest option' },
     { mode: 'train', duration: '2h 30m', notes: 'change at Cheb' },
     { mode: 'bus', duration: '2h', notes: 'FlixBus direct' },
   ], activities: [
-    { id: 'prg-1', time: '', title: 'Prague Castle & St. Vitus Cathedral', notes: 'Largest ancient castle complex in the world — skyline icon, allow 2–3h' },
-    { id: 'prg-2', time: '', title: 'Charles Bridge', notes: 'Gothic stone bridge lined with 30 baroque statues, best at sunrise or dusk' },
-    { id: 'prg-3', time: '', title: 'Old Town Square & Astronomical Clock', notes: 'Medieval clock performs on the hour — watch from the square' },
+    { id: 'prg-1', time: '', title: 'Prague Castle & St. Vitus Cathedral', notes: 'Largest ancient castle complex in the world — skyline icon, allow 2–3h', tags: ['historical', 'culture'] },
+    { id: 'prg-2', time: '', title: 'Charles Bridge', notes: 'Gothic stone bridge lined with 30 baroque statues, best at sunrise or dusk', tags: ['historical', 'culture'] },
+    { id: 'prg-3', time: '', title: 'Old Town Square & Astronomical Clock', notes: 'Medieval clock performs on the hour — watch from the square', tags: ['historical', 'culture'] },
+    { id: 'prg-4', time: '', title: 'Josefov — Jewish Quarter', notes: 'Six historic synagogues and the Old Jewish Cemetery, UNESCO-listed', tags: ['historical', 'culture'] },
+    { id: 'prg-5', time: '', title: 'Petřín Hill & Observation Tower', notes: 'Mini Eiffel Tower with sweeping views — take the funicular up', tags: ['nature', 'entertainment'] },
   ]},
-  { id: 'day-07', date: '2026-07-10', city: 'Prague', notes: 'Day 2 in Prague.', travel: [], activities: [
-    { id: 'prg-4', time: '', title: 'Josefov — Jewish Quarter', notes: 'Six historic synagogues and the Old Jewish Cemetery, UNESCO-listed' },
-    { id: 'prg-5', time: '', title: 'Petřín Hill & Observation Tower', notes: 'Mini Eiffel Tower with sweeping views — take the funicular up' },
-  ]},
-  { id: 'day-08', date: '2026-07-11', city: 'Vienna', notes: 'Travel Prague → Vienna.', travel: [
-    { mode: 'train', duration: '4h', notes: 'Railjet direct' },
-    { mode: 'car', duration: '4h', notes: 'via D1/A5' },
-    { mode: 'bus', duration: '4h 30m', notes: 'FlixBus direct' },
+
+  // — Italy leg —
+  { id: 'day-07', date: '2026-07-10', city: 'Rome', notes: 'Fly Vienna → Rome morning. Arrive afternoon. (VIE→ROM ticket pending!)', travel: [
+    { mode: 'flight', duration: '2h', notes: 'VIE → FCO/CIA — ticket pending! Book now' },
   ], activities: [
-    { id: 'vie-1', time: '', title: 'Schönbrunn Palace & Gardens', notes: 'Habsburg summer residence — UNESCO, allow a half-day for palace + gardens' },
-    { id: 'vie-2', time: '', title: 'St. Stephen\'s Cathedral (Stephansdom)', notes: 'Gothic cathedral at the heart of Vienna — climb the south tower for views' },
-    { id: 'vie-3', time: '', title: 'Naschmarkt', notes: 'Vienna\'s most famous open-air market — 80+ stalls of food, spices, and antiques' },
+    { id: 'rom-arr-1', time: '', title: 'Trevi Fountain + Gelato', notes: 'Coin toss tradition — visit early evening to beat the crowds', tags: ['historical', 'food', 'culture'] },
+    { id: 'rom-arr-2', time: '', title: 'Campo de\' Fiori', notes: 'Lively piazza — great for an evening aperitivo and people-watching', tags: ['food', 'entertainment'] },
   ]},
-  { id: 'day-09', date: '2026-07-12', city: 'Vienna', notes: 'Day 2 in Vienna.', travel: [], activities: [
-    { id: 'vie-4', time: '', title: 'Belvedere Palace & Klimt\'s "The Kiss"', notes: 'Baroque palace housing Klimt\'s most famous painting — unmissable' },
-    { id: 'vie-5', time: '', title: 'Prater & Wiener Riesenrad', notes: 'City park with the iconic 1897 Giant Ferris Wheel and chestnut tree avenues' },
+  { id: 'day-08', date: '2026-07-11', city: 'Rome', notes: 'Rome Day 2 — Ancient Rome.', travel: [], activities: [
+    { id: 'rom-2-1', time: '', title: 'Colosseum + Palatine Hill + Roman Forum', notes: 'Book combined skip-the-line ticket in advance — allow a full morning', tags: ['historical', 'culture'] },
+    { id: 'rom-2-2', time: '', title: 'Pantheon', notes: 'Best-preserved Roman temple — free entry, go early to avoid queues', tags: ['historical', 'culture'] },
+    { id: 'rom-2-3', time: '', title: 'Piazza Navona', notes: 'Baroque square with Bernini\'s Fountain of the Four Rivers — great for lunch nearby', tags: ['culture', 'food'] },
+    { id: 'rom-2-4', time: '', title: 'Aperitivo at Sunset', notes: 'Head to Prati or Trastevere for evening drinks with locals', tags: ['food', 'relaxation'] },
   ]},
-  { id: 'day-10', date: '2026-07-13', city: 'Rome', notes: 'Fly Vienna → Rome. (ticket pending)', travel: [
-    { mode: 'flight', duration: '2h', notes: 'VIE → FCO/CIA — ticket pending!' },
-    { mode: 'train', duration: '12h+', notes: 'overnight, multiple changes' },
+  { id: 'day-09', date: '2026-07-12', city: 'Rome', notes: 'Rome Day 3 — Vatican + leisure.', travel: [], activities: [
+    { id: 'rom-3-1', time: '', title: 'Vatican Museums + Sistine Chapel', notes: 'Michelangelo\'s ceiling — book well in advance, allow 3–4h minimum', tags: ['historical', 'culture'] },
+    { id: 'rom-3-2', time: '', title: 'St. Peter\'s Basilica + Dome', notes: 'Free entry to basilica — climb the dome for sweeping Rome views', tags: ['historical', 'culture'] },
+    { id: 'rom-3-3', time: '', title: 'Spanish Steps', notes: 'Iconic 18th-century staircase — popular at sunset, great for gelato nearby', tags: ['culture', 'relaxation'] },
+    { id: 'rom-3-4', time: '', title: 'Spa Day', notes: 'Wind down after 3 days of sightseeing — several day spas near the city centre', tags: ['wellness', 'relaxation'] },
+    { id: 'rom-3-5', time: '', title: 'Michelin Star Dinner', notes: 'Book a restaurant in advance — Rome has several starred options at various price points', tags: ['food'] },
+  ]},
+
+  { id: 'day-10', date: '2026-07-13', city: 'Tuscany', notes: 'Train Rome → Florence/Tuscany morning. Arrive afternoon.', travel: [
+    { mode: 'train', duration: '1h 30m', notes: 'Trenitalia Frecciarossa to Florence SMN — fastest' },
+    { mode: 'car', duration: '3h', notes: 'via A1 — more flexible for countryside stops' },
   ], activities: [
-    { id: 'rom-1', time: '', title: 'Colosseum & Roman Forum', notes: 'Iconic amphitheatre + ancient ruins — book skip-the-line tickets in advance!' },
-    { id: 'rom-2', time: '', title: 'Trevi Fountain', notes: 'Baroque masterpiece — coin toss tradition, best visited early morning to avoid crowds' },
+    { id: 'tus-arr-1', time: '', title: 'Florence — Ponte Vecchio', notes: 'Medieval bridge over the Arno — beautiful at dusk', tags: ['historical', 'culture'] },
+    { id: 'tus-arr-2', time: '', title: 'Florence — Oltrarno neighbourhood', notes: 'Quiet side of the Arno — great trattorias and artisan shops', tags: ['food', 'culture'] },
   ]},
-  { id: 'day-11', date: '2026-07-14', city: 'Rome', notes: 'Day 2 in Rome.', travel: [], activities: [
-    { id: 'rom-3', time: '', title: 'Vatican Museums & Sistine Chapel', notes: 'Michelangelo\'s ceiling — book well in advance, allow 3–4h minimum' },
-    { id: 'rom-4', time: '', title: 'Piazza Navona', notes: 'Elegant baroque square with Bernini\'s Fountain of the Four Rivers' },
-    { id: 'rom-5', time: '', title: 'Borghese Gallery', notes: 'World-class sculpture and painting in a villa — strictly timed entry, book ahead' },
+  { id: 'day-11', date: '2026-07-14', city: 'Tuscany', notes: 'Tuscany full day.', travel: [], activities: [
+    { id: 'tus-2-1', time: '', title: 'Florence — Uffizi Gallery', notes: 'Botticelli\'s Birth of Venus — book tickets weeks ahead, allow 3h', tags: ['culture', 'historical'] },
+    { id: 'tus-2-2', time: '', title: 'Florence — Duomo & Brunelleschi\'s Dome', notes: 'Climb the dome for panoramic views over terracotta rooftops — book timed entry', tags: ['historical', 'culture'] },
+    { id: 'tus-2-3', time: '', title: 'Siena — Piazza del Campo', notes: 'One of Europe\'s greatest medieval squares, ~1.5h from Florence by train', tags: ['historical', 'culture'] },
+    { id: 'tus-2-4', time: '', title: 'Chianti Wine Region drive', notes: 'Rolling vineyard scenery between Florence and Siena — great if you have a car', tags: ['nature', 'food', 'relaxation'] },
+    { id: 'tus-2-5', time: '', title: 'San Gimignano', notes: 'Medieval hilltop town with towers — best gelato in Tuscany (Gelateria Dondoli)', tags: ['historical', 'food'] },
   ]},
-  { id: 'day-12', date: '2026-07-15', city: 'Tuscany', notes: 'Travel Rome → Tuscany.', travel: [
-    { mode: 'train', duration: '2h', notes: 'Trenitalia to Florence/Pisa' },
-    { mode: 'car', duration: '3h', notes: 'via A1 — more flexible for Tuscany countryside' },
+
+  { id: 'day-12', date: '2026-07-15', city: 'Venice', notes: 'Train Tuscany → Venice morning. Arrive afternoon.', travel: [
+    { mode: 'train', duration: '2h', notes: 'Trenitalia direct Florence → Venezia Santa Lucia' },
+    { mode: 'car', duration: '3h', notes: 'via A13 — park at Piazzale Roma on arrival' },
   ], activities: [
-    { id: 'tus-1', time: '', title: 'Florence — Uffizi Gallery', notes: 'Botticelli\'s Birth of Venus + Raphael, Michelangelo — book tickets weeks ahead' },
-    { id: 'tus-2', time: '', title: 'Florence — Duomo & Brunelleschi\'s Dome', notes: 'Climb the dome for panoramic views over Florence\'s terracotta rooftops' },
-    { id: 'tus-3', time: '', title: 'Florence — Ponte Vecchio', notes: 'Medieval bridge lined with jewellery shops over the Arno River' },
+    { id: 'ven-arr-1', time: '', title: 'St. Mark\'s Square (Piazza San Marco)', notes: 'Heart of Venice — arrive in the afternoon when light is golden', tags: ['historical', 'culture'] },
+    { id: 'ven-arr-2', time: '', title: 'Rialto Bridge & Market', notes: 'Iconic bridge over the Grand Canal — evening stroll and dinner nearby', tags: ['historical', 'food'] },
   ]},
-  { id: 'day-13', date: '2026-07-16', city: 'Tuscany', notes: 'Day 2 in Tuscany.', travel: [], activities: [
-    { id: 'tus-4', time: '', title: 'Siena — Piazza del Campo', notes: 'One of Europe\'s greatest medieval squares — fan-shaped and car-free' },
-    { id: 'tus-5', time: '', title: 'San Gimignano & Chianti Wine Region', notes: 'Medieval hilltop town with towers + rolling vineyard scenery — great for a drive' },
+  { id: 'day-13', date: '2026-07-16', city: 'Venice', notes: 'Venice full day.', travel: [], activities: [
+    { id: 'ven-2-1', time: '', title: 'Grand Canal Gondola Ride', notes: 'Classic Venice experience — negotiate price before boarding, best at dusk', tags: ['relaxation', 'entertainment'] },
+    { id: 'ven-2-2', time: '', title: 'Doge\'s Palace', notes: 'Gothic palace and former seat of Venetian power — book ahead, allow 2h', tags: ['historical', 'culture'] },
+    { id: 'ven-2-3', time: '', title: 'Murano Island — Glass Blowing', notes: 'Short vaporetto ride — watch artisan glass-blowing demonstrations', tags: ['culture', 'entertainment'] },
+    { id: 'ven-2-4', time: '', title: 'Burano Island', notes: 'Colourful fishing village with lace-making tradition — photogenic and peaceful', tags: ['culture', 'nature', 'relaxation'] },
+    { id: 'ven-2-5', time: '', title: 'Zattere Waterfront at Sunset', notes: 'Best sunset viewpoint in Venice — wide promenade facing the Giudecca Canal', tags: ['relaxation', 'nature'] },
   ]},
-  { id: 'day-14', date: '2026-07-17', city: 'Würzburg', notes: 'Travel Tuscany → Würzburg. Long day.', travel: [
-    { mode: 'flight', duration: '3h', notes: 'FLR/PSA → FRA/NUE + transfer (~6h total)' },
-    { mode: 'car', duration: '7h', notes: 'via Brenner Pass + A9' },
-    { mode: 'train', duration: '9h+', notes: 'multiple changes, overnight option available' },
+
+  // — Return Germany leg —
+  { id: 'day-14', date: '2026-07-17', city: 'Würzburg', notes: 'Fly Venice → Frankfurt morning. Train Frankfurt → Würzburg. Arrive afternoon. (VCE→FRA ticket pending!)', travel: [
+    { mode: 'flight', duration: '2h', notes: 'VCE → FRA — ticket pending! + ~1h train to Würzburg (~3h total)' },
+    { mode: 'car', duration: '6h', notes: 'via Brenner Pass + A9 — long but flexible' },
   ], activities: [] },
   { id: 'day-15', date: '2026-07-18', city: 'Würzburg', notes: "Friend's wedding — evening event.", travel: [], activities: [
-    { id: 'wue-1', time: '', title: 'Würzburg Residence', notes: 'UNESCO palace with Tiepolo\'s largest ceiling fresco in the world — allow 2h' },
-    { id: 'wue-2', time: '', title: 'Marienberg Fortress', notes: 'Hilltop fortress with sweeping views over the city and Main River vineyards' },
-    { id: 'wue-3', time: '', title: 'Old Main Bridge (Alte Mainbrücke)', notes: 'Baroque statues + vineyard views — best spot for a glass of Franconian wine' },
-    { id: 'wue-4', time: '', title: 'Würzburg Cathedral (Kiliansdom)', notes: '11th-century Romanesque cathedral, one of the largest in Germany' },
-    { id: 'wue-5', time: '', title: 'Hofgarten', notes: 'Baroque gardens behind the Residence — perfect morning walk before the wedding' },
+    { id: 'wue-1', time: '', title: 'Würzburg Residence', notes: 'UNESCO palace with Tiepolo\'s largest ceiling fresco in the world — allow 2h', tags: ['historical', 'culture'] },
+    { id: 'wue-2', time: '', title: 'Marienberg Fortress', notes: 'Hilltop fortress with sweeping views over the city and Main River vineyards', tags: ['historical', 'nature'] },
+    { id: 'wue-3', time: '', title: 'Old Main Bridge (Alte Mainbrücke)', notes: 'Baroque statues + vineyard views — best spot for a glass of Franconian wine', tags: ['relaxation', 'food'] },
+    { id: 'wue-4', time: '', title: 'Würzburg Cathedral (Kiliansdom)', notes: '11th-century Romanesque cathedral, one of the largest in Germany', tags: ['historical', 'culture'] },
+    { id: 'wue-5', time: '', title: 'Hofgarten', notes: 'Baroque gardens behind the Residence — perfect morning walk before the wedding', tags: ['nature', 'relaxation'] },
   ]},
-  { id: 'day-16', date: '2026-07-19', city: 'Frankfurt', notes: 'Travel Würzburg → Frankfurt. Depart 12:15 PM FRA (SQ 025).', travel: [
-    { mode: 'train', duration: '1h', notes: 'ICE direct — recommended (arrive early for flight)' },
+  { id: 'day-16', date: '2026-07-19', city: 'Frankfurt', notes: 'Train Würzburg → Frankfurt. Depart 12:15 PM FRA (SQ 025). Take earliest train.', travel: [
+    { mode: 'train', duration: '1h', notes: 'ICE direct — take the earliest train, aim FRA by 09:30' },
     { mode: 'car', duration: '1h 30m', notes: 'via A3' },
   ], activities: [] },
 ]
 
 const SEED_EVENTS = [
   { id: 'evt-01', title: 'Flight SIN → FRA (SQ 326)', type: 'flight', date: '2026-07-04', time: '12:35', location: 'Changi Airport T3', bookingRef: 'ESHMZK', url: '', notes: 'SQ 326 · A380-800 · Economy Lite · Arrives FRA 19:40 T1 · Seats: not selected · Baggage: 25kg each', status: 'booked' },
-  { id: 'evt-02', title: 'Flight VIE → FCO (Vienna → Rome)', type: 'flight', date: '2026-07-13', time: '', location: 'Vienna Airport', bookingRef: '', url: '', notes: 'Not yet purchased!', status: 'pending' },
+  { id: 'evt-02', title: 'Flight VIE → FCO (Vienna → Rome)', type: 'flight', date: '2026-07-10', time: '', location: 'Vienna Airport', bookingRef: '', url: '', notes: 'Not yet purchased! Arrive Rome afternoon.', status: 'pending' },
   { id: 'evt-03', title: 'Flight FRA → SIN (SQ 025)', type: 'flight', date: '2026-07-19', time: '12:15', location: 'Frankfurt Airport T1', bookingRef: 'ESHMZK', url: '', notes: 'SQ 025 · Boeing 777-300ER · Economy Flexi · Arrives SIN 06:50 20 Jul · Seats: 54G (Xuan), 54E (Thanh) · Baggage: 30kg each', status: 'booked' },
+  { id: 'evt-06', title: 'Flight VCE → FRA (Venice → Frankfurt)', type: 'flight', date: '2026-07-17', time: '', location: 'Venice Marco Polo Airport', bookingRef: '', url: '', notes: 'Not yet purchased! Take morning flight — need to reach Würzburg by afternoon.', status: 'pending' },
   { id: 'evt-04', title: "Friend's Wedding — Würzburg", type: 'other', date: '2026-07-18', time: '18:00', location: 'Würzburg', bookingRef: '', url: '', notes: '', status: 'confirmed' },
   { id: 'evt-05', title: 'Uncle Visit — Plauen', type: 'other', date: '2026-07-08', time: '', location: 'Pestalozzistraße 50, 08523 Plauen', bookingRef: '', url: '', notes: '', status: 'confirmed' },
 ]
