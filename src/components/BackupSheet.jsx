@@ -1,12 +1,13 @@
 import { useRef, useState } from 'react'
 import { useTrip } from '../context/TripContext'
-import { exportJSON, importJSON } from '../services/storageService'
+import { exportJSON, importJSON, clearState } from '../services/storageService'
 
 export default function BackupSheet({ onClose }) {
   const { state, dispatch } = useTrip()
   const fileRef = useRef(null)
   const [status, setStatus] = useState(null) // 'ok' | 'error'
   const [msg, setMsg] = useState('')
+  const [confirmReset, setConfirmReset] = useState(false)
 
   function handleExport() {
     exportJSON(state)
@@ -31,6 +32,11 @@ export default function BackupSheet({ onClose }) {
       e.target.value = ''
     }
     reader.readAsText(file)
+  }
+
+  function handleReset() {
+    clearState()
+    window.location.reload()
   }
 
   return (
@@ -80,6 +86,42 @@ export default function BackupSheet({ onClose }) {
             className="hidden"
             onChange={handleFileChange}
           />
+
+          {/* Divider */}
+          <div className="border-t border-slate-800 pt-1" />
+
+          {/* Reset */}
+          {!confirmReset ? (
+            <button
+              onClick={() => setConfirmReset(true)}
+              className="w-full flex items-center gap-3 bg-slate-800 hover:bg-slate-700 active:bg-slate-600 transition-colors rounded-xl px-4 py-3.5"
+            >
+              <span className="text-xl">🔄</span>
+              <div className="text-left">
+                <div className="text-sm font-medium text-slate-100">Reset to Default</div>
+                <div className="text-xs text-slate-500">Clear local data and reload with seed data</div>
+              </div>
+            </button>
+          ) : (
+            <div className="rounded-xl border border-red-800/50 bg-red-950/20 px-4 py-3.5 space-y-3">
+              <p className="text-sm font-medium text-red-400">Reset all data?</p>
+              <p className="text-xs text-slate-500">This will clear localStorage and reload the app with the original seed data. Any changes you've made — including activity selections, added events, and journal posts — will be lost.</p>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleReset}
+                  className="flex-1 py-2 rounded-lg bg-red-700 hover:bg-red-600 active:bg-red-800 text-white text-sm font-semibold transition-colors"
+                >
+                  Yes, reset
+                </button>
+                <button
+                  onClick={() => setConfirmReset(false)}
+                  className="flex-1 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-200 text-sm font-medium transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Status feedback */}
