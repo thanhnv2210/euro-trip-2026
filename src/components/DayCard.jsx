@@ -114,9 +114,24 @@ export default function DayCard({ day, index }) {
                     </button>
 
                     <div className="flex-1 min-w-0">
-                      <div className={`text-sm ${selected ? 'text-slate-200' : 'text-slate-500 line-through'}`}>
-                        {act.title}
+                      <div className="flex items-start gap-2">
+                        <div className={`text-sm flex-1 ${selected ? 'text-slate-200' : 'text-slate-500 line-through'}`}>
+                          {act.title}
+                        </div>
+                        {act.priority && (
+                          <span className={`shrink-0 text-[10px] font-bold px-1.5 py-0.5 rounded font-mono leading-none mt-0.5 ${
+                            act.priority === 5 ? 'bg-rose-900/60 text-rose-400' :
+                            act.priority === 4 ? 'bg-amber-900/60 text-amber-400' :
+                            act.priority === 3 ? 'bg-sky-900/60 text-sky-400' :
+                            'bg-slate-800 text-slate-500'
+                          }`}>
+                            {act.priority}/5
+                          </span>
+                        )}
                       </div>
+                      {selected && act.priorityNote && (
+                        <div className="text-[10px] text-slate-600 mt-0.5 italic">{act.priorityNote}</div>
+                      )}
                       {act.time && (
                         <div className="text-xs text-slate-500 font-mono mt-0.5">{act.time}</div>
                       )}
