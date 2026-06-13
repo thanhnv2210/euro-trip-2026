@@ -147,6 +147,14 @@ const SEED_EVENTS = [
   { id: 'evt-06', title: 'Flight VCE → FRA (Venice → Frankfurt)', type: 'flight', date: '2026-07-17', time: '', location: 'Venice Marco Polo Airport', bookingRef: '', url: '', notes: 'Not yet purchased! Take morning flight — need to reach Würzburg by afternoon.', status: 'pending' },
   { id: 'evt-04', title: "Friend's Wedding — Würzburg", type: 'other', date: '2026-07-18', time: '18:00', location: 'Würzburg', bookingRef: '', url: '', notes: '', status: 'confirmed' },
   { id: 'evt-05', title: 'Uncle Visit — Plauen', type: 'other', date: '2026-07-08', time: '', location: 'Pestalozzistraße 50, 08523 Plauen', bookingRef: '', url: '', notes: '', status: 'confirmed' },
+  // — Hotel placeholders —
+  { id: 'evt-08', title: 'Hotel — Bruges', type: 'hotel', date: '2026-07-05', time: '15:00', location: 'Bruges, Belgium', bookingRef: '', url: '', notes: 'Check-in: 5 Jul · Check-out: 7 Jul · 2 nights', status: 'pending' },
+  { id: 'evt-09', title: 'Hotel — Plauen', type: 'hotel', date: '2026-07-08', time: '', location: 'Plauen, Germany', bookingRef: '', url: '', notes: 'Check-in: 8 Jul · Check-out: 9 Jul · 1 night. TBC — may stay with uncle at Pestalozzistraße 50.', status: 'pending' },
+  { id: 'evt-10', title: 'Hotel — Prague', type: 'hotel', date: '2026-07-09', time: '14:00', location: 'Prague, Czech Republic', bookingRef: '', url: '', notes: 'Check-in: 9 Jul · Check-out: 10 Jul · 1 night', status: 'pending' },
+  { id: 'evt-11', title: 'Hotel — Rome', type: 'hotel', date: '2026-07-10', time: '14:00', location: 'Rome, Italy', bookingRef: '', url: '', notes: 'Check-in: 10 Jul · Check-out: 13 Jul · 3 nights', status: 'pending' },
+  { id: 'evt-12', title: 'Hotel — Florence / Tuscany', type: 'hotel', date: '2026-07-13', time: '14:00', location: 'Florence or Tuscany countryside, Italy', bookingRef: '', url: '', notes: 'Check-in: 13 Jul · Check-out: 15 Jul · 2 nights. City hotel in Florence vs agriturismo in countryside — both within budget range.', status: 'pending' },
+  { id: 'evt-13', title: 'Hotel — Venice', type: 'hotel', date: '2026-07-15', time: '14:00', location: 'Venice, Italy', bookingRef: '', url: '', notes: 'Check-in: 15 Jul · Check-out: 17 Jul · 2 nights. Tip: hotels on the island are expensive — Mestre (mainland, 10min train) is significantly cheaper.', status: 'pending' },
+  { id: 'evt-14', title: 'Hotel — Würzburg', type: 'hotel', date: '2026-07-17', time: '14:00', location: 'Würzburg, Germany', bookingRef: '', url: '', notes: 'Check-in: 17 Jul · Check-out: 19 Jul · 2 nights. Book near the old town — walkable to wedding venue.', status: 'pending' },
 ]
 
 function reducer(state, action) {
