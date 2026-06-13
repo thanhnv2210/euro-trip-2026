@@ -141,32 +141,41 @@ function RiskSection() {
 }
 
 const PENDING_PLAN = {
-  summary: 'Germany leg (5–9 Jul) is flexible — waiting on confirmation from friends and uncle before locking in the plan.',
-  lastUpdated: '2026-06-10',
+  summary: 'Two decisions remain open for the Germany/Benelux leg before hotels and car rental can be booked.',
+  lastUpdated: '2026-06-13',
   contacts: [
     {
-      name: 'Friend — Düsseldorf',
+      name: 'Stopover City — Leipzig vs Erfurt (8 Jul)',
       status: 'pending',
-      question: 'Can you host / meet on 6 Jul? Would you like to join us for the Germany leg 5–9 Jul?',
-      ifYes: 'Stay in Düsseldorf 6 Jul. Explore Altstadt together. Possibly travel with us toward Plauen on 7 Jul.',
-      ifNo: 'Pass through Düsseldorf briefly or skip — travel directly Frankfurt → Plauen on 6 Jul.',
-      worldCup: 'If Germany play on 6 Jul, watch match together at Altstadt bars.',
+      question: 'Which train stopover city do you prefer between Cologne and Plauen?',
+      ifYes: 'Leipzig — 3h ICE from Cologne, 1h15m drive to Plauen. Vibrant city: Nikolaikirche, Mädler Passage, great coffee-house culture.',
+      ifNo: 'Erfurt — 3h ICE from Cologne, 1h30m drive to Plauen. Quieter medieval feel: Cathedral Square, Krämerbrücke, very walkable old town.',
+      worldCup: 'Both cities have fan zones if Germany play on 8 Jul.',
     },
     {
-      name: 'Uncle — Plauen',
+      name: 'Friend — Düsseldorf (evening 7 Jul)',
       status: 'pending',
-      question: 'Are you available to receive us 7–8 Jul at Pestalozzistraße 50?',
-      ifYes: 'Arrive Plauen 7 Jul. Spend 8 Jul visiting uncle. Depart toward Prague / Vienna on 9 Jul.',
-      ifNo: 'Skip Plauen. Restructure 7–9 Jul as extra days in Düsseldorf, Prague, or travel buffer.',
-      worldCup: 'If Germany play on 7–8 Jul, watch with uncle at a local bar in Plauen.',
+      question: 'Can you host dinner on the evening of 7 Jul? We\'ll drive from Maastricht (~1h) and return to Cologne after.',
+      ifYes: 'Dinner at friend\'s house in Düsseldorf. Return to Cologne for the night. Ask if they want to join for the road trip 8–9 Jul.',
+      ifNo: 'Skip Düsseldorf evening. Spend full evening in Maastricht or head back to Cologne early.',
+      worldCup: 'If Germany play on 7 Jul, watch the match together at friend\'s place or a local bar.',
+    },
+    {
+      name: 'Uncle — Plauen (8 Jul afternoon)',
+      status: 'pending',
+      question: 'Are you available to receive us on the afternoon of 8 Jul at Pestalozzistraße 50?',
+      ifYes: 'Arrive Plauen afternoon after train + rental car pickup. Visit uncle, stay overnight. Depart Prague by car morning of 9 Jul.',
+      ifNo: 'Skip Plauen overnight. Drive directly from Leipzig/Erfurt toward Prague (~4h). Gain extra time in Prague.',
+      worldCup: 'If Germany play on 8 Jul, watch with uncle at a local bar in Plauen.',
     },
   ],
   flexibleDays: [
-    { date: '2026-07-05', city: 'Frankfurt', note: 'Fixed — sightseeing day after arrival recovery.' },
-    { date: '2026-07-06', city: 'Düsseldorf', note: 'Pending friend confirmation.' },
-    { date: '2026-07-07', city: 'Plauen', note: 'Pending uncle confirmation. Travel day if Düsseldorf → Plauen.' },
-    { date: '2026-07-08', city: 'Plauen', note: 'Pending uncle confirmation. Could become Prague Day 1 if uncle unavailable.' },
-    { date: '2026-07-09', city: 'Prague / Vienna', note: 'Fixed endpoint — must reach Vienna by evening for morning flight to Rome on 10 Jul.' },
+    { date: '2026-07-05', city: 'Cologne', note: 'Fixed — morning with brother, afternoon travel to Bruges.' },
+    { date: '2026-07-06', city: 'Bruges', note: 'Fixed — full day Belgium.' },
+    { date: '2026-07-07', city: 'Maastricht', note: 'Fixed — day in Maastricht. Evening dinner Düsseldorf (pending friend).' },
+    { date: '2026-07-08', city: 'Leipzig / Erfurt → Plauen', note: 'Pending stopover city decision + uncle confirmation.' },
+    { date: '2026-07-09', city: 'Prague', note: 'Fixed — drive Plauen → Prague by rental car. Full day Prague.' },
+    { date: '2026-07-10', city: 'Rome', note: 'Fixed endpoint — morning flight PRG → FCO (ticket pending).' },
   ],
 }
 

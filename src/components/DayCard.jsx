@@ -20,9 +20,13 @@ const TAG_COLORS = {
 
 const CITY_FLAGS = {
   'Frankfurt': '🇩🇪',
+  'Cologne': '🇩🇪',
   'Düsseldorf': '🇩🇪',
+  'Leipzig': '🇩🇪',
   'Plauen': '🇩🇪',
   'Würzburg': '🇩🇪',
+  'Bruges': '🇧🇪',
+  'Maastricht': '🇳🇱',
   'Prague': '🇨🇿',
   'Vienna': '🇦🇹',
   'Rome': '🇮🇹',

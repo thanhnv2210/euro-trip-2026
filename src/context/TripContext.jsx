@@ -4,46 +4,50 @@ import { loadState, saveState } from '../services/storageService'
 const TripContext = createContext(null)
 
 const SEED_ITINERARY = [
-  // — Germany leg (5 Jul flexible: Düsseldorf, Plauen, Prague plan TBD) —
-  { id: 'day-01', date: '2026-07-04', city: 'Frankfurt', notes: 'Depart 12:35 PM SIN (SQ 326). Arrive FRA 19:40.', travel: [], activities: [] },
-  { id: 'day-02', date: '2026-07-05', city: 'Frankfurt', notes: '1 day exploring Frankfurt.', travel: [], activities: [
-    { id: 'fra-1', time: '', title: 'Römerberg & Old Town', notes: 'Medieval town square — the historic heart of Frankfurt', tags: ['historical', 'culture', 'scenic', 'photography'] },
-    { id: 'fra-2', time: '', title: 'Städel Art Museum', notes: 'One of Germany\'s finest art museums, 700 years of European art', tags: ['culture'] },
-    { id: 'fra-3', time: '', title: 'Main Tower Observation Deck', notes: 'Best panoramic views of the Frankfurt skyline — only public skyscraper viewpoint', tags: ['scenic', 'photography', 'outdoor'] },
-    { id: 'fra-4', time: '', title: 'Sachsenhausen & Apple Wine Trail', notes: 'Old quarter with traditional cider taverns (Äppelwoi) along the riverbank', tags: ['food', 'local', 'nightlife'] },
-    { id: 'fra-5', time: '', title: 'Palmengarten Botanical Garden', notes: 'Lush tropical greenhouses and gardens — great morning stroll', tags: ['nature', 'relaxation', 'outdoor'] },
-    { id: 'fra-6', time: '', title: 'Kleinmarkthalle — Indoor Market', notes: 'Frankfurt\'s beloved covered market — fresh produce, local cheeses, meats, flowers. Great for souvenir spices and edible gifts. Safe and family-friendly.', tags: ['shopping', 'food', 'local'] },
-    { id: 'fra-7', time: '', title: 'Evening River Cruise on the Main', notes: 'Hour-long boat tour past the skyline and Römerberg at sunset — relaxing intro to Frankfurt. Departs near Eiserner Steg bridge.', tags: ['entertainment', 'scenic', 'romantic', 'relaxation'] },
-    { id: 'fra-8', time: '', title: '⚽ FIFA World Cup — Germany Match (Public Viewing)', notes: 'World Cup 2026 runs Jun 11–Jul 19. Knockout rounds fall during your Germany leg (4–9 Jul). Frankfurt hosted 2006 WC games — expect massive Fanzone setups at Römerberg or Commerzbank Arena fan park if Germany is still in. Check schedule at fifa.com closer to departure. Watching with 10,000+ Germans is unforgettable. Safety: German football crowds are well-policed and family-friendly. Arrive early for a good spot.', tags: ['entertainment', 'local', 'nightlife', 'outdoor'] },
-  ]},
-  { id: 'day-03', date: '2026-07-06', city: 'Düsseldorf', notes: 'Travel from Frankfurt. Visit friend. (flexible — friends may join for Germany leg)', travel: [
-    { mode: 'train', duration: '1h 30m', notes: 'ICE direct' },
-    { mode: 'car', duration: '2h 30m', notes: 'via A3' },
+  // — Germany / Benelux leg —
+  { id: 'day-01', date: '2026-07-04', city: 'Frankfurt', notes: 'Depart 12:35 PM SIN (SQ 326). Arrive FRA 19:40. Take train to Cologne (~1h ICE) — staying at brother\'s house.', travel: [], activities: [] },
+
+  { id: 'day-02', date: '2026-07-05', city: 'Cologne', notes: 'Morning in Cologne with brother. After lunch travel to Bruges, Belgium.', travel: [
+    { mode: 'train', duration: '2h 30m', notes: 'Cologne Hbf → Brussels Midi, change to Bruges (~30min). Total ~3h.' },
+    { mode: 'car', duration: '2h 30m', notes: 'via A4/E40 through Belgium' },
   ], activities: [
-    { id: 'dus-1', time: '', title: 'Altstadt & Rhine Promenade', notes: 'The "longest bar in the world" — packed with breweries and pubs along the Rhine', tags: ['food', 'nightlife', 'local', 'outdoor'] },
-    { id: 'dus-2', time: '', title: 'Königsallee (Kö)', notes: 'Elegant tree-lined boulevard with high-end shops and a canal running through it', tags: ['shopping', 'scenic', 'relaxation'] },
-    { id: 'dus-3', time: '', title: 'MedienHafen', notes: 'Converted harbour with striking Gehry buildings and great waterfront restaurants', tags: ['culture', 'food', 'photography', 'scenic'] },
-    { id: 'dus-4', time: '', title: 'Kunstpalast Museum', notes: 'Fine arts museum spanning antiquity to contemporary, free on certain days', tags: ['culture'] },
-    { id: 'dus-5', time: '', title: 'Carlsplatz Market', notes: 'Vibrant daily market for local produce, cheese, and street food', tags: ['food', 'local', 'shopping'] },
-    { id: 'dus-6', time: '', title: 'Rheinwiesen (Rhine Meadows)', notes: 'Wide grassy riverbank south of the Altstadt — locals picnic, jog and swim here in summer. Very safe, open and public.', tags: ['nature', 'outdoor', 'relaxation', 'local'] },
-    { id: 'dus-7', time: '', title: 'Altstadt Evening — Early Night Out with Friend', notes: 'Düsseldorf Altstadt is lively but manageable. Safety tip: great before midnight — stick to the main Bolkerstraße strip, avoid side alleys after midnight. Your local friend will know which bars are best.', tags: ['nightlife', 'food', 'local', 'entertainment'] },
-    { id: 'dus-8', time: '', title: '⚽ FIFA World Cup — Germany Match at Altstadt Bars', notes: 'If a Germany match falls on 6 Jul, watch it with your local friend in the Altstadt — every bar will be showing it. The Rhine promenade turns into a street party when Germany score. Your friend will know the best spot to be. Quarter-finals are ~13–14 Jul (you\'ll be in Rome), semis ~16–17 Jul (Venice), final 19 Jul (departure day — might catch it at FRA airport!)', tags: ['entertainment', 'local', 'nightlife', 'outdoor'] },
+    { id: 'cgn-1', time: '', title: 'Cologne Cathedral (Kölner Dom)', notes: 'UNESCO Gothic masterpiece — twin spires dominate the skyline. Free entry to cathedral; tower climb for views.', tags: ['historical', 'culture', 'scenic', 'photography'] },
+    { id: 'cgn-2', time: '', title: 'Old Town & Hohenzollern Bridge', notes: 'Walk the Rhine promenade, see the famous love-lock bridge. Relaxed morning stroll with brother.', tags: ['scenic', 'outdoor', 'local', 'romantic'] },
+    { id: 'cgn-3', time: '', title: '⚽ FIFA World Cup — Germany Match (Cologne Fan Zone)', notes: 'Cologne has a large fan zone near the Rhine. Watch with brother and locals if Germany play on 5 Jul.', tags: ['entertainment', 'local', 'nightlife', 'outdoor'] },
   ]},
-  { id: 'day-04', date: '2026-07-07', city: 'Plauen', notes: 'Travel Düsseldorf → Plauen. (flexible)', travel: [
-    { mode: 'train', duration: '5h', notes: 'change at Frankfurt or Leipzig' },
-    { mode: 'car', duration: '4h 30m', notes: 'via A9' },
-  ], activities: [] },
-  { id: 'day-05', date: '2026-07-08', city: 'Plauen', notes: 'Visit uncle at Pestalozzistraße 50, 08523 Plauen. (flexible)', travel: [], activities: [
-    { id: 'plau-1', time: '', title: 'Altmarkt & Rathaus', notes: 'Historic market square with the impressive Neo-Renaissance town hall', tags: ['historical', 'culture', 'photography'] },
-    { id: 'plau-2', time: '', title: 'Syrabach Valley (Syrabachtal)', notes: 'Scenic nature walk through the valley just outside the city centre', tags: ['nature', 'outdoor', 'scenic', 'relaxation'] },
-    { id: 'plau-3', time: '', title: 'Vogtland Museum', notes: 'Regional history and culture of the Vogtland area', tags: ['historical', 'culture', 'local'] },
-    { id: 'plau-4', time: '', title: 'St. Johanniskirche', notes: 'Gothic church dating to the 13th century, landmark of the city skyline', tags: ['historical', 'photography'] },
-    { id: 'plau-5', time: '', title: 'Friedensbrücke (Peace Bridge)', notes: 'Striking viaduct bridge — a symbol of the city, great photo spot', tags: ['scenic', 'photography', 'outdoor'] },
+
+  { id: 'day-03', date: '2026-07-06', city: 'Bruges', notes: 'Full day in Bruges, Belgium 🇧🇪', travel: [], activities: [
+    { id: 'bru-1', time: '', title: 'Markt Square & Belfry Tower', notes: 'Heart of Bruges — climb the 366-step Belfry for panoramic views over the medieval rooftops.', tags: ['historical', 'culture', 'scenic', 'photography', 'outdoor'] },
+    { id: 'bru-2', time: '', title: 'Canal Boat Tour', notes: '30-min boat tour through the medieval canals — the most romantic way to see Bruges. Very popular, queues form quickly.', tags: ['scenic', 'romantic', 'entertainment', 'local'] },
+    { id: 'bru-3', time: '', title: 'Bruges Chocolate & Beer Trail', notes: 'Belgium has the world\'s finest chocolate and beer. Visit a chocolate maker workshop and try local Bruges Zot beer at a traditional café.', tags: ['food', 'local', 'entertainment'] },
+    { id: 'bru-4', time: '', title: 'Groeningemuseum', notes: 'Home to the Flemish Primitives — Jan van Eyck\'s masterpieces. Small but world-class museum.', tags: ['culture', 'historical'] },
+    { id: 'bru-5', time: '', title: 'Bruges Lace & Souvenir Shopping', notes: 'Bruges is famous for handmade bobbin lace — pick up a piece as a keepsake. Best shops around Markt Square.', tags: ['shopping', 'local', 'culture'] },
   ]},
-  { id: 'day-06', date: '2026-07-09', city: 'Prague', notes: 'Travel from Plauen → Prague (flexible). Travel to Vienna in the evening for morning flight to Rome.', travel: [
-    { mode: 'car', duration: '1h 30m', notes: 'Plauen → Prague, fastest option' },
-    { mode: 'train', duration: '2h 30m', notes: 'change at Cheb' },
-    { mode: 'bus', duration: '2h', notes: 'FlixBus direct' },
+
+  { id: 'day-04', date: '2026-07-07', city: 'Maastricht', notes: 'Bruges → Maastricht (Netherlands) 🇳🇱. Evening: drive to Düsseldorf for dinner at friend\'s house, then return to Cologne.', travel: [
+    { mode: 'train', duration: '2h 30m', notes: 'Bruges → Maastricht via Liège (~2h30m, 1 change)' },
+    { mode: 'car', duration: '2h', notes: 'via E40/A2' },
+  ], activities: [
+    { id: 'maa-1', time: '', title: 'Vrijthof Square', notes: 'Maastricht\'s grand main square — lively café terraces, St. Servaas Basilica, and the famous carillon bells.', tags: ['historical', 'culture', 'local', 'food'] },
+    { id: 'maa-2', time: '', title: 'Bookstore Dominicanen', notes: 'World\'s most beautiful bookshop inside a 13th-century Dominican church — unmissable even if you don\'t buy anything.', tags: ['culture', 'historical', 'local'] },
+    { id: 'maa-3', time: '', title: 'Maas River Walk & Wyck neighbourhood', notes: 'Charming boutique district east of the river — great for lunch, independent shops and galleries.', tags: ['outdoor', 'food', 'shopping', 'local', 'relaxation'] },
+    { id: 'maa-4', time: '', title: 'Evening: Dinner with Friend — Düsseldorf', notes: 'Drive ~1h to Düsseldorf for dinner at friend\'s house, then return to Cologne (~45min). Great chance to catch up and discuss if they want to join the road trip leg.', tags: ['food', 'local', 'nightlife'] },
+  ]},
+
+  { id: 'day-05', date: '2026-07-08', city: 'Leipzig', notes: 'Cologne → Leipzig/Erfurt by train (PENDING: choose stopover city). Pick up rental car. Drive to Plauen (~1h15m). Arrive afternoon — visit uncle.', travel: [
+    { mode: 'train', duration: '3h', notes: 'Cologne Hbf → Leipzig Hbf ICE direct (recommended) OR → Erfurt Hbf ICE direct. PENDING decision.' },
+  ], activities: [
+    { id: 'lpz-1', time: '', title: '🚆 Stopover: Leipzig — Nikolaikirche & Market Square', notes: 'PENDING: Leipzig option. Historic church where the 1989 peaceful revolution began. Beautiful old market square with coffee-house culture.', tags: ['historical', 'culture', 'local'] },
+    { id: 'lpz-2', time: '', title: '🚆 Stopover: Leipzig — Mädler Passage & Coffee House', notes: 'PENDING: Leipzig option. Stunning art nouveau arcade with Auerbachs Keller — one of Germany\'s oldest restaurants, mentioned in Faust.', tags: ['historical', 'food', 'local', 'culture'] },
+    { id: 'erf-1', time: '', title: '🚆 Stopover: Erfurt — Cathedral Square & Krämerbrücke', notes: 'PENDING: Erfurt option. Cathedral Hill with twin Gothic spires + the Krämerbrücke, a medieval bridge lined with inhabited timber-framed houses — unique in Germany.', tags: ['historical', 'culture', 'scenic', 'photography'] },
+    { id: 'erf-2', time: '', title: '🚆 Stopover: Erfurt — Old Town Walk', notes: 'PENDING: Erfurt option. One of Germany\'s best-preserved medieval old towns — compact and walkable in 2–3h.', tags: ['historical', 'outdoor', 'local', 'scenic'] },
+    { id: 'plau-1', time: '', title: 'Plauen — Visit Uncle at Pestalozzistraße 50', notes: 'Arrive afternoon after picking up rental car. Main purpose of Plauen stop.', tags: ['local'] },
+    { id: 'plau-2', time: '', title: 'Plauen — Altmarkt & Rathaus', notes: 'Historic market square with the impressive Neo-Renaissance town hall', tags: ['historical', 'culture', 'photography'] },
+    { id: 'plau-3', time: '', title: 'Plauen — Syrabach Valley', notes: 'Scenic nature walk through the valley just outside the city centre', tags: ['nature', 'outdoor', 'scenic', 'relaxation'] },
+  ]},
+
+  { id: 'day-06', date: '2026-07-09', city: 'Prague', notes: 'Drive Plauen → Prague by rental car (~2.5h via D7/E55). Drop car at Prague airport or city centre. Full day in Prague.', travel: [
+    { mode: 'car', duration: '2h 30m', notes: 'Plauen → Prague via D7/E55 — return rental car on arrival' },
   ], activities: [
     { id: 'prg-1', time: '', title: 'Prague Castle & St. Vitus Cathedral', notes: 'Largest ancient castle complex in the world — skyline icon, allow 2–3h', tags: ['historical', 'culture', 'scenic', 'photography'] },
     { id: 'prg-2', time: '', title: 'Charles Bridge', notes: 'Gothic stone bridge lined with 30 baroque statues, best at sunrise or dusk', tags: ['historical', 'scenic', 'photography', 'romantic'] },
@@ -56,8 +60,8 @@ const SEED_ITINERARY = [
   ]},
 
   // — Italy leg —
-  { id: 'day-07', date: '2026-07-10', city: 'Rome', notes: 'Fly Vienna → Rome morning. Arrive afternoon. (VIE→ROM ticket pending!)', travel: [
-    { mode: 'flight', duration: '2h', notes: 'VIE → FCO/CIA — ticket pending! Book now' },
+  { id: 'day-07', date: '2026-07-10', city: 'Rome', notes: 'Fly Prague → Rome morning. Arrive afternoon. (PRG→FCO ticket pending!)', travel: [
+    { mode: 'flight', duration: '2h', notes: 'PRG → FCO/CIA — ticket pending! Book now' },
   ], activities: [
     { id: 'rom-arr-1', time: '', title: 'Trevi Fountain + Gelato', notes: 'Coin toss tradition — visit early evening to beat the crowds', tags: ['historical', 'food', 'romantic', 'photography'] },
     { id: 'rom-arr-2', time: '', title: 'Campo de\' Fiori', notes: 'Lively piazza — great for an evening aperitivo and people-watching', tags: ['food', 'local', 'nightlife'] },
@@ -137,7 +141,8 @@ const SEED_ITINERARY = [
 
 const SEED_EVENTS = [
   { id: 'evt-01', title: 'Flight SIN → FRA (SQ 326)', type: 'flight', date: '2026-07-04', time: '12:35', location: 'Changi Airport T3', bookingRef: 'ESHMZK', url: '', notes: 'SQ 326 · A380-800 · Economy Lite · Arrives FRA 19:40 T1 · Seats: not selected · Baggage: 25kg each', status: 'booked' },
-  { id: 'evt-02', title: 'Flight VIE → FCO (Vienna → Rome)', type: 'flight', date: '2026-07-10', time: '', location: 'Vienna Airport', bookingRef: '', url: '', notes: 'Not yet purchased! Arrive Rome afternoon.', status: 'pending' },
+  { id: 'evt-02', title: 'Flight PRG → FCO (Prague → Rome)', type: 'flight', date: '2026-07-10', time: '', location: 'Prague Václav Havel Airport (PRG)', bookingRef: '', url: '', notes: 'Not yet purchased! Morning flight — arrive Rome afternoon. Replaces original VIE→FCO route.', status: 'pending' },
+  { id: 'evt-07', title: 'Rental Car — Leipzig/Erfurt → Plauen → Prague', type: 'transport', date: '2026-07-08', time: '', location: 'Leipzig or Erfurt (PENDING stopover decision)', bookingRef: '', url: '', notes: 'Pick up at Leipzig/Erfurt train station. Drive to Plauen (~1h15m), then Prague (~2h30m). Drop off at Prague airport or city centre on 9 Jul.', status: 'pending' },
   { id: 'evt-03', title: 'Flight FRA → SIN (SQ 025)', type: 'flight', date: '2026-07-19', time: '12:15', location: 'Frankfurt Airport T1', bookingRef: 'ESHMZK', url: '', notes: 'SQ 025 · Boeing 777-300ER · Economy Flexi · Arrives SIN 06:50 20 Jul · Seats: 54G (Xuan), 54E (Thanh) · Baggage: 30kg each', status: 'booked' },
   { id: 'evt-06', title: 'Flight VCE → FRA (Venice → Frankfurt)', type: 'flight', date: '2026-07-17', time: '', location: 'Venice Marco Polo Airport', bookingRef: '', url: '', notes: 'Not yet purchased! Take morning flight — need to reach Würzburg by afternoon.', status: 'pending' },
   { id: 'evt-04', title: "Friend's Wedding — Würzburg", type: 'other', date: '2026-07-18', time: '18:00', location: 'Würzburg', bookingRef: '', url: '', notes: '', status: 'confirmed' },
