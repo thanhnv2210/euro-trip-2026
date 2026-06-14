@@ -14,6 +14,9 @@ export default function EventsPage() {
     .sort((a, b) => a.date.localeCompare(b.date))
 
   const pendingCount = state.events.filter(e => e.status === 'pending').length
+  const bookedCount = state.events.filter(e => e.status === 'booked' || e.status === 'confirmed').length
+  const hotelPendingCount = state.events.filter(e => e.type === 'hotel' && e.status === 'pending').length
+  const flightPendingCount = state.events.filter(e => e.type === 'flight' && e.status === 'pending').length
 
   return (
     <div className="flex flex-col flex-1">
@@ -24,14 +27,21 @@ export default function EventsPage() {
             <span className="text-2xl">🎫</span>
             <div>
               <h1 className="text-lg font-bold text-slate-100">Bookings</h1>
-              <p className="text-xs text-slate-400">{state.events.length} events</p>
+              <p className="text-xs text-slate-400">{state.events.length} events · {bookedCount} confirmed</p>
             </div>
           </div>
-          {pendingCount > 0 && (
-            <div className="flex items-center gap-1.5 bg-amber-900/40 border border-amber-700/40 rounded-lg px-3 py-1.5">
-              <span className="text-amber-400 text-xs font-medium">⚠ {pendingCount} pending</span>
-            </div>
-          )}
+          <div className="flex items-center gap-2">
+            {flightPendingCount > 0 && (
+              <div className="flex items-center gap-1 bg-red-900/40 border border-red-700/40 rounded-lg px-2.5 py-1.5">
+                <span className="text-red-400 text-xs font-medium">✈ {flightPendingCount} flights</span>
+              </div>
+            )}
+            {hotelPendingCount > 0 && (
+              <div className="flex items-center gap-1 bg-amber-900/40 border border-amber-700/40 rounded-lg px-2.5 py-1.5">
+                <span className="text-amber-400 text-xs font-medium">🏨 {hotelPendingCount}</span>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Type filter pills */}

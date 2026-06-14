@@ -7,11 +7,11 @@ const RISKS = [
     label: 'Critical',
     dot: 'bg-red-500',
     items: [
-      { title: 'Prague → Rome flight not purchased (10 Jul)', detail: 'evt-02 updated to PRG→FCO — still pending, no booking ref or time. Morning flight required so you arrive Rome in the afternoon. This is the gateway to all 7 Italy days. Book now — July PRG→FCO routes are filling up.' },
-      { title: 'Venice → Frankfurt flight not purchased (17 Jul)', detail: 'evt-06 still pending. Must be a morning departure to reach Würzburg by afternoon, the day before the wedding. If delayed, you risk missing the wedding. Book alongside the Prague→Rome flight.' },
-      { title: 'No hotel bookings in any city', detail: 'Zero accommodation confirmed across all cities. Priority order: Rome (3 nights, 10–13 Jul) → Venice (2 nights, 15–17 Jul) → Tuscany (2 nights, 13–15 Jul) → Prague (1 night, 9 Jul) → Bruges (1 night, 6 Jul) → Maastricht (1 night, 7 Jul). Cologne is covered by brother.' },
-      { title: 'SIN→FRA seats not selected (SQ 326)', detail: '12h+ flight with seats unassigned — risk of being seated separately. Select on singaporeair.com using booking ref ESHMZK.' },
-      { title: 'Rental car not booked (8–9 Jul)', detail: 'evt-07 pending. Pick up at Leipzig or Erfurt (pending stopover decision), drive to Plauen (~1h15m) then Prague (~2.5h), return at Prague airport. Book in advance — July demand is high and one-way rentals need early reservation.' },
+      { title: 'Prague → Rome flight not purchased (10 Jul)', detail: 'evt-02 still pending, no booking ref or time. Morning flight required so you arrive Rome afternoon. This is the gateway to all 7 Italy days. Buy as soon as uncle confirms Plauen visit — July PRG→FCO routes fill fast.' },
+      { title: 'Venice → Frankfurt flight not purchased (17 Jul)', detail: 'evt-06 still pending. Must be a morning departure to reach Würzburg by afternoon the day before the wedding. If delayed, you risk missing the wedding. Buy alongside the Prague→Rome flight.' },
+      { title: 'No accommodation booked in any city', detail: 'Placeholder hotel events added (evt-08 to evt-14) but none booked. Priority: Rome 3 nights (10–13 Jul) → Venice 2 nights (15–17 Jul) → Tuscany 2 nights (13–15 Jul) → Prague 1 night (9 Jul) → Bruges 1 night (5–6 Jul) → Maastricht 1 night (6–7 Jul) → Würzburg 2 nights (17–19 Jul). Cologne covered by brother, Düsseldorf by cousin.' },
+      { title: 'SIN→FRA seats not selected (SQ 326)', detail: '12h+ flight with seats unassigned — risk of being separated. Select on singaporeair.com using booking ref ESHMZK.' },
+      { title: 'Rental car not booked (8–9 Jul)', detail: 'evt-07 pending. Pick up at Leipzig Hbf, drive to Plauen (~1h15m) then Prague (~2.5h), return at Prague airport. Book now — July one-way rentals sell out fast.' },
     ],
   },
   {
@@ -19,11 +19,11 @@ const RISKS = [
     label: 'High',
     dot: 'bg-orange-500',
     items: [
-      { title: 'Stopover city not decided — Leipzig vs Erfurt (8 Jul)', detail: 'Rental car and hotel in Plauen cannot be booked until this is decided. Leipzig: 3h ICE, 1h15m drive to Plauen, vibrant city. Erfurt: 3h ICE, 1h30m drive, quieter medieval feel. Decide this week.' },
-      { title: 'Venice → Frankfurt flight + train to Würzburg same day (17 Jul)', detail: 'Morning VCE→FRA flight + ~1h ICE to Würzburg = arrive afternoon, day before the wedding. Any flight delay = arriving exhausted or late. Book the earliest possible departure from VCE; research backup train via Munich.' },
-      { title: 'Würzburg → Frankfurt tight on departure day (19 Jul)', detail: '1h ICE train, SQ 025 departs 12:15 — DB punctuality ~70%. Aim to be at FRA by 09:30. Take the earliest Würzburg train (~06:30). Do not rely on a single connection.' },
-      { title: 'Vatican Museums + Borghese Gallery — timed entry only (11–12 Jul)', detail: 'No walk-ins. Vatican sells out weeks ahead in July. Borghese is capped at 360 people per 2h slot. Book now at museivaticani.va and galleriaborghese.it.' },
-      { title: 'Uffizi Gallery tickets (14 Jul)', detail: 'Walk-up queues of 2–3h common in July. Book timed entry at uffizi.it well in advance.' },
+      { title: 'D05 is a full transit day — take the earliest train (8 Jul)', detail: 'Düsseldorf → Leipzig (3h train) → collect rental car → Plauen (1h15m drive). Total ~5–6h travel. If train is delayed or car pickup runs long, uncle visit gets cut short. Take the 06:00–07:00 train from Düsseldorf Hbf.' },
+      { title: 'Venice → Frankfurt flight + train to Würzburg same day (17 Jul)', detail: 'Morning VCE→FRA flight + ~1h ICE to Würzburg = arrive afternoon, day before the wedding. Any flight delay = arriving exhausted or late. Book the earliest possible VCE departure; have a backup train route via Munich.' },
+      { title: 'Würzburg → Frankfurt tight on departure day (19 Jul)', detail: '1h ICE train, SQ 025 departs 12:15 — DB punctuality ~70%. Aim to be at FRA by 09:30. Take the earliest train (~06:30). Do not rely on a single connection.' },
+      { title: 'Vatican Museums + Sistine Chapel — timed entry only (12 Jul)', detail: 'No walk-ins. Vatican sells out weeks ahead in July. Book now at museivaticani.va — allow 3–4h.' },
+      { title: 'Uffizi Gallery tickets (14 Jul)', detail: 'Walk-up queues 2–3h in July. Book timed entry at uffizi.it well in advance.' },
     ],
   },
   {
@@ -31,12 +31,12 @@ const RISKS = [
     label: 'Medium',
     dot: 'bg-yellow-500',
     items: [
-      { title: 'Prague is a single full day (9 Jul) — flight next morning', detail: 'Drive from Plauen, arrive mid-morning. Flight to Rome next morning means an early start on 10 Jul. Prioritise Charles Bridge at dawn + Old Town Square. Leave Castle and Jewish Quarter for a future trip.' },
-      { title: 'No travel insurance', detail: 'Two-person trip, three unbooked flights, shared booking ref ESHMZK. Purchase insurance covering cancellation, medical, and missed connections before booking the Italy flights.' },
+      { title: 'Prague is a single full day (9 Jul) — flight next morning', detail: 'Drive from Plauen, arrive mid-morning. Flight to Rome next morning means early start on 10 Jul. Prioritise Prague Castle + Charles Bridge at dusk. Czech Beer Spa needs advance booking — book before the trip.' },
+      { title: 'No travel insurance', detail: 'Two-person trip, three unbooked flights, shared ref ESHMZK. Purchase insurance covering cancellation, medical, and missed connections before buying the Italy flights.' },
       { title: 'Extreme July heat in Rome and Tuscany (10–14 Jul)', detail: 'Rome 32–36°C, Florence similar. Schedule Colosseum, Vatican, and outdoor sites before 10am or after 17:00. Carry water at all times.' },
-      { title: 'Colosseum combined ticket — book in advance (11 Jul)', detail: 'Colosseum + Palatine Hill + Roman Forum sells out in peak July. Book at coopculture.it. Timed entry required.' },
-      { title: 'D04 is a long day (Maastricht + Düsseldorf dinner + Cologne, 7 Jul)', detail: 'Maastricht sightseeing → 1h drive to Düsseldorf for dinner → 45min back to Cologne. 4th consecutive travel day. Keep Maastricht activities light in the afternoon to arrive Düsseldorf relaxed.' },
-      { title: 'Bruges canal boats and Belfry get very crowded in July', detail: 'Belfry tower tickets sell out by mid-morning. Canal boat queues peak at 11am–14:00. Arrive at the Belfry when it opens (09:30) and do the boat tour early or late afternoon.' },
+      { title: 'Colosseum combined ticket — book in advance (11 Jul)', detail: 'Colosseum + Palatine Hill + Roman Forum sells out in peak July. Book at coopculture.it — timed entry required.' },
+      { title: 'Bruges canal boats and Belfry get very crowded in July', detail: 'Belfry tower tickets sell out by mid-morning. Canal boat queues peak 11am–14:00. Arrive at the Belfry when it opens (09:30) and do the boat tour early or late afternoon.' },
+      { title: 'Uncle visit in Plauen still awaiting confirmation (8 Jul)', detail: 'The entire D05 routing (Leipzig car pickup → Plauen overnight) depends on uncle confirming. If declined, consider driving directly to Prague (~4h from Leipzig) and gaining extra time there.' },
     ],
   },
   {
@@ -45,10 +45,10 @@ const RISKS = [
     dot: 'bg-emerald-500',
     items: [
       { title: 'Prague uses CZK, not Euro', detail: 'One day in Prague — get ~2,000 CZK (~€80) at a Prague ATM on arrival. Avoid airport exchange desks. Card payments widely accepted in tourist areas.' },
-      { title: 'Venice is car-free — plan luggage carefully', detail: 'No taxis to the hotel door. Accommodation must be walkable or accessible by vaporetto from Santa Lucia station. Check hotel location before booking.' },
-      { title: 'Driving in Czech Republic (9 Jul)', detail: 'Czech Republic requires a highway vignette sticker for motorways — buy online at edalnice.cz before the trip or at the border. €15 for 10 days. Car rental companies sometimes include it — check when booking.' },
-      { title: 'Belgium and Netherlands use Euro — Bruges and Maastricht no currency issue', detail: 'Smooth transition. Card payments widely accepted in both cities.' },
-      { title: 'World Cup match schedule not yet released', detail: 'Specific knockout dates for Germany TBD. Check fifa.com in late June. Fan zones confirmed in Cologne, Bruges (likely), and Rome — all on your route.' },
+      { title: 'Venice is car-free — plan luggage carefully', detail: 'No taxis to the hotel door. Accommodation must be walkable or reachable by vaporetto from Santa Lucia station. Check hotel location before booking. Consider Mestre (mainland) for a significantly cheaper option.' },
+      { title: 'Driving in Czech Republic (9 Jul)', detail: 'Czech Republic requires a highway vignette for motorways — buy online at edalnice.cz or at the border (~€15 for 10 days). Check if rental car company includes it.' },
+      { title: 'Belgium and Netherlands use Euro — no currency change in Bruges or Maastricht', detail: 'Smooth transition. Card payments widely accepted in both cities.' },
+      { title: 'World Cup knockout schedule not yet released', detail: 'Specific match dates for Germany TBD. Check fifa.com in late June. Fan zones confirmed in Cologne and Rome — both on your route.' },
     ],
   },
 ]
@@ -145,41 +145,41 @@ function RiskSection() {
 }
 
 const PENDING_PLAN = {
-  summary: 'Two decisions remain open for the Germany/Benelux leg before hotels and car rental can be booked.',
-  lastUpdated: '2026-06-13',
+  summary: 'One confirmation outstanding. Leipzig stopover confirmed. Düsseldorf dinner confirmed (sleeping at cousin\'s). Uncle Plauen still awaiting reply — this unblocks flight and hotel bookings.',
+  lastUpdated: '2026-06-14',
   contacts: [
     {
-      name: 'Stopover City — Leipzig vs Erfurt (8 Jul)',
-      status: 'pending',
-      question: 'Which train stopover city do you prefer between Cologne and Plauen?',
-      ifYes: 'Leipzig — 3h ICE from Cologne, 1h15m drive to Plauen. Vibrant city: Nikolaikirche, Mädler Passage, great coffee-house culture.',
-      ifNo: 'Erfurt — 3h ICE from Cologne, 1h30m drive to Plauen. Quieter medieval feel: Cathedral Square, Krämerbrücke, very walkable old town.',
-      worldCup: 'Both cities have fan zones if Germany play on 8 Jul.',
+      name: 'Stopover City — Leipzig',
+      status: 'confirmed',
+      question: 'Which train stopover city between Düsseldorf and Plauen?',
+      ifYes: 'Leipzig confirmed. 3h ICE from Düsseldorf Hbf. Pick up rental car at Leipzig Hbf. Drive to Plauen (~1h15m). Sights: Nikolaikirche, Mädler Passage.',
+      ifNo: 'N/A — Leipzig decided.',
+      worldCup: 'Leipzig has a fan zone if Germany play on 8 Jul.',
     },
     {
-      name: 'Friend — Düsseldorf (evening 7 Jul)',
-      status: 'pending',
-      question: 'Can you host dinner on the evening of 7 Jul? We\'ll drive from Maastricht (~1h) and return to Cologne after.',
-      ifYes: 'Dinner at friend\'s house in Düsseldorf. Return to Cologne for the night. Ask if they want to join for the road trip 8–9 Jul.',
-      ifNo: 'Skip Düsseldorf evening. Spend full evening in Maastricht or head back to Cologne early.',
-      worldCup: 'If Germany play on 7 Jul, watch the match together at friend\'s place or a local bar.',
+      name: 'Friend/Cousin — Düsseldorf (evening 7 Jul)',
+      status: 'confirmed',
+      question: 'Dinner and stay at cousin\'s house in Düsseldorf on 7 Jul?',
+      ifYes: 'Dinner at friend\'s house. Sleep at cousin\'s in Düsseldorf. Depart early next morning for Leipzig by train.',
+      ifNo: 'N/A — confirmed, sleeping at cousin\'s.',
+      worldCup: 'If Germany play on 7 Jul, watch the match together in Düsseldorf.',
     },
     {
       name: 'Uncle — Plauen (8 Jul afternoon)',
       status: 'pending',
       question: 'Are you available to receive us on the afternoon of 8 Jul at Pestalozzistraße 50?',
-      ifYes: 'Arrive Plauen afternoon after train + rental car pickup. Visit uncle, stay overnight. Depart Prague by car morning of 9 Jul.',
-      ifNo: 'Skip Plauen overnight. Drive directly from Leipzig/Erfurt toward Prague (~4h). Gain extra time in Prague.',
+      ifYes: 'Arrive Plauen afternoon after train + rental car pickup from Leipzig. Visit uncle, stay overnight. Depart to Prague by car morning of 9 Jul. Book PRG→FCO flight + hotels once confirmed.',
+      ifNo: 'Skip Plauen overnight. Drive directly from Leipzig toward Prague (~4h). Gain an extra half-day in Prague. Adjust hotel bookings accordingly.',
       worldCup: 'If Germany play on 8 Jul, watch with uncle at a local bar in Plauen.',
     },
   ],
   flexibleDays: [
-    { date: '2026-07-05', city: 'Cologne', note: 'Fixed — morning with brother, afternoon travel to Bruges.' },
-    { date: '2026-07-06', city: 'Bruges', note: 'Fixed — full day Belgium.' },
-    { date: '2026-07-07', city: 'Maastricht', note: 'Fixed — day in Maastricht. Evening dinner Düsseldorf (pending friend).' },
-    { date: '2026-07-08', city: 'Leipzig / Erfurt → Plauen', note: 'Pending stopover city decision + uncle confirmation.' },
-    { date: '2026-07-09', city: 'Prague', note: 'Fixed — drive Plauen → Prague by rental car. Full day Prague.' },
-    { date: '2026-07-10', city: 'Rome', note: 'Fixed endpoint — morning flight PRG → FCO (ticket pending).' },
+    { date: '2026-07-05', city: 'Cologne → Bruges', note: 'Fixed — morning with brother, after lunch travel to Bruges.' },
+    { date: '2026-07-06', city: 'Bruges → Maastricht', note: 'Fixed — morning Bruges, afternoon travel to Maastricht.' },
+    { date: '2026-07-07', city: 'Maastricht → Düsseldorf', note: 'Fixed — day in Maastricht. Evening dinner + sleep at cousin\'s in Düsseldorf.' },
+    { date: '2026-07-08', city: 'Düsseldorf → Leipzig → Plauen', note: 'Departure confirmed from Düsseldorf. Leipzig stopover confirmed. Plauen pending uncle.' },
+    { date: '2026-07-09', city: 'Plauen → Prague', note: 'Fixed — drive Plauen → Prague by rental car. Full day Prague.' },
+    { date: '2026-07-10', city: 'Prague → Rome', note: 'Fixed endpoint — morning flight PRG → FCO (ticket pending — buy now!).' },
   ],
 }
 
@@ -202,10 +202,14 @@ function PendingPlanSection() {
         <div className="flex items-center gap-2.5">
           <span className="text-base">🗓️</span>
           <div>
-            <span className="text-sm font-semibold text-slate-100">Germany Leg — Pending Plan</span>
-            {pendingCount > 0 && (
+            <span className="text-sm font-semibold text-slate-100">Germany Leg — Plan Status</span>
+            {pendingCount > 0 ? (
               <span className="ml-2 text-xs bg-amber-900/60 text-amber-400 border border-amber-800/50 rounded-full px-2 py-0.5">
                 {pendingCount} awaiting reply
+              </span>
+            ) : (
+              <span className="ml-2 text-xs bg-emerald-900/60 text-emerald-400 border border-emerald-800/50 rounded-full px-2 py-0.5">
+                all confirmed
               </span>
             )}
           </div>
@@ -236,7 +240,7 @@ function PendingPlanSection() {
                   </div>
 
                   <div className="text-xs text-slate-400 leading-relaxed">
-                    <span className="text-slate-500">Ask: </span>{c.question}
+                    <span className="text-slate-500">Q: </span>{c.question}
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
@@ -261,7 +265,7 @@ function PendingPlanSection() {
             })}
           </div>
 
-          {/* Day-by-day flex view */}
+          {/* Day-by-day status */}
           <div>
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Day-by-day status</p>
             <div className="space-y-1.5">
@@ -294,20 +298,20 @@ function PendingPlanSection() {
 }
 
 const TAG_META = [
-  { tag: 'historical',   label: 'Historical',   icon: '🏛️', color: 'bg-amber-500',   track: 'bg-amber-950/60' },
-  { tag: 'culture',      label: 'Culture',      icon: '🎨', color: 'bg-purple-500',  track: 'bg-purple-950/60' },
-  { tag: 'scenic',       label: 'Scenic',       icon: '🌅', color: 'bg-sky-500',     track: 'bg-sky-950/60' },
-  { tag: 'photography',  label: 'Photography',  icon: '📷', color: 'bg-slate-400',   track: 'bg-slate-800/60' },
-  { tag: 'food',         label: 'Food',         icon: '🍽️', color: 'bg-orange-500',  track: 'bg-orange-950/60' },
-  { tag: 'outdoor',      label: 'Outdoor',      icon: '🥾', color: 'bg-lime-500',    track: 'bg-lime-950/60' },
-  { tag: 'local',        label: 'Local',        icon: '🧭', color: 'bg-yellow-500',  track: 'bg-yellow-950/60' },
-  { tag: 'romantic',     label: 'Romantic',     icon: '💑', color: 'bg-rose-500',    track: 'bg-rose-950/60' },
-  { tag: 'relaxation',   label: 'Relaxation',   icon: '😌', color: 'bg-teal-500',    track: 'bg-teal-950/60' },
-  { tag: 'nature',       label: 'Nature',       icon: '🌿', color: 'bg-emerald-500', track: 'bg-emerald-950/60' },
-  { tag: 'nightlife',    label: 'Nightlife',    icon: '🌙', color: 'bg-violet-500',  track: 'bg-violet-950/60' },
-  { tag: 'shopping',     label: 'Shopping',     icon: '🛍️', color: 'bg-fuchsia-500', track: 'bg-fuchsia-950/60' },
-  { tag: 'entertainment',label: 'Entertainment',icon: '🎭', color: 'bg-pink-500',    track: 'bg-pink-950/60' },
-  { tag: 'wellness',     label: 'Wellness',     icon: '🧘', color: 'bg-cyan-500',    track: 'bg-cyan-950/60' },
+  { tag: 'historical',    label: 'Historical',    icon: '🏛️', color: 'bg-amber-500',   track: 'bg-amber-950/60' },
+  { tag: 'culture',       label: 'Culture',       icon: '🎨', color: 'bg-purple-500',  track: 'bg-purple-950/60' },
+  { tag: 'scenic',        label: 'Scenic',        icon: '🌅', color: 'bg-sky-500',     track: 'bg-sky-950/60' },
+  { tag: 'photography',   label: 'Photography',   icon: '📷', color: 'bg-slate-400',   track: 'bg-slate-800/60' },
+  { tag: 'food',          label: 'Food',          icon: '🍽️', color: 'bg-orange-500',  track: 'bg-orange-950/60' },
+  { tag: 'outdoor',       label: 'Outdoor',       icon: '🥾', color: 'bg-lime-500',    track: 'bg-lime-950/60' },
+  { tag: 'local',         label: 'Local',         icon: '🧭', color: 'bg-yellow-500',  track: 'bg-yellow-950/60' },
+  { tag: 'romantic',      label: 'Romantic',      icon: '💑', color: 'bg-rose-500',    track: 'bg-rose-950/60' },
+  { tag: 'relaxation',    label: 'Relaxation',    icon: '😌', color: 'bg-teal-500',    track: 'bg-teal-950/60' },
+  { tag: 'nature',        label: 'Nature',        icon: '🌿', color: 'bg-emerald-500', track: 'bg-emerald-950/60' },
+  { tag: 'nightlife',     label: 'Nightlife',     icon: '🌙', color: 'bg-violet-500',  track: 'bg-violet-950/60' },
+  { tag: 'shopping',      label: 'Shopping',      icon: '🛍️', color: 'bg-fuchsia-500', track: 'bg-fuchsia-950/60' },
+  { tag: 'entertainment', label: 'Entertainment', icon: '🎭', color: 'bg-pink-500',    track: 'bg-pink-950/60' },
+  { tag: 'wellness',      label: 'Wellness',      icon: '🧘', color: 'bg-cyan-500',    track: 'bg-cyan-950/60' },
 ]
 
 function AttributeBalanceSection() {
@@ -315,7 +319,6 @@ function AttributeBalanceSection() {
   const [open, setOpen] = useState(true)
   const [expandedTag, setExpandedTag] = useState(null)
 
-  // Build index: tag -> [{day, act}] — only selected activities count
   const tagIndex = {}
   for (const day of state.itinerary) {
     for (const act of day.activities ?? []) {
@@ -367,7 +370,7 @@ function AttributeBalanceSection() {
 
       {open && (
         <div className="px-4 pb-4 border-t border-slate-800 pt-3 space-y-1">
-          <p className="text-xs text-slate-500 mb-3">Tap an attribute to see where it appears. Only selected activities are counted.</p>
+          <p className="text-xs text-slate-500 mb-3">Tap an attribute to see where it appears. Only selected activities count.</p>
           {sorted.map(({ tag, label, icon, color, track }) => {
             const count = counts[tag] || 0
             const pct = Math.round((count / max) * 100)
@@ -377,7 +380,6 @@ function AttributeBalanceSection() {
 
             return (
               <div key={tag} className="rounded-lg overflow-hidden">
-                {/* Row — tappable */}
                 <button
                   className="w-full text-left active:bg-slate-800/60 transition-colors px-2 py-2 rounded-lg"
                   onClick={() => setExpandedTag(isExpanded ? null : tag)}
@@ -402,7 +404,6 @@ function AttributeBalanceSection() {
                   </div>
                 </button>
 
-                {/* Expanded activity list */}
                 {isExpanded && (
                   <div className="mx-2 mb-2 rounded-lg border border-slate-700/60 bg-slate-800/40 divide-y divide-slate-700/40">
                     {entries.length === 0 ? (
