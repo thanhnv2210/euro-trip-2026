@@ -297,6 +297,185 @@ function PendingPlanSection() {
   )
 }
 
+const PRIORITY_STYLE = {
+  critical: 'text-red-400 bg-red-900/40 border-red-800/50',
+  high:     'text-amber-400 bg-amber-900/40 border-amber-800/50',
+  medium:   'text-sky-400 bg-sky-900/40 border-sky-800/50',
+}
+
+const ASSIGNEE_OPTIONS = ['Unassigned', 'Xuan', 'Thanh', 'Both']
+
+const ASSIGNEE_STYLE = {
+  Unassigned: 'bg-slate-800 text-slate-500 border-slate-600 border-dashed',
+  Xuan:       'bg-sky-900/50 text-sky-300 border-sky-700/50',
+  Thanh:      'bg-rose-900/50 text-rose-300 border-rose-700/50',
+  Both:       'bg-purple-900/50 text-purple-300 border-purple-700/50',
+}
+
+function TaskSection() {
+  const { state, dispatch } = useTrip()
+  const [open, setOpen] = useState(true)
+  const [filterAssignee, setFilterAssignee] = useState('All')
+  const [showDone, setShowDone] = useState(false)
+
+  const tasks = state.tasks ?? []
+  const doneCount = tasks.filter(t => t.done).length
+  const totalCount = tasks.length
+  const unassignedCount = tasks.filter(t => !t.done && t.assignee === 'Unassigned').length
+
+  // Group by category
+  const categories = [...new Set(tasks.map(t => t.category))]
+
+  const filtered = tasks.filter(t => {
+    if (!showDone && t.done) return false
+    if (filterAssignee !== 'All' && t.assignee !== filterAssignee) return false
+    return true
+  })
+
+  const grouped = categories.map(cat => ({
+    cat,
+    items: filtered.filter(t => t.category === cat),
+  })).filter(g => g.items.length > 0)
+
+  function cycleAssignee(e, task) {
+    e.stopPropagation()
+    const next = ASSIGNEE_OPTIONS[(ASSIGNEE_OPTIONS.indexOf(task.assignee) + 1) % ASSIGNEE_OPTIONS.length]
+    dispatch({ type: 'SET_TASK_ASSIGNEE', id: task.id, assignee: next })
+  }
+
+  return (
+    <div className="rounded-xl border border-slate-700 bg-slate-900 overflow-hidden">
+      <button
+        className="w-full flex items-center justify-between px-4 py-3.5 text-left"
+        onClick={() => setOpen(o => !o)}
+      >
+        <div className="flex items-center gap-2.5">
+          <span className="text-base">✅</span>
+          <div className="flex items-center flex-wrap gap-2">
+            <span className="text-sm font-semibold text-slate-100">Pre-Trip Tasks</span>
+            <span className="text-xs text-slate-500">{doneCount}/{totalCount} done</span>
+            {unassignedCount > 0 && (
+              <span className="text-xs bg-slate-700 text-slate-400 border border-slate-600 border-dashed rounded-full px-2 py-0.5">
+                {unassignedCount} unassigned
+              </span>
+            )}
+          </div>
+        </div>
+        <svg
+          className={`w-4 h-4 text-slate-500 transition-transform shrink-0 ${open ? 'rotate-180' : ''}`}
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="border-t border-slate-800 pt-3 pb-4">
+          {/* Progress bar */}
+          <div className="px-4 mb-3">
+            <div className="w-full h-1.5 rounded-full bg-slate-800">
+              <div
+                className="h-1.5 rounded-full bg-emerald-500 transition-all"
+                style={{ width: `${Math.round((doneCount / totalCount) * 100)}%` }}
+              />
+            </div>
+            <p className="text-[10px] text-slate-600 mt-1">{Math.round((doneCount / totalCount) * 100)}% complete</p>
+          </div>
+
+          {/* Filters */}
+          <div className="flex gap-2 px-4 mb-3 overflow-x-auto pb-1 -mx-0 scrollbar-none">
+            {['All', ...ASSIGNEE_OPTIONS].map(a => (
+              <button
+                key={a}
+                onClick={() => setFilterAssignee(a)}
+                className={`shrink-0 text-xs px-3 py-1 rounded-full font-medium transition-colors border ${
+                  filterAssignee === a
+                    ? a === 'All' ? 'bg-slate-600 text-white border-slate-500'
+                      : ASSIGNEE_STYLE[a]
+                    : 'bg-slate-800 text-slate-500 border-slate-700'
+                }`}
+              >
+                {a}
+              </button>
+            ))}
+            <button
+              onClick={() => setShowDone(s => !s)}
+              className={`shrink-0 text-xs px-3 py-1 rounded-full font-medium transition-colors border ml-auto ${
+                showDone ? 'bg-emerald-900/50 text-emerald-400 border-emerald-800/50' : 'bg-slate-800 text-slate-500 border-slate-700'
+              }`}
+            >
+              {showDone ? 'Hide done' : 'Show done'}
+            </button>
+          </div>
+
+          {/* Grouped task list */}
+          <div className="space-y-4 px-4">
+            {grouped.map(({ cat, items }) => (
+              <div key={cat}>
+                <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide mb-2">{cat}</p>
+                <div className="space-y-1.5">
+                  {items.map(task => (
+                    <div
+                      key={task.id}
+                      className={`rounded-xl border px-3 py-2.5 flex gap-3 items-start transition-opacity ${
+                        task.done ? 'opacity-40 border-slate-800 bg-slate-800/30' : 'border-slate-700 bg-slate-800/60'
+                      }`}
+                    >
+                      {/* Checkbox */}
+                      <button
+                        onClick={() => dispatch({ type: 'TOGGLE_TASK', id: task.id })}
+                        className="shrink-0 mt-0.5 w-4 h-4 rounded border flex items-center justify-center transition-colors"
+                        style={{
+                          backgroundColor: task.done ? '#10b981' : 'transparent',
+                          borderColor: task.done ? '#10b981' : '#475569',
+                        }}
+                      >
+                        {task.done && (
+                          <svg viewBox="0 0 12 12" fill="none" className="w-2.5 h-2.5" stroke="white" strokeWidth={2}>
+                            <path d="M2 6l3 3 5-5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </button>
+
+                      {/* Content */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start gap-2">
+                          <p className={`text-xs font-medium flex-1 leading-snug ${task.done ? 'line-through text-slate-500' : 'text-slate-200'}`}>
+                            {task.title}
+                          </p>
+                          {task.priority && !task.done && (
+                            <span className={`shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded border uppercase tracking-wide ${PRIORITY_STYLE[task.priority] ?? ''}`}>
+                              {task.priority}
+                            </span>
+                          )}
+                        </div>
+                        {task.notes && !task.done && (
+                          <p className="text-[10px] text-slate-500 mt-0.5 leading-relaxed">{task.notes}</p>
+                        )}
+                      </div>
+
+                      {/* Assignee pill — tap to cycle */}
+                      <button
+                        onClick={(e) => cycleAssignee(e, task)}
+                        className={`shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full border transition-colors ${ASSIGNEE_STYLE[task.assignee] ?? 'bg-slate-700 text-slate-400 border-slate-600'}`}
+                      >
+                        {task.assignee}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {grouped.length === 0 && (
+              <p className="text-xs text-slate-600 text-center py-4">No tasks match current filter.</p>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 const TAG_META = [
   { tag: 'historical',    label: 'Historical',    icon: '🏛️', color: 'bg-amber-500',   track: 'bg-amber-950/60' },
   { tag: 'culture',       label: 'Culture',       icon: '🎨', color: 'bg-purple-500',  track: 'bg-purple-950/60' },
@@ -447,6 +626,7 @@ export default function JournalPage() {
       </div>
 
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+        <TaskSection />
         <RiskSection />
         <AttributeBalanceSection />
         <PendingPlanSection />

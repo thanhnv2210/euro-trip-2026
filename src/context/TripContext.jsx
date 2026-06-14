@@ -5,9 +5,11 @@ const TripContext = createContext(null)
 
 const SEED_ITINERARY = [
   // — Germany / Benelux leg —
-  { id: 'day-01', date: '2026-07-04', city: 'Frankfurt', notes: 'Depart 12:35 PM SIN (SQ 326). Arrive FRA 19:40. Take train to Cologne (~1h ICE) — staying at brother\'s house.', travel: [], activities: [] },
+  { id: 'day-01', date: '2026-07-04', city: 'Frankfurt', notes: 'Depart 12:35 PM SIN (SQ 326). Arrive FRA 19:40. Take train to Cologne (~1h ICE) — staying at brother\'s house.', sleep: 'Cologne (brother\'s house)', travel: [
+    { mode: 'train', duration: '1h', notes: 'Frankfurt Hbf → Cologne Hbf ICE — confirmed' },
+  ], activities: [] },
 
-  { id: 'day-02', date: '2026-07-05', city: 'Cologne', notes: 'Morning in Cologne with brother. After lunch travel to Bruges, Belgium.', travel: [
+  { id: 'day-02', date: '2026-07-05', city: 'Cologne', notes: 'Morning in Cologne with brother. After lunch travel to Bruges, Belgium.', sleep: 'Bruges, Belgium', travel: [
     { mode: 'train', duration: '2h 30m', notes: 'Cologne Hbf → Brussels Midi, change to Bruges (~30min). Total ~3h.' },
     { mode: 'car', duration: '2h 30m', notes: 'via A4/E40 through Belgium' },
   ], activities: [
@@ -16,7 +18,9 @@ const SEED_ITINERARY = [
     { id: 'cgn-3', time: '', title: '⚽ FIFA World Cup — Germany Match (Cologne Fan Zone)', notes: 'Cologne has a large fan zone near the Rhine. Watch with brother and locals if Germany play on 5 Jul.', tags: ['entertainment', 'local', 'nightlife', 'outdoor'], priority: 3, priorityNote: 'Worth it only if Germany play on 5 Jul — check fixtures first' },
   ]},
 
-  { id: 'day-03', date: '2026-07-06', city: 'Bruges', notes: 'Full day in Bruges, Belgium 🇧🇪', travel: [], activities: [
+  { id: 'day-03', date: '2026-07-06', city: 'Bruges', notes: 'Full day in Bruges, Belgium 🇧🇪', sleep: 'Maastricht, Netherlands', travel: [
+    { mode: 'car', duration: '1h 30m', notes: 'Bruges → Maastricht via E40/A2 — confirmed' },
+  ], activities: [
     { id: 'bru-1', time: '', title: 'Markt Square & Belfry Tower', notes: 'Heart of Bruges — climb the 366-step Belfry for panoramic views over the medieval rooftops.', tags: ['historical', 'culture', 'scenic', 'photography', 'outdoor'], priority: 5, priorityNote: 'The defining Bruges image — climb the tower for rooftop views' },
     { id: 'bru-2', time: '', title: 'Canal Boat Tour', notes: '30-min boat tour through the medieval canals — the most romantic way to see Bruges. Very popular, queues form quickly.', tags: ['scenic', 'romantic', 'entertainment', 'local'], priority: 5, priorityNote: '30 min, very romantic — the single best way to experience Bruges' },
     { id: 'bru-3', time: '', title: 'Bruges Chocolate & Beer Trail', notes: 'Belgium has the world\'s finest chocolate and beer. Visit a chocolate maker workshop and try local Bruges Zot beer at a traditional café.', tags: ['food', 'local', 'entertainment'], priority: 4, priorityNote: 'Belgium\'s best — don\'t leave without trying Bruges Zot beer' },
@@ -24,9 +28,8 @@ const SEED_ITINERARY = [
     { id: 'bru-5', time: '', title: 'Bruges Lace & Souvenir Shopping', notes: 'Bruges is famous for handmade bobbin lace — pick up a piece as a keepsake. Best shops around Markt Square.', tags: ['shopping', 'local', 'culture'], priority: 3, priorityNote: 'Nice keepsake stop — do after boat tour if time allows' },
   ]},
 
-  { id: 'day-04', date: '2026-07-07', city: 'Maastricht', notes: 'Bruges → Maastricht (Netherlands) 🇳🇱. Evening: drive to Düsseldorf for dinner at friend\'s house. Sleep at cousin\'s house in Düsseldorf.', travel: [
-    { mode: 'train', duration: '2h 30m', notes: 'Bruges → Maastricht via Liège (~2h30m, 1 change)' },
-    { mode: 'car', duration: '2h', notes: 'via E40/A2' },
+  { id: 'day-04', date: '2026-07-07', city: 'Maastricht', notes: 'Day in Maastricht (Netherlands) 🇳🇱. Evening: drive to Düsseldorf for dinner at friend\'s house. Sleep at cousin\'s house in Düsseldorf.', sleep: 'Düsseldorf (cousin\'s house)', travel: [
+    { mode: 'car', duration: '1h', notes: 'Maastricht → Düsseldorf for dinner (~1h), then sleep at cousin\'s' },
   ], activities: [
     { id: 'maa-1', time: '', title: 'Vrijthof Square', notes: 'Maastricht\'s grand main square — lively café terraces, St. Servaas Basilica, and the famous carillon bells.', tags: ['historical', 'culture', 'local', 'food'], priority: 4, priorityNote: 'Beautiful main square — great coffee stop and orientation point' },
     { id: 'maa-2', time: '', title: 'Bookstore Dominicanen', notes: 'World\'s most beautiful bookshop inside a 13th-century Dominican church — unmissable even if you don\'t buy anything.', tags: ['culture', 'historical', 'local'], priority: 5, priorityNote: 'One of the world\'s most beautiful bookshops — 20 min, unmissable' },
@@ -34,7 +37,7 @@ const SEED_ITINERARY = [
     { id: 'maa-4', time: '', title: 'Evening: Dinner with Friend — Düsseldorf', notes: 'Drive ~1h to Düsseldorf for dinner at friend\'s house, then return to Cologne (~45min). Great chance to catch up and discuss if they want to join the road trip leg.', tags: ['food', 'local', 'nightlife'], priority: 5, priorityNote: 'Confirmed social visit — the main highlight of this evening' },
   ]},
 
-  { id: 'day-05', date: '2026-07-08', city: 'Leipzig', notes: 'Düsseldorf → Leipzig by train (~3h). Pick up rental car at Leipzig Hbf. Drive to Plauen (~2h). Arrive afternoon — visit uncle.', travel: [
+  { id: 'day-05', date: '2026-07-08', city: 'Leipzig', notes: 'Düsseldorf → Leipzig by train (~3h). Pick up rental car at Leipzig Hbf. Drive to Plauen (~2h). Arrive afternoon — visit uncle.', sleep: 'Plauen, Germany', travel: [
     { mode: 'train', duration: '3h', notes: 'Düsseldorf Hbf → Leipzig Hbf ICE direct. Take earliest train (~6–7am) to maximise uncle visit time.' },
   ], activities: [
     { id: 'lpz-1', time: '', title: 'Leipzig — Nikolaikirche & Market Square', notes: 'Historic church where the 1989 peaceful revolution began. Beautiful old market square with coffee-house culture.', tags: ['historical', 'culture', 'local'], priority: 4, priorityNote: 'Beautiful church + market square — 1–2h stopover before car pickup' },
@@ -46,7 +49,7 @@ const SEED_ITINERARY = [
     { id: 'plau-3', time: '', title: 'Plauen — Syrabach Valley', notes: 'Scenic nature walk through the valley just outside the city centre', tags: ['nature', 'outdoor', 'scenic', 'relaxation'], priority: 2, priorityNote: 'Nice walk, only if afternoon is free after uncle visit' },
   ]},
 
-  { id: 'day-06', date: '2026-07-09', city: 'Prague', notes: 'Drive Plauen → Prague by rental car (~2.5h via D7/E55). Drop car at Prague airport or city centre. Full day in Prague.', travel: [
+  { id: 'day-06', date: '2026-07-09', city: 'Prague', notes: 'Drive Plauen → Prague by rental car (~2.5h via D7/E55). Drop car at Prague airport or city centre. Full day in Prague.', sleep: 'Prague, Czech Republic', travel: [
     { mode: 'car', duration: '2h 30m', notes: 'Plauen → Prague via D7/E55 — return rental car on arrival' },
   ], activities: [
     { id: 'prg-1', time: '', title: 'Prague Castle & St. Vitus Cathedral', notes: 'Largest ancient castle complex in the world — skyline icon, allow 2–3h', tags: ['historical', 'culture', 'scenic', 'photography'], priority: 5, priorityNote: 'Largest ancient castle complex in the world — half-day minimum' },
@@ -60,14 +63,14 @@ const SEED_ITINERARY = [
   ]},
 
   // — Italy leg —
-  { id: 'day-07', date: '2026-07-10', city: 'Rome', notes: 'Fly Prague → Rome. Full travel day ~9h (airport + flight + transfer to city). Arrive afternoon. (PRG→FCO ticket pending!)', travel: [
+  { id: 'day-07', date: '2026-07-10', city: 'Rome', notes: 'Fly Prague → Rome. Full travel day ~9h (airport + flight + transfer to city). Arrive afternoon. (PRG→FCO ticket pending!)', sleep: 'Rome, Italy', travel: [
     { mode: 'flight', duration: '2h flight (~9h door-to-door)', notes: 'PRG → FCO/CIA — ticket pending! Book now. Allow time: airport transfer (30min) + check-in/security (2h) + flight (2h) + FCO to city (45min) = ~9h total.' },
   ], activities: [
     { id: 'rom-arr-1', time: '', title: 'Trevi Fountain + Gelato', notes: 'Coin toss tradition — visit early evening to beat the crowds', tags: ['historical', 'food', 'romantic', 'photography'], priority: 5, priorityNote: 'Perfect first Rome evening — iconic, emotional, visit at dusk' },
     { id: 'rom-arr-2', time: '', title: 'Campo de\' Fiori', notes: 'Lively piazza — great for an evening aperitivo and people-watching', tags: ['food', 'local', 'nightlife'], priority: 4, priorityNote: 'Lively piazza nearby — great aperitivo stop after Trevi' },
   ]},
 
-  { id: 'day-08', date: '2026-07-11', city: 'Rome', notes: 'Rome Day 2 — Ancient Rome.', travel: [], activities: [
+  { id: 'day-08', date: '2026-07-11', city: 'Rome', notes: 'Rome Day 2 — Ancient Rome.', sleep: 'Rome, Italy', travel: [], activities: [
     { id: 'rom-2-1', time: '', title: 'Colosseum + Palatine Hill + Roman Forum', notes: 'Book combined skip-the-line ticket in advance — allow a full morning', tags: ['historical', 'culture', 'outdoor', 'photography'], priority: 5, priorityNote: 'Top Rome priority — book skip-the-line tickets well in advance' },
     { id: 'rom-2-2', time: '', title: 'Pantheon', notes: 'Best-preserved Roman temple — free entry, go early to avoid queues', tags: ['historical', 'culture', 'photography'], priority: 5, priorityNote: '2,000 years old, flawlessly preserved, free entry — unmissable' },
     { id: 'rom-2-3', time: '', title: 'Piazza Navona', notes: 'Baroque square with Bernini\'s Fountain of the Four Rivers — great for lunch nearby', tags: ['culture', 'food', 'local', 'scenic'], priority: 4, priorityNote: 'Baroque masterpiece — pairs well with the Pantheon as a lunch stop' },
@@ -77,7 +80,7 @@ const SEED_ITINERARY = [
     { id: 'rom-2-6', time: '', title: 'Via Condotti & Via del Corso — Shopping', notes: 'Via Condotti for luxury brands (Gucci, Valentino); Via del Corso for mid-range and high street. Both safe, wide pedestrian streets in central Rome.', tags: ['shopping', 'local'], priority: 2, priorityNote: 'Only if you want to shop — save time for ancient sights otherwise' },
   ]},
 
-  { id: 'day-09', date: '2026-07-12', city: 'Rome', notes: 'Rome Day 3 — Vatican + leisure.', travel: [], activities: [
+  { id: 'day-09', date: '2026-07-12', city: 'Rome', notes: 'Rome Day 3 — Vatican + leisure.', sleep: 'Rome, Italy', travel: [], activities: [
     { id: 'rom-3-1', time: '', title: 'Vatican Museums + Sistine Chapel', notes: 'Michelangelo\'s ceiling — book well in advance, allow 3–4h minimum', tags: ['historical', 'culture'], priority: 5, priorityNote: 'Sistine Chapel is a once-in-a-lifetime sight — book weeks ahead' },
     { id: 'rom-3-2', time: '', title: 'St. Peter\'s Basilica + Dome', notes: 'Free entry to basilica — climb the dome for sweeping Rome views', tags: ['historical', 'culture', 'scenic', 'outdoor'], priority: 5, priorityNote: 'Free entry, iconic dome — book dome climb separately, unmissable' },
     { id: 'rom-3-3', time: '', title: 'Spanish Steps', notes: 'Iconic 18th-century staircase — popular at sunset, great for gelato nearby', tags: ['scenic', 'photography', 'romantic', 'relaxation'], priority: 3, priorityNote: 'Pretty but crowded — 20-min visit max, not a priority' },
@@ -85,7 +88,7 @@ const SEED_ITINERARY = [
     { id: 'rom-3-5', time: '', title: 'Michelin Star Dinner', notes: 'Book a restaurant in advance — Rome has several starred options at various price points', tags: ['food', 'romantic'], priority: 4, priorityNote: 'Special Rome memory — book in advance, worth the splurge' },
   ]},
 
-  { id: 'day-10', date: '2026-07-13', city: 'Tuscany', notes: 'Train Rome → Florence/Tuscany morning. Arrive afternoon.', travel: [
+  { id: 'day-10', date: '2026-07-13', city: 'Tuscany', notes: 'Train Rome → Florence/Tuscany morning. Arrive afternoon.', sleep: 'Florence / Tuscany, Italy', travel: [
     { mode: 'train', duration: '1h 30m', notes: 'Trenitalia Frecciarossa to Florence SMN — fastest' },
     { mode: 'car', duration: '3h', notes: 'via A1 — more flexible for countryside stops' },
   ], activities: [
@@ -94,7 +97,7 @@ const SEED_ITINERARY = [
     { id: 'tus-arr-3', time: '', title: 'San Lorenzo Leather Market + Mercato Centrale', notes: 'Florence\'s famous open-air leather market — bags, belts, wallets at good prices. Tip: bargain firmly, start at 50% of asking price. Mercato Centrale upstairs has excellent food stalls.', tags: ['shopping', 'food', 'local'], priority: 3, priorityNote: 'Good for leather goods and street food — skip if not shopping' },
   ]},
 
-  { id: 'day-11', date: '2026-07-14', city: 'Tuscany', notes: 'Tuscany full day.', travel: [], activities: [
+  { id: 'day-11', date: '2026-07-14', city: 'Tuscany', notes: 'Tuscany full day.', sleep: 'Florence / Tuscany, Italy', travel: [], activities: [
     { id: 'tus-2-1', time: '', title: 'Florence — Uffizi Gallery', notes: 'Botticelli\'s Birth of Venus — book tickets weeks ahead, allow 3h', tags: ['culture', 'historical'], priority: 5, priorityNote: 'One of the world\'s great museums — Botticelli\'s Birth of Venus awaits' },
     { id: 'tus-2-2', time: '', title: 'Florence — Duomo & Brunelleschi\'s Dome', notes: 'Climb the dome for panoramic views over terracotta rooftops — book timed entry', tags: ['historical', 'culture', 'scenic', 'outdoor'], priority: 5, priorityNote: 'Florence\'s defining landmark — book timed dome entry in advance' },
     { id: 'tus-2-3', time: '', title: 'Siena — Piazza del Campo', notes: 'One of Europe\'s greatest medieval squares, ~1.5h from Florence by train', tags: ['historical', 'culture', 'photography'], priority: 4, priorityNote: 'Spectacular medieval city — great day trip if you can spare the time' },
@@ -104,7 +107,7 @@ const SEED_ITINERARY = [
     { id: 'tus-2-7', time: '', title: 'Terme di Saturnia (Hot Springs)', notes: '~2h drive from Florence — natural thermal waterfalls flowing into cascading pools. Free and open 24h. Unique wellness experience unlike anything in Singapore.', tags: ['wellness', 'nature', 'outdoor', 'relaxation', 'romantic'], priority: 3, priorityNote: 'Unique free hot springs — only worth it with a car and spare half-day' },
   ]},
 
-  { id: 'day-12', date: '2026-07-15', city: 'Venice', notes: 'Train Tuscany → Venice morning. Arrive afternoon.', travel: [
+  { id: 'day-12', date: '2026-07-15', city: 'Venice', notes: 'Train Tuscany → Venice morning. Arrive afternoon.', sleep: 'Venice, Italy', travel: [
     { mode: 'train', duration: '2h', notes: 'Trenitalia direct Florence → Venezia Santa Lucia' },
     { mode: 'car', duration: '3h', notes: 'via A13 — park at Piazzale Roma on arrival' },
   ], activities: [
@@ -112,7 +115,7 @@ const SEED_ITINERARY = [
     { id: 'ven-arr-2', time: '', title: 'Rialto Bridge & Market', notes: 'Iconic bridge over the Grand Canal — evening stroll and dinner nearby', tags: ['historical', 'food', 'local', 'photography'], priority: 4, priorityNote: 'Iconic Grand Canal crossing — lovely for an evening stroll' },
   ]},
 
-  { id: 'day-13', date: '2026-07-16', city: 'Venice', notes: 'Venice full day.', travel: [], activities: [
+  { id: 'day-13', date: '2026-07-16', city: 'Venice', notes: 'Venice full day.', sleep: 'Venice, Italy', travel: [], activities: [
     { id: 'ven-2-1', time: '', title: 'Grand Canal Gondola Ride', notes: 'Classic Venice experience — negotiate price before boarding, best at dusk', tags: ['romantic', 'scenic', 'local', 'entertainment'], priority: 5, priorityNote: 'THE Venice experience — negotiate price, go at dusk for magic' },
     { id: 'ven-2-2', time: '', title: 'Doge\'s Palace', notes: 'Gothic palace and former seat of Venetian power — book ahead, allow 2h', tags: ['historical', 'culture'], priority: 4, priorityNote: 'Stunning Gothic palace — book ahead, pairs well with St. Mark\'s' },
     { id: 'ven-2-3', time: '', title: 'Murano Island — Glass Blowing', notes: 'Short vaporetto ride — watch artisan glass-blowing demonstrations', tags: ['culture', 'local', 'shopping', 'entertainment'], priority: 4, priorityNote: 'Genuinely impressive craft — glass here is much cheaper than tourist shops' },
@@ -124,12 +127,12 @@ const SEED_ITINERARY = [
   ]},
 
   // — Return Germany leg —
-  { id: 'day-14', date: '2026-07-17', city: 'Würzburg', notes: 'Fly Venice → Frankfurt morning. Train Frankfurt → Würzburg. Arrive afternoon. (VCE→FRA ticket pending!)', travel: [
+  { id: 'day-14', date: '2026-07-17', city: 'Würzburg', notes: 'Fly Venice → Frankfurt morning. Train Frankfurt → Würzburg. Arrive afternoon. (VCE→FRA ticket pending!)', sleep: 'Würzburg, Germany', travel: [
     { mode: 'flight', duration: '2h', notes: 'VCE → FRA — ticket pending! + ~1h train to Würzburg (~3h total)' },
     { mode: 'car', duration: '6h', notes: 'via Brenner Pass + A9 — long but flexible' },
   ], activities: [] },
 
-  { id: 'day-15', date: '2026-07-18', city: 'Würzburg', notes: "Friend's wedding — evening event.", travel: [], activities: [
+  { id: 'day-15', date: '2026-07-18', city: 'Würzburg', notes: "Friend's wedding — evening event.", sleep: 'Würzburg, Germany', travel: [], activities: [
     { id: 'wue-1', time: '', title: 'Würzburg Residence', notes: 'UNESCO palace with Tiepolo\'s largest ceiling fresco in the world — allow 2h', tags: ['historical', 'culture', 'photography'], priority: 5, priorityNote: 'UNESCO palace, world\'s largest ceiling fresco — allow 2h' },
     { id: 'wue-2', time: '', title: 'Marienberg Fortress', notes: 'Hilltop fortress with sweeping views over the city and Main River vineyards', tags: ['historical', 'scenic', 'outdoor', 'photography'], priority: 4, priorityNote: 'Great views over city and vineyards — good morning activity' },
     { id: 'wue-3', time: '', title: 'Old Main Bridge (Alte Mainbrücke)', notes: 'Baroque statues + vineyard views — best spot for a glass of Franconian wine', tags: ['scenic', 'food', 'local', 'relaxation', 'romantic'], priority: 5, priorityNote: 'Most romantic spot in Würzburg — wine + vineyard views, unmissable' },
@@ -139,7 +142,7 @@ const SEED_ITINERARY = [
     { id: 'wue-7', time: '', title: 'Wedding Evening — Night Out with Friends', notes: 'After the wedding reception, Würzburg has a small but safe bar scene around the old town and Main riverside. Very safe small German city — no concerns navigating after dark with wedding guests.', tags: ['nightlife', 'entertainment', 'local'], priority: 5, priorityNote: 'You\'re here for the wedding — enjoy the whole evening with friends' },
   ]},
 
-  { id: 'day-16', date: '2026-07-19', city: 'Frankfurt', notes: 'Train Würzburg → Frankfurt. Depart 12:15 PM FRA (SQ 025). Take earliest train. ⚽ World Cup Final is today — FRA airport screens will be showing it!', travel: [
+  { id: 'day-16', date: '2026-07-19', city: 'Frankfurt', notes: 'Train Würzburg → Frankfurt. Depart 12:15 PM FRA (SQ 025). Take earliest train. ⚽ World Cup Final is today — FRA airport screens will be showing it!', sleep: 'Flight home ✈️', travel: [
     { mode: 'train', duration: '1h', notes: 'ICE direct — take the earliest train, aim FRA by 09:30' },
     { mode: 'car', duration: '1h 30m', notes: 'via A3' },
   ], activities: [] },
@@ -162,6 +165,32 @@ const SEED_EVENTS = [
   { id: 'evt-12', title: 'Hotel — Florence / Tuscany', type: 'hotel', date: '2026-07-13', time: '14:00', location: 'Florence or Tuscany countryside, Italy', bookingRef: '', url: '', notes: 'Check-in: 13 Jul · Check-out: 15 Jul · 2 nights. City hotel in Florence vs agriturismo in countryside — both within budget range.', status: 'pending' },
   { id: 'evt-13', title: 'Hotel — Venice', type: 'hotel', date: '2026-07-15', time: '14:00', location: 'Venice, Italy', bookingRef: '', url: '', notes: 'Check-in: 15 Jul · Check-out: 17 Jul · 2 nights. Tip: hotels on the island are expensive — Mestre (mainland, 10min train) is significantly cheaper.', status: 'pending' },
   { id: 'evt-14', title: 'Hotel — Würzburg', type: 'hotel', date: '2026-07-17', time: '14:00', location: 'Würzburg, Germany', bookingRef: '', url: '', notes: 'Check-in: 17 Jul · Check-out: 19 Jul · 2 nights. Book near the old town — walkable to wedding venue.', status: 'pending' },
+]
+
+const SEED_TASKS = [
+  // — Flights —
+  { id: 'task-01', category: 'Flights', title: 'Book PRG → FCO flight (10 Jul)', assignee: 'Unassigned', done: false, priority: 'critical', notes: 'Morning departure. Ryanair/Wizz Air. Drop rental car at PRG airport.' },
+  { id: 'task-02', category: 'Flights', title: 'Book VCE → FRA flight (17 Jul)', assignee: 'Unassigned', done: false, priority: 'critical', notes: 'Must be morning departure — need to reach Würzburg by afternoon.' },
+  { id: 'task-03', category: 'Flights', title: 'Select seats on SQ 326 (SIN→FRA)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'singaporeair.com · ref ESHMZK · 12h+ flight, select together.' },
+  // — Car & Insurance —
+  { id: 'task-04', category: 'Transport', title: 'Book rental car at Leipzig Hbf (8–9 Jul)', assignee: 'Unassigned', done: false, priority: 'critical', notes: 'Pick up Leipzig, drop at Prague airport. One-way. Book early.' },
+  { id: 'task-05', category: 'Transport', title: 'Buy Czech motorway vignette', assignee: 'Unassigned', done: false, priority: 'medium', notes: 'edalnice.cz · ~€15 for 10 days. Or check if rental includes it.' },
+  { id: 'task-06', category: 'Insurance', title: 'Purchase travel insurance', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Cover: cancellation, medical, missed connections. Buy before Italy flights.' },
+  // — Hotels —
+  { id: 'task-07', category: 'Hotels', title: 'Book hotel — Bruges (1 night, 5–6 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Central — walkable to Markt Square and canal boat piers.' },
+  { id: 'task-08', category: 'Hotels', title: 'Book hotel — Maastricht (1 night, 6–7 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Near Vrijthof Square or Wyck neighbourhood.' },
+  { id: 'task-09', category: 'Hotels', title: 'Book hotel — Prague (1 night, 9–10 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Old Town or Vinohrady area. Near airport drop-off route.' },
+  { id: 'task-10', category: 'Hotels', title: 'Book hotel — Rome (3 nights, 10–13 Jul)', assignee: 'Unassigned', done: false, priority: 'critical', notes: 'Near Trastevere or Campo de\' Fiori. Book now — July fills fast.' },
+  { id: 'task-11', category: 'Hotels', title: 'Book hotel — Tuscany (2 nights, 13–15 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Florence city hotel OR agriturismo in countryside. Both viable.' },
+  { id: 'task-12', category: 'Hotels', title: 'Book hotel — Venice (2 nights, 15–17 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Mestre (mainland) much cheaper. Santa Lucia island for atmosphere.' },
+  { id: 'task-13', category: 'Hotels', title: 'Book hotel — Würzburg (2 nights, 17–19 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Near old town — walkable to wedding venue.' },
+  // — Confirmations —
+  { id: 'task-14', category: 'Confirmations', title: 'Confirm uncle visit — Plauen (8 Jul afternoon)', assignee: 'Unassigned', done: false, priority: 'critical', notes: 'Pestalozzistraße 50. Unblocks rental car + hotel bookings.' },
+  // — Tickets —
+  { id: 'task-15', category: 'Tickets', title: 'Book Vatican Museums + Sistine Chapel (12 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'museivaticani.va · Sells out weeks ahead in July. Allow 3–4h.' },
+  { id: 'task-16', category: 'Tickets', title: 'Book Colosseum + Forum + Palatine Hill (11 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'coopculture.it · Combined timed-entry ticket.' },
+  { id: 'task-17', category: 'Tickets', title: 'Book Uffizi Gallery (14 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'uffizi.it · 2–3h queue if walk-up in July.' },
+  { id: 'task-18', category: 'Tickets', title: 'Book Czech Beer Spa — Prague (9 Jul)', assignee: 'Unassigned', done: false, priority: 'medium', notes: 'Beerland or Bernard Spa. Private tub for two, 90-min slot. Book ahead.' },
 ]
 
 function reducer(state, action) {
@@ -193,6 +222,10 @@ function reducer(state, action) {
       return { ...state, journal: state.journal.map(p => p.id === action.post.id ? action.post : p) }
     case 'DELETE_POST':
       return { ...state, journal: state.journal.filter(p => p.id !== action.id) }
+    case 'TOGGLE_TASK':
+      return { ...state, tasks: state.tasks.map(t => t.id === action.id ? { ...t, done: !t.done } : t) }
+    case 'SET_TASK_ASSIGNEE':
+      return { ...state, tasks: state.tasks.map(t => t.id === action.id ? { ...t, assignee: action.assignee } : t) }
     default: return state
   }
 }
@@ -201,6 +234,7 @@ const INITIAL_STATE = {
   itinerary: SEED_ITINERARY,
   events: SEED_EVENTS,
   journal: [],
+  tasks: SEED_TASKS,
 }
 
 export function TripProvider({ children }) {

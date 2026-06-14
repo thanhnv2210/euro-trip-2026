@@ -86,6 +86,13 @@ export default function DayCard({ day, index }) {
           {day.notes && (
             <p className="text-sm text-slate-300 leading-relaxed">{day.notes}</p>
           )}
+          {day.sleep && (
+            <div className="flex items-center gap-1.5 text-xs text-slate-500">
+              <span>🛏</span>
+              <span className="font-medium text-slate-400">Sleep:</span>
+              <span>{day.sleep}</span>
+            </div>
+          )}
           {day.activities.length === 0 ? (
             <p className="text-xs text-slate-600 italic">No activities yet</p>
           ) : (
