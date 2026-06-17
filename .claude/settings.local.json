@@ -24,7 +24,17 @@
       "WebFetch(domain:*)",
       "Bash(printf 'y\\\\n')",
       "Bash(printf ' \\\\n')",
-      "Bash(node_modules/.bin/vite --version 2>&1)"
+      "Bash(node_modules/.bin/vite --version 2>&1)",
+      "WebFetch(domain:www.google.com)",
+      "WebFetch(domain:router.project-osrm.org)",
+      "WebFetch(domain:www.skyscanner.com)",
+      "WebSearch",
+      "WebFetch(domain:www.flightconnections.com)",
+      "WebFetch(domain:www.lufthansa.com)",
+      "WebFetch(domain:www.kiwi.com)",
+      "WebFetch(domain:www.flightsfrom.com)",
+      "WebFetch(domain:www.trip.com)",
+      "WebFetch(domain:www.directflights.com)"
     ]
   }
 }

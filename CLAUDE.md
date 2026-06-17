@@ -106,7 +106,7 @@ Pre-populate the app with this data on the final polish day.
 
 ## Workspace Registration (do after scaffold)
 
-- [ ] Add port `3018` row to `AI_WS/architecture-practice/public/docs/workspace/workspace-app-registry.md`
+- [x] Add port `3018` row to `AI_WS/architecture-practice/public/docs/workspace/workspace-app-registry.md`
 - [ ] Add entry to `AI_WS/portfolio/data/workspace.ts`
 - [ ] Add zshrc functions: `euro-trip-start`, `euro-trip-stop`, `euro-trip-logs`, `euro-trip-status`
 - [ ] Register overview doc in `AI_WS/architecture-practice/public/docs/index.json`
