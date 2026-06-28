@@ -163,12 +163,13 @@ src/
 
 ## 9. Risks & Mitigations
 
-| Risk | Mitigation |
-|------|-----------|
-| Run out of time before departure | M1 scope is independently shippable — stop at any point after Events + Itinerary |
-| localStorage data lost (browser clear) | Add a manual JSON export/import as backup on Day 7 |
-| Offline doesn't work on iOS Safari | Test PWA install on iPhone before departure; fallback is just using the browser tab |
-| Over-engineering during build | Stick to the component list in Section 5 — no additions without reviewing this proposal first |
+| Risk | Likelihood | Mitigation |
+|------|-----------|-----------|
+| **Vienna → Rome flight (13 Jul) not booked** — still `pending` as of 2026-06-23, 11 days before departure | **HIGH** | Purchase immediately; prices rise closer to date and seats may fill |
+| Run out of time before departure | Medium | M1 scope is independently shippable — stop at any point after Events + Itinerary |
+| localStorage data lost (browser clear) | Low | Add a manual JSON export/import as backup on Day 7 |
+| Offline doesn't work on iOS Safari | Low | Test PWA install on iPhone before departure; fallback is just using the browser tab |
+| Over-engineering during build | Low | Stick to the component list in Section 5 — no additions without reviewing this proposal first |
 
 ---
 
@@ -221,18 +222,18 @@ This section maps the real trip into the app's data model. Use this to pre-popul
 |----|------|------|-------|
 | day-01 | 2026-07-04 | Singapore → Frankfurt | Depart 12:00 PM SIN. Arrive Frankfurt evening. |
 | day-02 | 2026-07-05 | Frankfurt | 1 day exploring Frankfurt. |
-| day-03 | 2026-07-06 | Düsseldorf | Travel from Frankfurt. Visit friend. |
-| day-04 | 2026-07-07 | Plauen | Travel Düsseldorf → Plauen (~5–6h). |
-| day-05 | 2026-07-08 | Plauen | Visit uncle at Pestalozzistraße 50, 08523 Plauen. |
-| day-06 | 2026-07-09 | Prague | Travel Plauen → Prague (~1.5h). 1–2 days. |
+| day-03 | 2026-07-06 | Köln | Travel from Frankfurt to Köln. (Düsseldorf visit skipped.) |
+| day-04 | 2026-07-07 | Köln → Nuremberg → Plauen | Train Köln → Nuremberg 12:45–15:58 (ticket bought). Then train Nuremberg → Plauen. |
+| day-05 | 2026-07-08 | Plauen | Travel around Plauen whole day. Visit uncle at Pestalozzistraße 50, 08523 Plauen. |
+| day-06 | 2026-07-09 | Prague | Train Plauen → Dresden, then train Dresden → Prague. |
 | day-07 | 2026-07-10 | Prague | Day 2 in Prague (if 2-day stay). |
 | day-08 | 2026-07-11 | Vienna | Travel Prague → Vienna (~4h by train). |
 | day-09 | 2026-07-12 | Vienna | Day 2 in Vienna. |
 | day-10 | 2026-07-13 | Vienna → Rome | Fly Vienna → Rome. (ticket pending — see Events) |
 | day-11 | 2026-07-14 | Rome | Day 2 in Rome. |
 | day-12 | 2026-07-15 | Tuscany | Travel Rome → Tuscany (~3h). |
-| day-13 | 2026-07-16 | Tuscany | Day 2 in Tuscany. |
-| day-14 | 2026-07-17 | Würzburg | Travel Tuscany → Würzburg (TBD — long day, plan needed). Arrive early. |
+| day-13 | 2026-07-16 | Venice | Travel Tuscany → Venice. |
+| day-14 | 2026-07-17 | Venice → Würzburg | Fly Venice → Frankfurt (Condor DE4234, 16:45–18:05, booking 16665224). Train Frankfurt Airport → Würzburg. Check-in at hotel. |
 | day-15 | 2026-07-18 | Würzburg | Friend's wedding — evening event. |
 | day-16 | 2026-07-19 | Frankfurt → Singapore | Travel Würzburg → Frankfurt (~1.5h). Depart 12:00 PM FRA. |
 
@@ -245,12 +246,16 @@ This section maps the real trip into the app's data model. Use this to pre-popul
 | evt-03 | Flight FRA → SIN | 2026-07-19 12:00 | Booked | (add ref) |
 | evt-04 | Friend's wedding — Würzburg | 2026-07-18 (evening) | Confirmed | — |
 | evt-05 | Uncle visit — Plauen | 2026-07-08 | Confirmed | Pestalozzistraße 50, 08523 Plauen |
+| evt-06 | Flight VCE → FRA (Venice → Frankfurt) | 2026-07-17 16:45 | Booked | 16665224 — Condor DE4234, arr 18:05. Contact: Thanh +6584338479 |
+| evt-07 | Hotel Würzburg — homie hotel zur stadt mainz | 2026-07-17 | Booked | 6637574880 — Semmelstr. 39, 97070 Würzburg. Check-out 19 Jul. €267.61 paid. |
 
 ### Open items (before departure)
 
 - [ ] Book Vienna → Rome flight (13 Jul) — review itinerary timing first
-- [ ] Plan Tuscany → Würzburg travel on 17 Jul (train via Florence → Munich → Würzburg ~9–10h, or fly)
-- [ ] Book all hotels along the route
+- [x] Plan Tuscany → Würzburg travel on 17 Jul — resolved: fly Venice → Frankfurt (DE4234 16:45), train Frankfurt Airport → Würzburg
+- [x] Book Frankfurt Airport → Würzburg train — done
+- [x] Book hotel Würzburg 17–19 Jul — booked (booking 6637574880, €267.61 paid)
+- [ ] Book all remaining hotels along the route (note: no hotel needed 8 Jul — staying with uncle in Plauen)
 - [ ] Add booking refs to evt-01 and evt-03 once confirmed
 
 ---

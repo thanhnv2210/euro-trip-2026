@@ -28,29 +28,21 @@ const SEED_ITINERARY = [
     { id: 'bru-5', time: '', title: 'Bruges Lace & Souvenir Shopping', notes: 'Bruges is famous for handmade bobbin lace — pick up a piece as a keepsake. Best shops around Markt Square.', tags: ['shopping', 'local', 'culture'], priority: 3, priorityNote: 'Nice keepsake stop — do after boat tour if time allows' },
   ]},
 
-  { id: 'day-04', date: '2026-07-07', city: 'Maastricht', notes: 'Day in Maastricht (Netherlands) 🇳🇱. Evening: drive to Düsseldorf for dinner at friend\'s house. Sleep at cousin\'s house in Düsseldorf.', sleep: 'Düsseldorf (cousin\'s house)', travel: [
-    { mode: 'car', duration: '1h', notes: 'Maastricht → Düsseldorf for dinner (~1h), then sleep at cousin\'s' },
-  ], activities: [
-    { id: 'maa-1', time: '', title: 'Vrijthof Square', notes: 'Maastricht\'s grand main square — lively café terraces, St. Servaas Basilica, and the famous carillon bells.', tags: ['historical', 'culture', 'local', 'food'], priority: 4, priorityNote: 'Beautiful main square — great coffee stop and orientation point' },
-    { id: 'maa-2', time: '', title: 'Bookstore Dominicanen', notes: 'World\'s most beautiful bookshop inside a 13th-century Dominican church — unmissable even if you don\'t buy anything.', tags: ['culture', 'historical', 'local'], priority: 5, priorityNote: 'One of the world\'s most beautiful bookshops — 20 min, unmissable' },
-    { id: 'maa-3', time: '', title: 'Maas River Walk & Wyck neighbourhood', notes: 'Charming boutique district east of the river — great for lunch, independent shops and galleries.', tags: ['outdoor', 'food', 'shopping', 'local', 'relaxation'], priority: 3, priorityNote: 'Pleasant but not essential — cut if pressed for time' },
-    { id: 'maa-4', time: '', title: 'Evening: Dinner with Friend — Düsseldorf', notes: 'Drive ~1h to Düsseldorf for dinner at friend\'s house, then return to Cologne (~45min). Great chance to catch up and discuss if they want to join the road trip leg.', tags: ['food', 'local', 'nightlife'], priority: 5, priorityNote: 'Confirmed social visit — the main highlight of this evening' },
-  ]},
+  { id: 'day-04', date: '2026-07-07', city: 'Maastricht → Plauen', notes: 'Morning: travel Maastricht → Cologne. Train Cologne → Nuremberg 12:45–15:58 (ticket bought). Then train Nuremberg → Plauen. (Düsseldorf visit skipped.)', sleep: 'Plauen, Germany', travel: [
+    { mode: 'train', duration: '~1h', notes: 'Maastricht → Cologne Hbf (morning)' },
+    { mode: 'train', duration: '3h 13m', notes: 'Cologne Hbf → Nuremberg Hbf · 12:45–15:58 (ticket bought)' },
+    { mode: 'train', duration: '~1h 30m', notes: 'Nuremberg → Plauen — check DB timetable' },
+  ], activities: []},
 
-  { id: 'day-05', date: '2026-07-08', city: 'Leipzig', notes: 'Düsseldorf → Leipzig by train (~3h). Pick up rental car at Leipzig Hbf. Drive to Plauen (~2h). Arrive afternoon — visit uncle.', sleep: 'Plauen, Germany', travel: [
-    { mode: 'train', duration: '3h', notes: 'Düsseldorf Hbf → Leipzig Hbf ICE direct. Take earliest train (~6–7am) to maximise uncle visit time.' },
-  ], activities: [
-    { id: 'lpz-1', time: '', title: 'Leipzig — Nikolaikirche & Market Square', notes: 'Historic church where the 1989 peaceful revolution began. Beautiful old market square with coffee-house culture.', tags: ['historical', 'culture', 'local'], priority: 4, priorityNote: 'Beautiful church + market square — 1–2h stopover before car pickup' },
-    { id: 'lpz-2', time: '', title: 'Leipzig — Mädler Passage & Coffee House', notes: 'Stunning art nouveau arcade with Auerbachs Keller — one of Germany\'s oldest restaurants, mentioned in Faust.', tags: ['historical', 'food', 'local', 'culture'], priority: 3, priorityNote: 'Nice 20-min detour if time allows after Nikolaikirche' },
-    { id: 'erf-1', time: '', title: '🚆 Erfurt — Cathedral Square & Krämerbrücke (not on route)', notes: 'Erfurt alternative — Cathedral Hill with twin Gothic spires + Krämerbrücke. Not applicable since Leipzig was chosen.', tags: ['historical', 'culture', 'scenic', 'photography'], priority: 5, priorityNote: 'Erfurt option — not applicable, Leipzig chosen', selected: false },
-    { id: 'erf-2', time: '', title: '🚆 Erfurt — Old Town Walk (not on route)', notes: 'Erfurt alternative — one of Germany\'s best-preserved medieval old towns. Not applicable since Leipzig was chosen.', tags: ['historical', 'outdoor', 'local', 'scenic'], priority: 4, priorityNote: 'Erfurt option — not applicable, Leipzig chosen', selected: false },
-    { id: 'plau-1', time: '', title: 'Plauen — Visit Uncle at Pestalozzistraße 50', notes: 'Arrive afternoon after picking up rental car. Main purpose of Plauen stop.', tags: ['local'], priority: 5, priorityNote: 'Main reason for the Plauen stop — family priority' },
+  { id: 'day-05', date: '2026-07-08', city: 'Plauen', notes: 'Travel around Plauen whole day. Visit uncle at Pestalozzistraße 50, 08523 Plauen.', sleep: 'Plauen, Germany', travel: [], activities: [
+    { id: 'plau-1', time: '', title: 'Plauen — Visit Uncle at Pestalozzistraße 50', notes: 'Main purpose of Plauen stop. Full day to visit and explore together.', tags: ['local'], priority: 5, priorityNote: 'Main reason for the Plauen stop — family priority' },
     { id: 'plau-2', time: '', title: 'Plauen — Altmarkt & Rathaus', notes: 'Historic market square with the impressive Neo-Renaissance town hall', tags: ['historical', 'culture', 'photography'], priority: 2, priorityNote: '30-min stroll if time allows after uncle visit' },
     { id: 'plau-3', time: '', title: 'Plauen — Syrabach Valley', notes: 'Scenic nature walk through the valley just outside the city centre', tags: ['nature', 'outdoor', 'scenic', 'relaxation'], priority: 2, priorityNote: 'Nice walk, only if afternoon is free after uncle visit' },
   ]},
 
-  { id: 'day-06', date: '2026-07-09', city: 'Prague', notes: 'Drive Plauen → Prague by rental car (~2.5h via D7/E55). Drop car at Prague airport or city centre. Full day in Prague.', sleep: 'Prague, Czech Republic', travel: [
-    { mode: 'car', duration: '2h 30m', notes: 'Plauen → Prague via D7/E55 — return rental car on arrival' },
+  { id: 'day-06', date: '2026-07-09', city: 'Prague', notes: 'Train Plauen → Dresden, then Dresden → Prague. Full day in Prague.', sleep: 'Prague, Czech Republic', travel: [
+    { mode: 'train', duration: '~1h', notes: 'Plauen → Dresden Hbf — check DB timetable' },
+    { mode: 'train', duration: '~2h', notes: 'Dresden Hbf → Prague hlavní nádraží — EC/IC service' },
   ], activities: [
     { id: 'prg-1', time: '', title: 'Prague Castle & St. Vitus Cathedral', notes: 'Largest ancient castle complex in the world — skyline icon, allow 2–3h', tags: ['historical', 'culture', 'scenic', 'photography'], priority: 5, priorityNote: 'Largest ancient castle complex in the world — half-day minimum' },
     { id: 'prg-2', time: '', title: 'Charles Bridge', notes: 'Gothic stone bridge lined with 30 baroque statues, best at sunrise or dusk', tags: ['historical', 'scenic', 'photography', 'romantic'], priority: 5, priorityNote: 'Iconic and magical at dusk — the single most memorable Prague image' },
@@ -127,9 +119,9 @@ const SEED_ITINERARY = [
   ]},
 
   // — Return Germany leg —
-  { id: 'day-14', date: '2026-07-17', city: 'Würzburg', notes: 'Fly Venice → Frankfurt morning. Train Frankfurt → Würzburg. Arrive afternoon. (VCE→FRA ticket pending!)', sleep: 'Würzburg, Germany', travel: [
-    { mode: 'flight', duration: '2h', notes: 'VCE → FRA — ticket pending! + ~1h train to Würzburg (~3h total)' },
-    { mode: 'car', duration: '6h', notes: 'via Brenner Pass + A9 — long but flexible' },
+  { id: 'day-14', date: '2026-07-17', city: 'Würzburg', notes: 'Morning & afternoon free in Venice. Fly Venice → Frankfurt: Condor DE4234, depart 16:45, arrive 18:05. Train Frankfurt Airport → Würzburg (booked). Check-in hotel.', sleep: 'Würzburg, Germany', travel: [
+    { mode: 'flight', duration: '1h 20m', notes: 'Condor DE4234 · VCE 16:45 → FRA 18:05 · Booking 16665224 · Contact Thanh +6584338479' },
+    { mode: 'train', duration: '~1h', notes: 'Frankfurt Airport → Würzburg Hbf — booked' },
   ], activities: [] },
 
   { id: 'day-15', date: '2026-07-18', city: 'Würzburg', notes: "Friend's wedding — evening event.", sleep: 'Würzburg, Germany', travel: [], activities: [
@@ -151,30 +143,29 @@ const SEED_ITINERARY = [
 const SEED_EVENTS = [
   { id: 'evt-01', title: 'Flight SIN → FRA (SQ 326)', type: 'flight', date: '2026-07-04', time: '12:35', location: 'Changi Airport T3', bookingRef: 'ESHMZK', url: '', notes: 'SQ 326 · A380-800 · Economy Lite · Arrives FRA 19:40 T1 · Seats: not selected · Baggage: 25kg each', status: 'booked' },
   { id: 'evt-02', title: 'Flight PRG → FCO (Prague → Rome)', type: 'flight', date: '2026-07-10', time: '', location: 'Prague Václav Havel Airport (PRG)', bookingRef: '', url: '', notes: 'Not yet purchased! Morning flight — arrive Rome afternoon. Replaces original VIE→FCO route.', status: 'pending' },
-  { id: 'evt-07', title: 'Rental Car — Leipzig → Plauen → Prague', type: 'transport', date: '2026-07-08', time: '', location: 'Leipzig Hauptbahnhof', bookingRef: '', url: '', notes: 'Pick up at Leipzig Hbf. Drive to Plauen (~2h), then Prague (~2h30m). Drop off at Prague airport or city centre on 9 Jul.', status: 'pending' },
+  { id: 'evt-07', title: 'Train Cologne → Nuremberg', type: 'transport', date: '2026-07-07', time: '12:45', location: 'Cologne Hbf', bookingRef: '', url: '', notes: 'Cologne Hbf 12:45 → Nuremberg Hbf 15:58 · Ticket bought. Then onward train Nuremberg → Plauen.', status: 'booked' },
   { id: 'evt-03', title: 'Flight FRA → SIN (SQ 025)', type: 'flight', date: '2026-07-19', time: '12:15', location: 'Frankfurt Airport T1', bookingRef: 'ESHMZK', url: '', notes: 'SQ 025 · Boeing 777-300ER · Economy Flexi · Arrives SIN 06:50 20 Jul · Seats: 54G (Xuan), 54E (Thanh) · Baggage: 30kg each', status: 'booked' },
-  { id: 'evt-06', title: 'Flight VCE → FRA (Venice → Frankfurt)', type: 'flight', date: '2026-07-17', time: '', location: 'Venice Marco Polo Airport', bookingRef: '', url: '', notes: 'Not yet purchased! Take morning flight — need to reach Würzburg by afternoon.', status: 'pending' },
+  { id: 'evt-06', title: 'Flight VCE → FRA (Condor DE4234)', type: 'flight', date: '2026-07-17', time: '16:45', location: 'Venice Marco Polo Airport (VCE)', bookingRef: '16665224', url: '', notes: 'Condor DE4234 · Depart VCE 16:45 → Arrive FRA 18:05 · 1h 20min · No time difference · Booking: 16665224 · Contact: Thanh nguyenvanthanh2210@gmail.com, +6584338479', status: 'booked' },
   { id: 'evt-04', title: "Friend's Wedding — Würzburg", type: 'other', date: '2026-07-18', time: '18:00', location: 'Würzburg', bookingRef: '', url: '', notes: '', status: 'confirmed' },
   { id: 'evt-05', title: 'Uncle Visit — Plauen', type: 'other', date: '2026-07-08', time: '', location: 'Pestalozzistraße 50, 08523 Plauen', bookingRef: '', url: '', notes: '', status: 'confirmed' },
   // — Hotel placeholders —
   { id: 'evt-08', title: 'Hotel — Bruges', type: 'hotel', date: '2026-07-05', time: '15:00', location: 'Bruges, Belgium', bookingRef: '', url: '', notes: 'Check-in: 5 Jul · Check-out: 6 Jul · 1 night', status: 'pending' },
   { id: 'evt-08b', title: 'Hotel — Maastricht', type: 'hotel', date: '2026-07-06', time: '14:00', location: 'Maastricht, Netherlands', bookingRef: '', url: '', notes: 'Check-in: 6 Jul · Check-out: 7 Jul · 1 night', status: 'pending' },
-  { id: 'evt-09', title: 'Hotel — Plauen', type: 'hotel', date: '2026-07-08', time: '', location: 'Plauen, Germany', bookingRef: '', url: '', notes: 'Check-in: 8 Jul · Check-out: 9 Jul · 1 night. TBC — may stay with uncle at Pestalozzistraße 50.', status: 'pending' },
+  { id: 'evt-09', title: 'Stay with Uncle — Plauen', type: 'other', date: '2026-07-08', time: '', location: 'Pestalozzistraße 50, 08523 Plauen', bookingRef: '', url: '', notes: 'Staying with uncle. No hotel needed.', status: 'confirmed' },
   { id: 'evt-10', title: 'Hotel — Prague', type: 'hotel', date: '2026-07-09', time: '14:00', location: 'Prague, Czech Republic', bookingRef: '', url: '', notes: 'Check-in: 9 Jul · Check-out: 10 Jul · 1 night', status: 'pending' },
   { id: 'evt-11', title: 'Hotel — Rome', type: 'hotel', date: '2026-07-10', time: '14:00', location: 'Rome, Italy', bookingRef: '', url: '', notes: 'Check-in: 10 Jul · Check-out: 13 Jul · 3 nights', status: 'pending' },
   { id: 'evt-12', title: 'Hotel — Florence / Tuscany', type: 'hotel', date: '2026-07-13', time: '14:00', location: 'Florence or Tuscany countryside, Italy', bookingRef: '', url: '', notes: 'Check-in: 13 Jul · Check-out: 15 Jul · 2 nights. City hotel in Florence vs agriturismo in countryside — both within budget range.', status: 'pending' },
   { id: 'evt-13', title: 'Hotel — Venice', type: 'hotel', date: '2026-07-15', time: '14:00', location: 'Venice, Italy', bookingRef: '', url: '', notes: 'Check-in: 15 Jul · Check-out: 17 Jul · 2 nights. Tip: hotels on the island are expensive — Mestre (mainland, 10min train) is significantly cheaper.', status: 'pending' },
-  { id: 'evt-14', title: 'Hotel — Würzburg', type: 'hotel', date: '2026-07-17', time: '14:00', location: 'Würzburg, Germany', bookingRef: '', url: '', notes: 'Check-in: 17 Jul · Check-out: 19 Jul · 2 nights. Book near the old town — walkable to wedding venue.', status: 'pending' },
+  { id: 'evt-14', title: 'Hotel — Würzburg (homie hotel zur stadt mainz)', type: 'hotel', date: '2026-07-17', time: '14:00', location: 'Semmelstr. 39, 97070 Würzburg', bookingRef: '6637574880', url: '', notes: 'homie hotel zur stadt mainz · Semmelstr. 39, 97070 Würzburg · Check-in: 17 Jul · Check-out: 19 Jul · 2 nights · €267.61 paid on 25 Jun 2026 · Booked by Xuan Nguyen', status: 'booked' },
 ]
 
 const SEED_TASKS = [
   // — Flights —
   { id: 'task-01', category: 'Flights', title: 'Book PRG → FCO flight (10 Jul)', assignee: 'Unassigned', done: false, priority: 'critical', notes: 'Morning departure. Ryanair/Wizz Air. Drop rental car at PRG airport.' },
-  { id: 'task-02', category: 'Flights', title: 'Book VCE → FRA flight (17 Jul)', assignee: 'Unassigned', done: false, priority: 'critical', notes: 'Must be morning departure — need to reach Würzburg by afternoon.' },
+  { id: 'task-02', category: 'Flights', title: 'Book VCE → FRA flight (17 Jul)', assignee: 'Thanh', done: true, priority: 'critical', notes: 'Condor DE4234 · VCE 16:45 → FRA 18:05 · Booking 16665224 · €paid' },
   { id: 'task-03', category: 'Flights', title: 'Select seats on SQ 326 (SIN→FRA)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'singaporeair.com · ref ESHMZK · 12h+ flight, select together.' },
   // — Car & Insurance —
-  { id: 'task-04', category: 'Transport', title: 'Book rental car at Leipzig Hbf (8–9 Jul)', assignee: 'Unassigned', done: false, priority: 'critical', notes: 'Pick up Leipzig, drop at Prague airport. One-way. Book early.' },
-  { id: 'task-05', category: 'Transport', title: 'Buy Czech motorway vignette', assignee: 'Unassigned', done: false, priority: 'medium', notes: 'edalnice.cz · ~€15 for 10 days. Or check if rental includes it.' },
+  { id: 'task-04', category: 'Transport', title: 'Book train Frankfurt Airport → Würzburg (17 Jul)', assignee: 'Unassigned', done: true, priority: 'high', notes: 'Booked. After landing FRA 18:05 from Condor DE4234.' },
   { id: 'task-06', category: 'Insurance', title: 'Purchase travel insurance', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Cover: cancellation, medical, missed connections. Buy before Italy flights.' },
   // — Hotels —
   { id: 'task-07', category: 'Hotels', title: 'Book hotel — Bruges (1 night, 5–6 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Central — walkable to Markt Square and canal boat piers.' },
@@ -183,9 +174,9 @@ const SEED_TASKS = [
   { id: 'task-10', category: 'Hotels', title: 'Book hotel — Rome (3 nights, 10–13 Jul)', assignee: 'Unassigned', done: false, priority: 'critical', notes: 'Near Trastevere or Campo de\' Fiori. Book now — July fills fast.' },
   { id: 'task-11', category: 'Hotels', title: 'Book hotel — Tuscany (2 nights, 13–15 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Florence city hotel OR agriturismo in countryside. Both viable.' },
   { id: 'task-12', category: 'Hotels', title: 'Book hotel — Venice (2 nights, 15–17 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Mestre (mainland) much cheaper. Santa Lucia island for atmosphere.' },
-  { id: 'task-13', category: 'Hotels', title: 'Book hotel — Würzburg (2 nights, 17–19 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'Near old town — walkable to wedding venue.' },
+  { id: 'task-13', category: 'Hotels', title: 'Book hotel — Würzburg (2 nights, 17–19 Jul)', assignee: 'Xuan', done: true, priority: 'high', notes: 'homie hotel zur stadt mainz · Semmelstr. 39 · Booking 6637574880 · €267.61 paid' },
   // — Confirmations —
-  { id: 'task-14', category: 'Confirmations', title: 'Confirm uncle visit — Plauen (8 Jul afternoon)', assignee: 'Unassigned', done: false, priority: 'critical', notes: 'Pestalozzistraße 50. Unblocks rental car + hotel bookings.' },
+  { id: 'task-14', category: 'Confirmations', title: 'Confirm uncle visit — Plauen (8 Jul)', assignee: 'Unassigned', done: true, priority: 'critical', notes: 'Pestalozzistraße 50. Staying overnight with uncle — no hotel needed.' },
   // — Tickets —
   { id: 'task-15', category: 'Tickets', title: 'Book Vatican Museums + Sistine Chapel (12 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'museivaticani.va · Sells out weeks ahead in July. Allow 3–4h.' },
   { id: 'task-16', category: 'Tickets', title: 'Book Colosseum + Forum + Palatine Hill (11 Jul)', assignee: 'Unassigned', done: false, priority: 'high', notes: 'coopculture.it · Combined timed-entry ticket.' },

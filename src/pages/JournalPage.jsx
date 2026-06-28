@@ -7,11 +7,9 @@ const RISKS = [
     label: 'Critical',
     dot: 'bg-red-500',
     items: [
-      { title: 'Prague → Rome flight not purchased (10 Jul)', detail: 'evt-02 still pending, no booking ref or time. Morning flight required so you arrive Rome afternoon. This is the gateway to all 7 Italy days. Buy as soon as uncle confirms Plauen visit — July PRG→FCO routes fill fast.' },
-      { title: 'Venice → Frankfurt flight not purchased (17 Jul)', detail: 'evt-06 still pending. Must be a morning departure to reach Würzburg by afternoon the day before the wedding. If delayed, you risk missing the wedding. Buy alongside the Prague→Rome flight.' },
-      { title: 'No accommodation booked in any city', detail: 'Placeholder hotel events added (evt-08 to evt-14) but none booked. Priority: Rome 3 nights (10–13 Jul) → Venice 2 nights (15–17 Jul) → Tuscany 2 nights (13–15 Jul) → Prague 1 night (9 Jul) → Bruges 1 night (5–6 Jul) → Maastricht 1 night (6–7 Jul) → Würzburg 2 nights (17–19 Jul). Cologne covered by brother, Düsseldorf by cousin.' },
+      { title: 'Prague → Rome flight not purchased (10 Jul)', detail: 'evt-02 still pending, no booking ref or time. Morning flight required so you arrive Rome afternoon. This is the gateway to all 7 Italy days. July PRG→FCO routes fill fast — buy now.' },
+      { title: 'No accommodation booked in most cities', detail: 'Würzburg booked (2 nights, booking 6637574880). Plauen covered — staying with uncle (no hotel needed). Cologne covered by brother. Remaining priority: Rome 3 nights (10–13 Jul) → Venice 2 nights (15–17 Jul) → Tuscany 2 nights (13–15 Jul) → Prague 1 night (9 Jul) → Bruges 1 night (5–6 Jul) → Maastricht 1 night (6–7 Jul).' },
       { title: 'SIN→FRA seats not selected (SQ 326)', detail: '12h+ flight with seats unassigned — risk of being separated. Select on singaporeair.com using booking ref ESHMZK.' },
-      { title: 'Rental car not booked (8–9 Jul)', detail: 'evt-07 pending. Pick up at Leipzig Hbf, drive to Plauen (~1h15m) then Prague (~2.5h), return at Prague airport. Book now — July one-way rentals sell out fast.' },
     ],
   },
   {
@@ -19,8 +17,8 @@ const RISKS = [
     label: 'High',
     dot: 'bg-orange-500',
     items: [
-      { title: 'D05 is a full transit day — take the earliest train (8 Jul)', detail: 'Düsseldorf → Leipzig (3h train) → collect rental car → Plauen (1h15m drive). Total ~5–6h travel. If train is delayed or car pickup runs long, uncle visit gets cut short. Take the 06:00–07:00 train from Düsseldorf Hbf.' },
-      { title: 'Venice → Frankfurt flight + train to Würzburg same day (17 Jul)', detail: 'Morning VCE→FRA flight + ~1h ICE to Würzburg = arrive afternoon, day before the wedding. Any flight delay = arriving exhausted or late. Book the earliest possible VCE departure; have a backup train route via Munich.' },
+      { title: 'D04 is a full transit day — confirm Nuremberg → Plauen train (7 Jul)', detail: 'Maastricht → Cologne (morning), then Cologne → Nuremberg 12:45–15:58 (ticket bought), then train Nuremberg → Plauen. Check DB timetable for the Nuremberg → Plauen leg before departure. Total travel ~6h. Arrive Plauen evening.' },
+      { title: 'Venice → Frankfurt afternoon flight + train to Würzburg same day (17 Jul)', detail: 'Condor DE4234 departs VCE 16:45, arrives FRA 18:05. Then ~1h ICE to Würzburg — arrive hotel ~20:00, day before the wedding. Any flight delay = late check-in. Notify hotel of late arrival. Have FRA → Würzburg train booked (done).' },
       { title: 'Würzburg → Frankfurt tight on departure day (19 Jul)', detail: '1h ICE train, SQ 025 departs 12:15 — DB punctuality ~70%. Aim to be at FRA by 09:30. Take the earliest train (~06:30). Do not rely on a single connection.' },
       { title: 'Vatican Museums + Sistine Chapel — timed entry only (12 Jul)', detail: 'No walk-ins. Vatican sells out weeks ahead in July. Book now at museivaticani.va — allow 3–4h.' },
       { title: 'Uffizi Gallery tickets (14 Jul)', detail: 'Walk-up queues 2–3h in July. Book timed entry at uffizi.it well in advance.' },
@@ -31,12 +29,11 @@ const RISKS = [
     label: 'Medium',
     dot: 'bg-yellow-500',
     items: [
-      { title: 'Prague is a single full day (9 Jul) — flight next morning', detail: 'Drive from Plauen, arrive mid-morning. Flight to Rome next morning means early start on 10 Jul. Prioritise Prague Castle + Charles Bridge at dusk. Czech Beer Spa needs advance booking — book before the trip.' },
-      { title: 'No travel insurance', detail: 'Two-person trip, three unbooked flights, shared ref ESHMZK. Purchase insurance covering cancellation, medical, and missed connections before buying the Italy flights.' },
+      { title: 'Prague is a single full day (9 Jul) — flight next morning', detail: 'Arrive by train via Dresden (Plauen → Dresden → Prague). Flight to Rome next morning (PRG→FCO pending). Prioritise Prague Castle + Charles Bridge at dusk. Czech Beer Spa needs advance booking — book before the trip.' },
+      { title: 'No travel insurance', detail: 'Two-person trip, two unbooked flights, shared ref ESHMZK. Purchase insurance covering cancellation, medical, and missed connections before buying the Italy flights.' },
       { title: 'Extreme July heat in Rome and Tuscany (10–14 Jul)', detail: 'Rome 32–36°C, Florence similar. Schedule Colosseum, Vatican, and outdoor sites before 10am or after 17:00. Carry water at all times.' },
       { title: 'Colosseum combined ticket — book in advance (11 Jul)', detail: 'Colosseum + Palatine Hill + Roman Forum sells out in peak July. Book at coopculture.it — timed entry required.' },
       { title: 'Bruges canal boats and Belfry get very crowded in July', detail: 'Belfry tower tickets sell out by mid-morning. Canal boat queues peak 11am–14:00. Arrive at the Belfry when it opens (09:30) and do the boat tour early or late afternoon.' },
-      { title: 'Uncle visit in Plauen still awaiting confirmation (8 Jul)', detail: 'The entire D05 routing (Leipzig car pickup → Plauen overnight) depends on uncle confirming. If declined, consider driving directly to Prague (~4h from Leipzig) and gaining extra time there.' },
     ],
   },
   {
@@ -46,7 +43,6 @@ const RISKS = [
     items: [
       { title: 'Prague uses CZK, not Euro', detail: 'One day in Prague — get ~2,000 CZK (~€80) at a Prague ATM on arrival. Avoid airport exchange desks. Card payments widely accepted in tourist areas.' },
       { title: 'Venice is car-free — plan luggage carefully', detail: 'No taxis to the hotel door. Accommodation must be walkable or reachable by vaporetto from Santa Lucia station. Check hotel location before booking. Consider Mestre (mainland) for a significantly cheaper option.' },
-      { title: 'Driving in Czech Republic (9 Jul)', detail: 'Czech Republic requires a highway vignette for motorways — buy online at edalnice.cz or at the border (~€15 for 10 days). Check if rental car company includes it.' },
       { title: 'Belgium and Netherlands use Euro — no currency change in Bruges or Maastricht', detail: 'Smooth transition. Card payments widely accepted in both cities.' },
       { title: 'World Cup knockout schedule not yet released', detail: 'Specific match dates for Germany TBD. Check fifa.com in late June. Fan zones confirmed in Cologne and Rome — both on your route.' },
     ],
@@ -145,40 +141,32 @@ function RiskSection() {
 }
 
 const PENDING_PLAN = {
-  summary: 'One confirmation outstanding. Leipzig stopover confirmed. Düsseldorf dinner confirmed (sleeping at cousin\'s). Uncle Plauen still awaiting reply — this unblocks flight and hotel bookings.',
-  lastUpdated: '2026-06-14',
+  summary: 'Germany leg fully confirmed. Düsseldorf visit skipped — travelling via Cologne → Nuremberg (12:45–15:58, ticket bought) → Plauen on 7 Jul. Uncle confirmed in Plauen, staying overnight on 8 Jul (no hotel needed). Departing by train via Dresden to Prague on 9 Jul.',
+  lastUpdated: '2026-06-28',
   contacts: [
     {
-      name: 'Stopover City — Leipzig',
+      name: 'Route — Cologne → Nuremberg → Plauen (7 Jul)',
       status: 'confirmed',
-      question: 'Which train stopover city between Düsseldorf and Plauen?',
-      ifYes: 'Leipzig confirmed. 3h ICE from Düsseldorf Hbf. Pick up rental car at Leipzig Hbf. Drive to Plauen (~1h15m). Sights: Nikolaikirche, Mädler Passage.',
-      ifNo: 'N/A — Leipzig decided.',
-      worldCup: 'Leipzig has a fan zone if Germany play on 8 Jul.',
+      question: 'New route: Maastricht → Cologne morning, then train Cologne → Nuremberg 12:45–15:58, then Nuremberg → Plauen?',
+      ifYes: 'Cologne → Nuremberg ticket bought. Check DB timetable for Nuremberg → Plauen leg. Arrive Plauen evening of 7 Jul.',
+      ifNo: 'N/A — route confirmed.',
+      worldCup: null,
     },
     {
-      name: 'Friend/Cousin — Düsseldorf (evening 7 Jul)',
+      name: 'Uncle — Plauen (8–9 Jul)',
       status: 'confirmed',
-      question: 'Dinner and stay at cousin\'s house in Düsseldorf on 7 Jul?',
-      ifYes: 'Dinner at friend\'s house. Sleep at cousin\'s in Düsseldorf. Depart early next morning for Leipzig by train.',
-      ifNo: 'N/A — confirmed, sleeping at cousin\'s.',
-      worldCup: 'If Germany play on 7 Jul, watch the match together in Düsseldorf.',
-    },
-    {
-      name: 'Uncle — Plauen (8 Jul afternoon)',
-      status: 'pending',
-      question: 'Are you available to receive us on the afternoon of 8 Jul at Pestalozzistraße 50?',
-      ifYes: 'Arrive Plauen afternoon after train + rental car pickup from Leipzig. Visit uncle, stay overnight. Depart to Prague by car morning of 9 Jul. Book PRG→FCO flight + hotels once confirmed.',
-      ifNo: 'Skip Plauen overnight. Drive directly from Leipzig toward Prague (~4h). Gain an extra half-day in Prague. Adjust hotel bookings accordingly.',
+      question: 'Staying overnight with uncle at Pestalozzistraße 50 on 8 Jul?',
+      ifYes: 'Arrive Plauen evening of 7 Jul. Full day with uncle on 8 Jul. No hotel needed — staying at uncle\'s. Depart morning of 9 Jul by train to Dresden, then Prague.',
+      ifNo: 'N/A — confirmed, staying with uncle.',
       worldCup: 'If Germany play on 8 Jul, watch with uncle at a local bar in Plauen.',
     },
   ],
   flexibleDays: [
     { date: '2026-07-05', city: 'Cologne → Bruges', note: 'Fixed — morning with brother, after lunch travel to Bruges.' },
     { date: '2026-07-06', city: 'Bruges → Maastricht', note: 'Fixed — morning Bruges, afternoon travel to Maastricht.' },
-    { date: '2026-07-07', city: 'Maastricht → Düsseldorf', note: 'Fixed — day in Maastricht. Evening dinner + sleep at cousin\'s in Düsseldorf.' },
-    { date: '2026-07-08', city: 'Düsseldorf → Leipzig → Plauen', note: 'Departure confirmed from Düsseldorf. Leipzig stopover confirmed. Plauen pending uncle.' },
-    { date: '2026-07-09', city: 'Plauen → Prague', note: 'Fixed — drive Plauen → Prague by rental car. Full day Prague.' },
+    { date: '2026-07-07', city: 'Maastricht → Plauen', note: 'Fixed — Maastricht → Cologne (morning), train Cologne → Nuremberg 12:45–15:58 (booked), then Nuremberg → Plauen. Düsseldorf skipped.' },
+    { date: '2026-07-08', city: 'Plauen', note: 'Fixed — full day with uncle at Pestalozzistraße 50. Staying overnight. No hotel needed.' },
+    { date: '2026-07-09', city: 'Plauen → Prague', note: 'Fixed — train Plauen → Dresden, then Dresden → Prague. Full day Prague.' },
     { date: '2026-07-10', city: 'Prague → Rome', note: 'Fixed endpoint — morning flight PRG → FCO (ticket pending — buy now!).' },
   ],
 }

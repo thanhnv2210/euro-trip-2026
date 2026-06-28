@@ -34,7 +34,8 @@
       "WebFetch(domain:www.kiwi.com)",
       "WebFetch(domain:www.flightsfrom.com)",
       "WebFetch(domain:www.trip.com)",
-      "WebFetch(domain:www.directflights.com)"
+      "WebFetch(domain:www.directflights.com)",
+      "Bash(ls /Users/XuanNguyen/AI_WS/euro-trip-2026/*.md)"
     ]
   }
 }
