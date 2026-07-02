@@ -7,9 +7,9 @@ const RISKS = [
     label: 'Critical',
     dot: 'bg-red-500',
     items: [
-      { title: 'Prague → Rome flight not purchased (10 Jul)', detail: 'evt-02 still pending, no booking ref or time. Morning flight required so you arrive Rome afternoon. This is the gateway to all 7 Italy days. July PRG→FCO routes fill fast — buy now.' },
-      { title: 'No accommodation booked in most cities', detail: 'Würzburg booked (2 nights, booking 6637574880). Plauen covered — staying with uncle (no hotel needed). Cologne covered by brother. Remaining priority: Rome 3 nights (10–13 Jul) → Venice 2 nights (15–17 Jul) → Tuscany 2 nights (13–15 Jul) → Prague 1 night (9 Jul) → Bruges 1 night (5–6 Jul) → Maastricht 1 night (6–7 Jul).' },
-      { title: 'SIN→FRA seats not selected (SQ 326)', detail: '12h+ flight with seats unassigned — risk of being separated. Select on singaporeair.com using booking ref ESHMZK.' },
+      { title: 'SIN→FRA seats not selected (SQ 326, 4 Jul)', detail: '12h+ flight — seats unassigned, risk of being separated. Select on singaporeair.com using booking ref ESHMZK before departure today.' },
+      { title: 'No accommodation booked in 5 cities', detail: 'Booked: Brussels ✓ (6316624979), Würzburg ✓ (6637574880), Plauen covered by uncle. Remaining: Nice 2 nights (9–11 Jul) · Tuscany 2 nights (11–13 Jul) · Rome 2 nights (13–15 Jul) · Venice 2 nights (15–17 Jul) · Maastricht 1 night (6–7 Jul). Rome is highest priority — July fills extremely fast.' },
+      { title: 'No travel insurance purchased', detail: 'Two-person trip with multiple flights, none insured. Purchase before departure covering cancellation, medical, and missed connections.' },
     ],
   },
   {
@@ -17,11 +17,11 @@ const RISKS = [
     label: 'High',
     dot: 'bg-orange-500',
     items: [
-      { title: 'D04 is a full transit day — confirm Nuremberg → Plauen train (7 Jul)', detail: 'Maastricht → Cologne (morning), then Cologne → Nuremberg 12:45–15:58 (ticket bought), then train Nuremberg → Plauen. Check DB timetable for the Nuremberg → Plauen leg before departure. Total travel ~6h. Arrive Plauen evening.' },
-      { title: 'Venice → Frankfurt afternoon flight + train to Würzburg same day (17 Jul)', detail: 'Condor DE4234 departs VCE 16:45, arrives FRA 18:05. Then ~1h ICE to Würzburg — arrive hotel ~20:00, day before the wedding. Any flight delay = late check-in. Notify hotel of late arrival. Have FRA → Würzburg train booked (done).' },
-      { title: 'Würzburg → Frankfurt tight on departure day (19 Jul)', detail: '1h ICE train, SQ 025 departs 12:15 — DB punctuality ~70%. Aim to be at FRA by 09:30. Take the earliest train (~06:30). Do not rely on a single connection.' },
-      { title: 'Vatican Museums + Sistine Chapel — timed entry only (12 Jul)', detail: 'No walk-ins. Vatican sells out weeks ahead in July. Book now at museivaticani.va — allow 3–4h.' },
-      { title: 'Uffizi Gallery tickets (14 Jul)', detail: 'Walk-up queues 2–3h in July. Book timed entry at uffizi.it well in advance.' },
+      { title: 'Book morning train Plauen → Prague (9 Jul)', detail: 'Need to reach Prague T2 by ~17:00 for Smartwings QS1030 check-in (19:30). Route: Plauen → Dresden Hbf → Prague hlavní nádraží (~3h). Check DB timetable — depart Plauen by 13:00 at the latest.' },
+      { title: 'D04 is a full transit day — confirm Nuremberg → Plauen train (7 Jul)', detail: 'Maastricht → Cologne (morning) → Nuremberg 12:45–15:58 (ticket bought) → Plauen. Check DB timetable for the Nuremberg → Plauen leg. Total travel ~6h. Arrive Plauen evening.' },
+      { title: 'Venice → Frankfurt afternoon flight + train to Würzburg same day (17 Jul)', detail: 'Condor DE4234 departs VCE 16:45, arrives FRA 18:05. Then ~1h ICE to Würzburg — arrive hotel ~20:00. Any flight delay = late check-in. Notify hotel of potential late arrival.' },
+      { title: 'Würzburg → Frankfurt tight on departure day (19 Jul)', detail: '1h ICE train, SQ 025 departs 12:15 — aim to be at FRA by 09:30. Take the earliest train (~06:30). DB punctuality ~70% — do not rely on a single connection.' },
+      { title: 'Vatican + Colosseum + Uffizi — all need advance booking', detail: 'Vatican (14 Jul): no walk-ins, sells out weeks ahead — museivaticani.va. Colosseum + Forum (14 Jul): timed entry at coopculture.it. Uffizi (12 Jul): 2–3h walk-up queue in July — uffizi.it.' },
     ],
   },
   {
@@ -29,11 +29,10 @@ const RISKS = [
     label: 'Medium',
     dot: 'bg-yellow-500',
     items: [
-      { title: 'Prague is a single full day (9 Jul) — flight next morning', detail: 'Arrive by train via Dresden (Plauen → Dresden → Prague). Flight to Rome next morning (PRG→FCO pending). Prioritise Prague Castle + Charles Bridge at dusk. Czech Beer Spa needs advance booking — book before the trip.' },
-      { title: 'No travel insurance', detail: 'Two-person trip, two unbooked flights, shared ref ESHMZK. Purchase insurance covering cancellation, medical, and missed connections before buying the Italy flights.' },
-      { title: 'Extreme July heat in Rome and Tuscany (10–14 Jul)', detail: 'Rome 32–36°C, Florence similar. Schedule Colosseum, Vatican, and outdoor sites before 10am or after 17:00. Carry water at all times.' },
-      { title: 'Colosseum combined ticket — book in advance (11 Jul)', detail: 'Colosseum + Palatine Hill + Roman Forum sells out in peak July. Book at coopculture.it — timed entry required.' },
-      { title: 'Bruges canal boats and Belfry get very crowded in July', detail: 'Belfry tower tickets sell out by mid-morning. Canal boat queues peak 11am–14:00. Arrive at the Belfry when it opens (09:30) and do the boat tour early or late afternoon.' },
+      { title: 'Nice hotel — confirm with friend (9–11 Jul)', detail: 'Staying with friend or need to book? 2 nights in Nice. If booking: central near Promenade des Anglais or Vieux-Nice. Confirm before 9 Jul.' },
+      { title: 'Extreme July heat in Rome and Tuscany (13–15 Jul)', detail: 'Rome 32–36°C, Florence similar. Schedule Colosseum, Vatican, and outdoor sites before 10:00 or after 17:00. Carry water at all times.' },
+      { title: 'Bruges canal boats and Belfry get very crowded in July (6 Jul)', detail: 'Belfry tower tickets sell out by mid-morning. Canal boat queues peak 11:00–14:00. Arrive when it opens (09:30) and do the boat tour early or late afternoon.' },
+      { title: 'Prague transit — CZK not Euro (9 Jul)', detail: 'Arriving by train, departing by flight — transit day only. Get ~1,000 CZK (~€40) at a Prague ATM if stopping for food/transport. Card payments widely accepted.' },
     ],
   },
   {
@@ -41,10 +40,9 @@ const RISKS = [
     label: 'Low',
     dot: 'bg-emerald-500',
     items: [
-      { title: 'Prague uses CZK, not Euro', detail: 'One day in Prague — get ~2,000 CZK (~€80) at a Prague ATM on arrival. Avoid airport exchange desks. Card payments widely accepted in tourist areas.' },
-      { title: 'Venice is car-free — plan luggage carefully', detail: 'No taxis to the hotel door. Accommodation must be walkable or reachable by vaporetto from Santa Lucia station. Check hotel location before booking. Consider Mestre (mainland) for a significantly cheaper option.' },
-      { title: 'Belgium and Netherlands use Euro — no currency change in Bruges or Maastricht', detail: 'Smooth transition. Card payments widely accepted in both cities.' },
-      { title: 'World Cup knockout schedule not yet released', detail: 'Specific match dates for Germany TBD. Check fifa.com in late June. Fan zones confirmed in Cologne and Rome — both on your route.' },
+      { title: 'Venice is car-free — plan luggage carefully', detail: 'No taxis to the hotel door. Accommodation must be walkable or reachable by vaporetto from Santa Lucia station. Consider Mestre (mainland) — significantly cheaper.' },
+      { title: 'Nice Côte d\'Azur airport is 8km from city centre', detail: 'Arriving 21:20 on QS1030 — take the airport tram (Tramway T2) to city centre, ~30min. Friend may be able to pick up.' },
+      { title: 'World Cup knockout schedule', detail: 'Quarter-finals fall ~13–14 Jul — you\'ll be in Rome. Check fifa.com for Germany match times. Rome viewing parties at Piazza del Popolo and Trastevere.' },
     ],
   },
 ]
@@ -141,33 +139,45 @@ function RiskSection() {
 }
 
 const PENDING_PLAN = {
-  summary: 'Germany leg fully confirmed. Düsseldorf visit skipped — travelling via Cologne → Nuremberg (12:45–15:58, ticket bought) → Plauen on 7 Jul. Uncle confirmed in Plauen, staying overnight on 8 Jul (no hotel needed). Departing by train via Dresden to Prague on 9 Jul.',
-  lastUpdated: '2026-06-28',
+  summary: 'Route finalised (updated 3 Jul). Brussels hotel booked (6316624979). Prague → Nice flight booked — Smartwings QS1030, 19:30–21:20. Italy leg: Nice → Tuscany (11 Jul) → Rome (13 Jul) → Venice (15 Jul) → fly Frankfurt (17 Jul). Germany leg fully confirmed.',
+  lastUpdated: '2026-07-03',
   contacts: [
     {
-      name: 'Route — Cologne → Nuremberg → Plauen (7 Jul)',
+      name: 'Brussels hotel — B&B HOTEL Brussels Centre Louise',
       status: 'confirmed',
-      question: 'New route: Maastricht → Cologne morning, then train Cologne → Nuremberg 12:45–15:58, then Nuremberg → Plauen?',
-      ifYes: 'Cologne → Nuremberg ticket bought. Check DB timetable for Nuremberg → Plauen leg. Arrive Plauen evening of 7 Jul.',
-      ifNo: 'N/A — route confirmed.',
+      question: 'Hotel booked for night of 5 Jul?',
+      ifYes: 'Booking 6316624979 · Rue Paul Spaak 15 · Check-in 5 Jul, check-out 6 Jul · €156.91 paid.',
+      ifNo: 'N/A — booked.',
+      worldCup: null,
+    },
+    {
+      name: 'Prague → Nice flight — Smartwings QS1030 (9 Jul)',
+      status: 'confirmed',
+      question: 'Flight booked for 9 Jul evening?',
+      ifYes: 'QS1030 · PRG T2 19:30 → NCE T2 21:20 · 1h 50m · Prepaid baggage confirmed (PDBG). Need morning train Plauen → Prague.',
+      ifNo: 'N/A — booked.',
       worldCup: null,
     },
     {
       name: 'Uncle — Plauen (8–9 Jul)',
       status: 'confirmed',
       question: 'Staying overnight with uncle at Pestalozzistraße 50 on 8 Jul?',
-      ifYes: 'Arrive Plauen evening of 7 Jul. Full day with uncle on 8 Jul. No hotel needed — staying at uncle\'s. Depart morning of 9 Jul by train to Dresden, then Prague.',
-      ifNo: 'N/A — confirmed, staying with uncle.',
+      ifYes: 'Arrive Plauen evening of 7 Jul. Full day with uncle on 8 Jul. No hotel needed. Depart morning of 9 Jul by train to Dresden → Prague.',
+      ifNo: 'N/A — confirmed.',
       worldCup: 'If Germany play on 8 Jul, watch with uncle at a local bar in Plauen.',
     },
   ],
   flexibleDays: [
-    { date: '2026-07-05', city: 'Cologne → Bruges', note: 'Fixed — morning with brother, after lunch travel to Bruges.' },
-    { date: '2026-07-06', city: 'Bruges → Maastricht', note: 'Fixed — morning Bruges, afternoon travel to Maastricht.' },
-    { date: '2026-07-07', city: 'Maastricht → Plauen', note: 'Fixed — Maastricht → Cologne (morning), train Cologne → Nuremberg 12:45–15:58 (booked), then Nuremberg → Plauen. Düsseldorf skipped.' },
+    { date: '2026-07-05', city: 'Cologne → Brussels', note: 'Fixed — morning with brother in Cologne, after lunch travel to Brussels. Hotel: B&B HOTEL Brussels Centre Louise (booked).' },
+    { date: '2026-07-06', city: 'Bruges → Maastricht', note: 'Fixed — morning Bruges (day trip from Brussels), afternoon travel to Maastricht. Hotel: pending.' },
+    { date: '2026-07-07', city: 'Maastricht → Plauen', note: 'Fixed — Maastricht → Cologne (morning), train Cologne → Nuremberg 12:45–15:58 (booked), then Nuremberg → Plauen.' },
     { date: '2026-07-08', city: 'Plauen', note: 'Fixed — full day with uncle at Pestalozzistraße 50. Staying overnight. No hotel needed.' },
-    { date: '2026-07-09', city: 'Plauen → Prague', note: 'Fixed — train Plauen → Dresden, then Dresden → Prague. Full day Prague.' },
-    { date: '2026-07-10', city: 'Prague → Rome', note: 'Fixed endpoint — morning flight PRG → FCO (ticket pending — buy now!).' },
+    { date: '2026-07-09', city: 'Plauen → Prague → Nice', note: 'Fixed — train Plauen → Dresden → Prague (morning). Fly QS1030 PRG 19:30 → NCE 21:20 (booked).' },
+    { date: '2026-07-10', city: 'Nice', note: 'Day 2 in Nice with friend. Depart to Tuscany on Saturday 11 Jul.' },
+    { date: '2026-07-11', city: 'Nice → Tuscany', note: 'Travel Nice → Tuscany (Florence). Check-in hotel (pending).' },
+    { date: '2026-07-13', city: 'Tuscany → Rome', note: 'Train Florence → Roma Termini (~1h 30m). 2 nights Rome (hotel pending).' },
+    { date: '2026-07-15', city: 'Rome → Venice', note: 'Travel Rome → Venice. 2 nights Venice (hotel pending).' },
+    { date: '2026-07-17', city: 'Venice → Würzburg', note: 'Fixed — fly VCE 16:45 → FRA 18:05 (DE4234, booked). Train Frankfurt Airport → Würzburg (booked). Hotel: homie hotel zur stadt mainz (booked).' },
   ],
 }
 
@@ -190,7 +200,7 @@ function PendingPlanSection() {
         <div className="flex items-center gap-2.5">
           <span className="text-base">🗓️</span>
           <div>
-            <span className="text-sm font-semibold text-slate-100">Germany Leg — Plan Status</span>
+            <span className="text-sm font-semibold text-slate-100">Route — Plan Status</span>
             {pendingCount > 0 ? (
               <span className="ml-2 text-xs bg-amber-900/60 text-amber-400 border border-amber-800/50 rounded-full px-2 py-0.5">
                 {pendingCount} awaiting reply
