@@ -220,43 +220,54 @@ This section maps the real trip into the app's data model. Use this to pre-popul
 
 | id | Date | City | Notes |
 |----|------|------|-------|
-| day-01 | 2026-07-04 | Singapore → Frankfurt | Depart 12:00 PM SIN. Arrive Frankfurt evening. |
-| day-02 | 2026-07-05 | Frankfurt | 1 day exploring Frankfurt. |
-| day-03 | 2026-07-06 | Köln | Travel from Frankfurt to Köln. (Düsseldorf visit skipped.) |
-| day-04 | 2026-07-07 | Köln → Nuremberg → Plauen | Train Köln → Nuremberg 12:45–15:58 (ticket bought). Then train Nuremberg → Plauen. |
+| day-01 | 2026-07-04 | Singapore → Frankfurt | Depart 12:35 PM SIN (SQ 326). Arrive FRA 19:40. Train to Cologne. |
+| day-02 | 2026-07-05 | Cologne → Brussels | Morning in Cologne with brother. Travel to Brussels, Belgium. Sleep Brussels. |
+| day-03 | 2026-07-06 | Bruges | Day trip / travel via Bruges. Move on to Maastricht. Sleep Maastricht. |
+| day-04 | 2026-07-07 | Maastricht → Plauen | Train Maastricht → Cologne → Nuremberg 12:45–15:58 (ticket bought). Then train Nuremberg → Plauen. |
 | day-05 | 2026-07-08 | Plauen | Travel around Plauen whole day. Visit uncle at Pestalozzistraße 50, 08523 Plauen. |
-| day-06 | 2026-07-09 | Prague | Train Plauen → Dresden, then train Dresden → Prague. |
-| day-07 | 2026-07-10 | Prague | Day 2 in Prague (if 2-day stay). |
-| day-08 | 2026-07-11 | Vienna | Travel Prague → Vienna (~4h by train). |
-| day-09 | 2026-07-12 | Vienna | Day 2 in Vienna. |
-| day-10 | 2026-07-13 | Vienna → Rome | Fly Vienna → Rome. (ticket pending — see Events) |
-| day-11 | 2026-07-14 | Rome | Day 2 in Rome. |
-| day-12 | 2026-07-15 | Tuscany | Travel Rome → Tuscany (~3h). |
-| day-13 | 2026-07-16 | Venice | Travel Tuscany → Venice. |
+| day-06 | 2026-07-09 | Nice, France | Train Plauen → Prague (morning). Fly Smartwings QS1030 PRG→NCE 19:30–21:20. Arrive Nice late evening. |
+| day-07 | 2026-07-10 | Nice, France | Day 2 in Nice with friend. |
+| day-08 | 2026-07-11 | Tuscany | Travel Nice → Tuscany (Italy). Arrive afternoon. |
+| day-09 | 2026-07-12 | Tuscany | Full day in Tuscany / Florence. |
+| day-10 | 2026-07-13 | Rome | Travel Tuscany → Rome. 2 nights in Rome. |
+| day-11 | 2026-07-14 | Rome | Rome Day 2 — Ancient Rome + Vatican. |
+| day-12 | 2026-07-15 | Venice | Travel Rome → Venice. |
+| day-13 | 2026-07-16 | Venice | Venice full day. |
 | day-14 | 2026-07-17 | Venice → Würzburg | Fly Venice → Frankfurt (Condor DE4234, 16:45–18:05, booking 16665224). Train Frankfurt Airport → Würzburg. Check-in at hotel. |
 | day-15 | 2026-07-18 | Würzburg | Friend's wedding — evening event. |
-| day-16 | 2026-07-19 | Frankfurt → Singapore | Travel Würzburg → Frankfurt (~1.5h). Depart 12:00 PM FRA. |
+| day-16 | 2026-07-19 | Frankfurt → Singapore | Travel Würzburg → Frankfurt (~1h). Depart 12:15 PM FRA (SQ 025). |
 
 ### Events (bookings)
 
 | id | Title | Date | Status | Booking ref |
 |----|-------|------|--------|-------------|
-| evt-01 | Flight SIN → FRA | 2026-07-04 12:00 | Booked | (add ref) |
-| evt-02 | Flight VIE → FCO (Vienna → Rome) | 2026-07-13 | **PENDING — not yet purchased** | — |
-| evt-03 | Flight FRA → SIN | 2026-07-19 12:00 | Booked | (add ref) |
+| evt-01 | Flight SIN → FRA (SQ 326) | 2026-07-04 12:35 | Booked | ESHMZK |
+| evt-03 | Flight FRA → SIN (SQ 025) | 2026-07-19 12:15 | Booked | ESHMZK |
 | evt-04 | Friend's wedding — Würzburg | 2026-07-18 (evening) | Confirmed | — |
 | evt-05 | Uncle visit — Plauen | 2026-07-08 | Confirmed | Pestalozzistraße 50, 08523 Plauen |
-| evt-06 | Flight VCE → FRA (Venice → Frankfurt) | 2026-07-17 16:45 | Booked | 16665224 — Condor DE4234, arr 18:05. Contact: Thanh +6584338479 |
-| evt-07 | Hotel Würzburg — homie hotel zur stadt mainz | 2026-07-17 | Booked | 6637574880 — Semmelstr. 39, 97070 Würzburg. Check-out 19 Jul. €267.61 paid. |
+| evt-06 | Flight VCE → FRA (Condor DE4234) | 2026-07-17 16:45 | Booked | 16665224 — arr 18:05. Contact: Thanh +6584338479 |
+| evt-07 | Train Cologne → Nuremberg | 2026-07-07 12:45 | Booked | — |
+| evt-08 | Hotel Brussels — B&B HOTEL Brussels Centre Louise | 2026-07-05 | Booked | 6316624979 — Rue Paul Spaak 15. Check-out 6 Jul. €156.91 paid. |
+| evt-14 | Hotel Würzburg — homie hotel zur stadt mainz | 2026-07-17 | Booked | 6637574880 — Semmelstr. 39, 97070 Würzburg. Check-out 19 Jul. €267.61 paid. |
+| evt-10 | Hotel Nice | 2026-07-09 | **PENDING** | — 2 nights, 9–11 Jul |
+| evt-11 | Hotel Tuscany / Florence | 2026-07-11 | **PENDING** | — 2 nights, 11–13 Jul |
+| evt-12 | Hotel Rome | 2026-07-13 | **PENDING** | — 2 nights, 13–15 Jul |
+| evt-13 | Hotel Venice | 2026-07-15 | **PENDING** | — 2 nights, 15–17 Jul |
 
 ### Open items (before departure)
 
-- [ ] Book Vienna → Rome flight (13 Jul) — review itinerary timing first
-- [x] Plan Tuscany → Würzburg travel on 17 Jul — resolved: fly Venice → Frankfurt (DE4234 16:45), train Frankfurt Airport → Würzburg
+- [x] Brussels hotel booked — B&B HOTEL Brussels Centre Louise, 5–6 Jul, booking 6316624979, €156.91 paid
+- [x] Plan Venice → Würzburg travel on 17 Jul — resolved: fly Venice → Frankfurt (DE4234 16:45), train Frankfurt Airport → Würzburg
 - [x] Book Frankfurt Airport → Würzburg train — done
 - [x] Book hotel Würzburg 17–19 Jul — booked (booking 6637574880, €267.61 paid)
-- [ ] Book all remaining hotels along the route (note: no hotel needed 8 Jul — staying with uncle in Plauen)
-- [ ] Add booking refs to evt-01 and evt-03 once confirmed
+- [x] Confirm uncle visit — Plauen (8 Jul) — no hotel needed, staying with uncle
+- [x] Book PRG → NCE flight (9 Jul) — Smartwings QS1030 · 19:30–21:20 · Prepaid baggage confirmed
+- [ ] Book morning train Plauen → Prague (9 Jul) — depart early to reach PRG by ~17:00 for check-in
+- [ ] Confirm hotel in Nice with friend (9–11 Jul) — 2 nights, check if staying with friend
+- [ ] Book hotel Tuscany / Florence (11–13 Jul) — 2 nights
+- [ ] Book hotel Rome (13–15 Jul) — 2 nights, book now — July fills fast
+- [ ] Book hotel Venice (15–17 Jul) — 2 nights
+- [ ] Book hotel Maastricht (6–7 Jul) — 1 night
 
 ---
 
